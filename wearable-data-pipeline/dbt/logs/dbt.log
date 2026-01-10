@@ -1,0 +1,2449 @@
+[0m16:05:40.407835 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x113fec550>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1148677d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x114867d90>]}
+
+
+============================== 16:05:40.410659 | aaa55472-bcb1-4e6b-8237-52e5040f3969 ==============================
+[0m16:05:40.410659 [info ] [MainThread]: Running with dbt=1.11.2
+[0m16:05:40.410987 [debug] [MainThread]: running dbt with arguments {'use_experimental_parser': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'printer_width': '80', 'log_format': 'default', 'fail_fast': 'False', 'static_parser': 'True', 'version_check': 'True', 'use_colors': 'True', 'profiles_dir': '/Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt', 'introspect': 'True', 'debug': 'False', 'send_anonymous_usage_stats': 'True', 'empty': 'None', 'log_path': '/Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/logs', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'quiet': 'False', 'no_print': 'None', 'target_path': 'None', 'invocation_command': 'dbt debug', 'log_cache_events': 'False', 'cache_selected_only': 'False', 'indirect_selection': 'eager', 'write_json': 'True'}
+[0m16:05:40.420140 [info ] [MainThread]: dbt version: 1.11.2
+[0m16:05:40.420370 [info ] [MainThread]: python version: 3.11.7
+[0m16:05:40.420530 [info ] [MainThread]: python path: /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/.venv/bin/python3
+[0m16:05:40.420671 [info ] [MainThread]: os info: macOS-26.2-arm64-arm-64bit
+[0m16:05:40.459450 [info ] [MainThread]: Using profiles dir at /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt
+[0m16:05:40.459734 [info ] [MainThread]: Using profiles.yml file at /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/profiles.yml
+[0m16:05:40.459882 [info ] [MainThread]: Using dbt_project.yml file at /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/dbt_project.yml
+[0m16:05:40.460202 [info ] [MainThread]: adapter type: postgres
+[0m16:05:40.460333 [info ] [MainThread]: adapter version: 1.10.0
+[0m16:05:40.502990 [info ] [MainThread]: Configuration:
+[0m16:05:40.503257 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m16:05:40.503395 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m16:05:40.503513 [info ] [MainThread]: Required dependencies:
+[0m16:05:40.503704 [debug] [MainThread]: Executing "git --help"
+[0m16:05:40.522659 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]\n           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]\n           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone      Clone a repository into a new directory\n   init       Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add        Add file contents to the index\n   mv         Move or rename a file, a directory, or a symlink\n   restore    Restore working tree files\n   rm         Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect     Use binary search to find the commit that introduced a bug\n   diff       Show changes between commits, commit and working tree, etc\n   grep       Print lines matching a pattern\n   log        Show commit logs\n   show       Show various types of objects\n   status     Show the working tree status\n\ngrow, mark and tweak your common history\n   backfill   Download missing objects in a partial clone\n   branch     List, create, or delete branches\n   commit     Record changes to the repository\n   merge      Join two or more development histories together\n   rebase     Reapply commits on top of another base tip\n   reset      Reset current HEAD to the specified state\n   switch     Switch branches\n   tag        Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch      Download objects and refs from another repository\n   pull       Fetch from and integrate with another repository or a local branch\n   push       Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m16:05:40.523222 [debug] [MainThread]: STDERR: "b''"
+[0m16:05:40.523387 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m16:05:40.523543 [info ] [MainThread]: Connection:
+[0m16:05:40.523707 [info ] [MainThread]:   host: localhost
+[0m16:05:40.523819 [info ] [MainThread]:   port: 5432
+[0m16:05:40.523932 [info ] [MainThread]:   user: wearable
+[0m16:05:40.524040 [info ] [MainThread]:   database: wearable
+[0m16:05:40.524148 [info ] [MainThread]:   schema: public
+[0m16:05:40.524255 [info ] [MainThread]:   connect_timeout: 10
+[0m16:05:40.524362 [info ] [MainThread]:   role: None
+[0m16:05:40.524469 [info ] [MainThread]:   search_path: None
+[0m16:05:40.524576 [info ] [MainThread]:   keepalives_idle: 0
+[0m16:05:40.524679 [info ] [MainThread]:   sslmode: None
+[0m16:05:40.524785 [info ] [MainThread]:   sslcert: None
+[0m16:05:40.524888 [info ] [MainThread]:   sslkey: None
+[0m16:05:40.524994 [info ] [MainThread]:   sslrootcert: None
+[0m16:05:40.525102 [info ] [MainThread]:   application_name: dbt
+[0m16:05:40.525207 [info ] [MainThread]:   retries: 1
+[0m16:05:40.525506 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m16:05:40.594073 [debug] [MainThread]: Acquiring new postgres connection 'debug'
+[0m16:05:40.626961 [debug] [MainThread]: Using postgres connection "debug"
+[0m16:05:40.627172 [debug] [MainThread]: On debug: select 1 as id
+[0m16:05:40.627302 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m16:05:40.698507 [debug] [MainThread]: SQL status: SELECT 1 in 0.071 seconds
+[0m16:05:40.699067 [debug] [MainThread]: On debug: Close
+[0m16:05:40.699238 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m16:05:40.699389 [info ] [MainThread]: [32mAll checks passed![0m
+[0m16:05:40.714130 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": true, "command_wall_clock_time": 0.35088646, "process_in_blocks": "0", "process_kernel_time": 0.26821, "process_mem_max_rss": "138215424", "process_out_blocks": "0", "process_user_time": 0.90229}
+[0m16:05:40.714376 [debug] [MainThread]: Command `dbt debug` succeeded at 16:05:40.714326 after 0.35 seconds
+[0m16:05:40.714531 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m16:05:40.714709 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x114849190>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11484bdd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x114ac3cd0>]}
+[0m16:05:40.714910 [debug] [MainThread]: Flushing usage events
+[0m16:05:41.121719 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:06:12.812846 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1090e1310>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10915fbd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109188c90>]}
+
+
+============================== 16:06:12.815616 | bcb639c5-093c-4af9-9c20-dfe278b21b6c ==============================
+[0m16:06:12.815616 [info ] [MainThread]: Running with dbt=1.11.2
+[0m16:06:12.815929 [debug] [MainThread]: running dbt with arguments {'use_experimental_parser': 'False', 'warn_error': 'None', 'indirect_selection': 'eager', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'version_check': 'True', 'quiet': 'False', 'profiles_dir': '/Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt', 'write_json': 'True', 'introspect': 'True', 'invocation_command': 'dbt run --threads 1', 'cache_selected_only': 'False', 'static_parser': 'True', 'log_format': 'default', 'debug': 'False', 'send_anonymous_usage_stats': 'True', 'target_path': 'None', 'no_print': 'None', 'printer_width': '80', 'log_path': '/Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/logs', 'empty': 'False', 'fail_fast': 'False', 'partial_parse': 'True', 'use_colors': 'True', 'log_cache_events': 'False'}
+[0m16:06:12.907909 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'bcb639c5-093c-4af9-9c20-dfe278b21b6c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108e95c50>]}
+[0m16:06:12.933910 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'bcb639c5-093c-4af9-9c20-dfe278b21b6c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1042d8a50>]}
+[0m16:06:12.934385 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m16:06:12.991241 [debug] [MainThread]: checksum: 3d40d8bbe1bef07db1c24822f2dbfff8bc07f2a48ed4fe2658a40653aec0b54b, vars: {}, profile: , target: , version: 1.11.2
+[0m16:06:12.991709 [info ] [MainThread]: Unable to do partial parsing because saved manifest not found. Starting full parse.
+[0m16:06:12.991923 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': 'bcb639c5-093c-4af9-9c20-dfe278b21b6c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10988a750>]}
+[0m16:06:13.483872 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'bcb639c5-093c-4af9-9c20-dfe278b21b6c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109e935d0>]}
+[0m16:06:13.513430 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/manifest.json
+[0m16:06:13.514573 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/semantic_manifest.json
+[0m16:06:13.525693 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'bcb639c5-093c-4af9-9c20-dfe278b21b6c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a729a10>]}
+[0m16:06:13.525956 [info ] [MainThread]: Found 2 models, 2 sources, 464 macros
+[0m16:06:13.526114 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'bcb639c5-093c-4af9-9c20-dfe278b21b6c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a60bf90>]}
+[0m16:06:13.526914 [info ] [MainThread]: 
+[0m16:06:13.527066 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m16:06:13.527187 [info ] [MainThread]: 
+[0m16:06:13.527390 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m16:06:13.529183 [debug] [ThreadPool]: Acquiring new postgres connection 'list_wearable'
+[0m16:06:13.558044 [debug] [ThreadPool]: Using postgres connection "list_wearable"
+[0m16:06:13.558251 [debug] [ThreadPool]: On list_wearable: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "connection_name": "list_wearable"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m16:06:13.558389 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m16:06:13.591854 [debug] [ThreadPool]: SQL status: SELECT 5 in 0.033 seconds
+[0m16:06:13.592548 [debug] [ThreadPool]: On list_wearable: Close
+[0m16:06:13.593179 [debug] [ThreadPool]: Acquiring new postgres connection 'list_wearable_public'
+[0m16:06:13.596061 [debug] [ThreadPool]: Using postgres connection "list_wearable_public"
+[0m16:06:13.596289 [debug] [ThreadPool]: On list_wearable_public: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "connection_name": "list_wearable_public"} */
+select
+      'wearable' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public'
+    union all
+    select
+      'wearable' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public'
+    union all
+    select
+      'wearable' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'public'
+  
+[0m16:06:13.596440 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m16:06:13.610580 [debug] [ThreadPool]: SQL status: SELECT 0 in 0.014 seconds
+[0m16:06:13.611280 [debug] [ThreadPool]: On list_wearable_public: ROLLBACK
+[0m16:06:13.611640 [debug] [ThreadPool]: On list_wearable_public: Close
+[0m16:06:13.614138 [debug] [MainThread]: Using postgres connection "master"
+[0m16:06:13.614438 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "connection_name": "master"} */
+select distinct
+        dependent_namespace.nspname as dependent_schema,
+        dependent_class.relname as dependent_name,
+        referenced_namespace.nspname as referenced_schema,
+        referenced_class.relname as referenced_name
+
+    -- Query for views: views are entries in pg_class with an entry in pg_rewrite, but we avoid
+    -- a seq scan on pg_rewrite by leveraging the fact there is an "internal" row in pg_depend for
+    -- the view...
+    from pg_class as dependent_class
+    join pg_namespace as dependent_namespace on dependent_namespace.oid = dependent_class.relnamespace
+    join pg_depend as dependent_depend on dependent_depend.refobjid = dependent_class.oid
+        and dependent_depend.classid = 'pg_rewrite'::regclass
+        and dependent_depend.refclassid = 'pg_class'::regclass
+        and dependent_depend.deptype = 'i'
+
+    -- ... and via pg_depend (that has a row per column, hence the need for "distinct" above, and
+    -- making sure to exclude the internal row to avoid a view appearing to depend on itself)...
+    join pg_depend as joining_depend on joining_depend.objid = dependent_depend.objid
+        and joining_depend.classid = 'pg_rewrite'::regclass
+        and joining_depend.refclassid = 'pg_class'::regclass
+        and joining_depend.refobjid != dependent_depend.refobjid
+
+    -- ... we can find the tables they query from in pg_class, but excluding system tables. Note we
+    -- don't need need to exclude _dependent_ system tables, because they only query from other
+    -- system tables, and so are automatically excluded by excluding _referenced_ system tables
+    join pg_class as referenced_class on referenced_class.oid = joining_depend.refobjid
+    join pg_namespace as referenced_namespace on referenced_namespace.oid = referenced_class.relnamespace
+        and referenced_namespace.nspname != 'information_schema'
+        and referenced_namespace.nspname not like 'pg\_%'
+
+    order by
+        dependent_schema, dependent_name, referenced_schema, referenced_name;
+[0m16:06:13.614685 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m16:06:13.625700 [debug] [MainThread]: SQL status: SELECT 0 in 0.011 seconds
+[0m16:06:13.626451 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'bcb639c5-093c-4af9-9c20-dfe278b21b6c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1041ccb90>]}
+[0m16:06:13.626749 [debug] [MainThread]: On master: ROLLBACK
+[0m16:06:13.627192 [debug] [MainThread]: On master: COMMIT
+[0m16:06:13.627384 [debug] [MainThread]: Using postgres connection "master"
+[0m16:06:13.627532 [debug] [MainThread]: On master: COMMIT
+[0m16:06:13.628137 [debug] [MainThread]: SQL status: COMMIT in 0.000 seconds
+[0m16:06:13.628330 [debug] [MainThread]: On master: Close
+[0m16:06:13.630630 [debug] [Thread-1 (]: Began running node model.wearable_data_pipeline.stg_daily_activity
+[0m16:06:13.630938 [info ] [Thread-1 (]: 1 of 2 START sql view model public.stg_daily_activity .......................... [RUN]
+[0m16:06:13.631196 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_wearable, now model.wearable_data_pipeline.stg_daily_activity)
+[0m16:06:13.631380 [debug] [Thread-1 (]: Began compiling node model.wearable_data_pipeline.stg_daily_activity
+[0m16:06:13.635515 [debug] [Thread-1 (]: Writing injected SQL for node "model.wearable_data_pipeline.stg_daily_activity"
+[0m16:06:13.636120 [debug] [Thread-1 (]: Began executing node model.wearable_data_pipeline.stg_daily_activity
+[0m16:06:13.651948 [debug] [Thread-1 (]: Writing runtime sql for node "model.wearable_data_pipeline.stg_daily_activity"
+[0m16:06:13.652560 [debug] [Thread-1 (]: Using postgres connection "model.wearable_data_pipeline.stg_daily_activity"
+[0m16:06:13.652746 [debug] [Thread-1 (]: On model.wearable_data_pipeline.stg_daily_activity: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "model.wearable_data_pipeline.stg_daily_activity"} */
+
+  create view "wearable"."public"."stg_daily_activity__dbt_tmp"
+    
+    
+  as (
+    -- Lightweight staging model for daily activity.
+select *
+from "wearable"."raw"."daily_activity"
+  );
+[0m16:06:13.652910 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m16:06:13.664801 [debug] [Thread-1 (]: SQL status: CREATE VIEW in 0.012 seconds
+[0m16:06:13.668289 [debug] [Thread-1 (]: Using postgres connection "model.wearable_data_pipeline.stg_daily_activity"
+[0m16:06:13.668523 [debug] [Thread-1 (]: On model.wearable_data_pipeline.stg_daily_activity: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "model.wearable_data_pipeline.stg_daily_activity"} */
+alter table "wearable"."public"."stg_daily_activity__dbt_tmp" rename to "stg_daily_activity"
+[0m16:06:13.669319 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.001 seconds
+[0m16:06:13.676394 [debug] [Thread-1 (]: On model.wearable_data_pipeline.stg_daily_activity: COMMIT
+[0m16:06:13.676603 [debug] [Thread-1 (]: Using postgres connection "model.wearable_data_pipeline.stg_daily_activity"
+[0m16:06:13.676772 [debug] [Thread-1 (]: On model.wearable_data_pipeline.stg_daily_activity: COMMIT
+[0m16:06:13.678100 [debug] [Thread-1 (]: SQL status: COMMIT in 0.001 seconds
+[0m16:06:13.681270 [debug] [Thread-1 (]: Applying DROP to: "wearable"."public"."stg_daily_activity__dbt_backup"
+[0m16:06:13.683626 [debug] [Thread-1 (]: Using postgres connection "model.wearable_data_pipeline.stg_daily_activity"
+[0m16:06:13.683825 [debug] [Thread-1 (]: On model.wearable_data_pipeline.stg_daily_activity: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "model.wearable_data_pipeline.stg_daily_activity"} */
+drop view if exists "wearable"."public"."stg_daily_activity__dbt_backup" cascade
+[0m16:06:13.685147 [debug] [Thread-1 (]: SQL status: DROP VIEW in 0.001 seconds
+[0m16:06:13.686328 [debug] [Thread-1 (]: On model.wearable_data_pipeline.stg_daily_activity: Close
+[0m16:06:13.687398 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'bcb639c5-093c-4af9-9c20-dfe278b21b6c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a776610>]}
+[0m16:06:13.687728 [info ] [Thread-1 (]: 1 of 2 OK created sql view model public.stg_daily_activity ..................... [[32mCREATE VIEW[0m in 0.06s]
+[0m16:06:13.688001 [debug] [Thread-1 (]: Finished running node model.wearable_data_pipeline.stg_daily_activity
+[0m16:06:13.688186 [debug] [Thread-1 (]: Began running node model.wearable_data_pipeline.stg_sleep
+[0m16:06:13.688441 [info ] [Thread-1 (]: 2 of 2 START sql view model public.stg_sleep ................................... [RUN]
+[0m16:06:13.688662 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.wearable_data_pipeline.stg_daily_activity, now model.wearable_data_pipeline.stg_sleep)
+[0m16:06:13.688836 [debug] [Thread-1 (]: Began compiling node model.wearable_data_pipeline.stg_sleep
+[0m16:06:13.691135 [debug] [Thread-1 (]: Writing injected SQL for node "model.wearable_data_pipeline.stg_sleep"
+[0m16:06:13.691480 [debug] [Thread-1 (]: Began executing node model.wearable_data_pipeline.stg_sleep
+[0m16:06:13.693065 [debug] [Thread-1 (]: Writing runtime sql for node "model.wearable_data_pipeline.stg_sleep"
+[0m16:06:13.693375 [debug] [Thread-1 (]: Using postgres connection "model.wearable_data_pipeline.stg_sleep"
+[0m16:06:13.693531 [debug] [Thread-1 (]: On model.wearable_data_pipeline.stg_sleep: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "model.wearable_data_pipeline.stg_sleep"} */
+
+  create view "wearable"."public"."stg_sleep__dbt_tmp"
+    
+    
+  as (
+    -- Lightweight staging model for sleep.
+select *
+from "wearable"."raw"."sleep"
+  );
+[0m16:06:13.693684 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m16:06:13.705116 [debug] [Thread-1 (]: SQL status: CREATE VIEW in 0.011 seconds
+[0m16:06:13.706795 [debug] [Thread-1 (]: Using postgres connection "model.wearable_data_pipeline.stg_sleep"
+[0m16:06:13.706987 [debug] [Thread-1 (]: On model.wearable_data_pipeline.stg_sleep: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "model.wearable_data_pipeline.stg_sleep"} */
+alter table "wearable"."public"."stg_sleep__dbt_tmp" rename to "stg_sleep"
+[0m16:06:13.707569 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m16:06:13.708234 [debug] [Thread-1 (]: On model.wearable_data_pipeline.stg_sleep: COMMIT
+[0m16:06:13.708417 [debug] [Thread-1 (]: Using postgres connection "model.wearable_data_pipeline.stg_sleep"
+[0m16:06:13.708576 [debug] [Thread-1 (]: On model.wearable_data_pipeline.stg_sleep: COMMIT
+[0m16:06:13.709310 [debug] [Thread-1 (]: SQL status: COMMIT in 0.001 seconds
+[0m16:06:13.710557 [debug] [Thread-1 (]: Applying DROP to: "wearable"."public"."stg_sleep__dbt_backup"
+[0m16:06:13.710905 [debug] [Thread-1 (]: Using postgres connection "model.wearable_data_pipeline.stg_sleep"
+[0m16:06:13.711083 [debug] [Thread-1 (]: On model.wearable_data_pipeline.stg_sleep: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "model.wearable_data_pipeline.stg_sleep"} */
+drop view if exists "wearable"."public"."stg_sleep__dbt_backup" cascade
+[0m16:06:13.711534 [debug] [Thread-1 (]: SQL status: DROP VIEW in 0.000 seconds
+[0m16:06:13.712168 [debug] [Thread-1 (]: On model.wearable_data_pipeline.stg_sleep: Close
+[0m16:06:13.712475 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'bcb639c5-093c-4af9-9c20-dfe278b21b6c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10b362210>]}
+[0m16:06:13.712805 [info ] [Thread-1 (]: 2 of 2 OK created sql view model public.stg_sleep .............................. [[32mCREATE VIEW[0m in 0.02s]
+[0m16:06:13.713082 [debug] [Thread-1 (]: Finished running node model.wearable_data_pipeline.stg_sleep
+[0m16:06:13.713716 [debug] [MainThread]: On master: COMMIT
+[0m16:06:13.713891 [debug] [MainThread]: Using postgres connection "master"
+[0m16:06:13.714030 [debug] [MainThread]: On master: COMMIT
+[0m16:06:13.714169 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m16:06:13.723032 [debug] [MainThread]: SQL status: COMMIT in 0.009 seconds
+[0m16:06:13.723222 [debug] [MainThread]: On master: Close
+[0m16:06:13.723417 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m16:06:13.723550 [debug] [MainThread]: Connection 'model.wearable_data_pipeline.stg_sleep' was properly closed.
+[0m16:06:13.723673 [debug] [MainThread]: Connection 'list_wearable_public' was properly closed.
+[0m16:06:13.723859 [info ] [MainThread]: 
+[0m16:06:13.724021 [info ] [MainThread]: Finished running 2 view models in 0 hours 0 minutes and 0.20 seconds (0.20s).
+[0m16:06:13.724416 [debug] [MainThread]: Command end result
+[0m16:06:13.736583 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/manifest.json
+[0m16:06:13.737467 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/semantic_manifest.json
+[0m16:06:13.740152 [debug] [MainThread]: Wrote artifact RunExecutionResult to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/run_results.json
+[0m16:06:13.740299 [info ] [MainThread]: 
+[0m16:06:13.740482 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m16:06:13.740618 [info ] [MainThread]: 
+[0m16:06:13.740765 [info ] [MainThread]: Done. PASS=2 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=2
+[0m16:06:13.742989 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 0.964721, "process_in_blocks": "0", "process_kernel_time": 0.228327, "process_mem_max_rss": "149716992", "process_out_blocks": "0", "process_user_time": 1.372801}
+[0m16:06:13.743223 [debug] [MainThread]: Command `dbt run` succeeded at 16:06:13.743180 after 0.96 seconds
+[0m16:06:13.743402 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x102a19e90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1090e0450>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1090e37d0>]}
+[0m16:06:13.743575 [debug] [MainThread]: Flushing usage events
+[0m16:06:14.139242 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:06:21.496901 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10287a9d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1055384d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x105538ad0>]}
+
+
+============================== 16:06:21.499692 | 5229c516-1e5d-4c61-a9e9-dc9498599a50 ==============================
+[0m16:06:21.499692 [info ] [MainThread]: Running with dbt=1.11.2
+[0m16:06:21.500005 [debug] [MainThread]: running dbt with arguments {'debug': 'False', 'empty': 'None', 'printer_width': '80', 'quiet': 'False', 'use_colors': 'True', 'fail_fast': 'False', 'static_parser': 'True', 'log_cache_events': 'False', 'profiles_dir': '/Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt', 'indirect_selection': 'eager', 'introspect': 'True', 'log_format': 'default', 'invocation_command': 'dbt test --threads 1', 'partial_parse': 'True', 'use_experimental_parser': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'cache_selected_only': 'False', 'log_path': '/Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/logs', 'no_print': 'None', 'send_anonymous_usage_stats': 'True', 'warn_error': 'None', 'write_json': 'True', 'version_check': 'True', 'target_path': 'None'}
+[0m16:06:21.578735 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '5229c516-1e5d-4c61-a9e9-dc9498599a50', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1054ff410>]}
+[0m16:06:21.603868 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '5229c516-1e5d-4c61-a9e9-dc9498599a50', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x102890250>]}
+[0m16:06:21.604757 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m16:06:21.656524 [debug] [MainThread]: checksum: 3d40d8bbe1bef07db1c24822f2dbfff8bc07f2a48ed4fe2658a40653aec0b54b, vars: {}, profile: , target: , version: 1.11.2
+[0m16:06:21.708521 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m16:06:21.708760 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m16:06:21.708890 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m16:06:21.724478 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '5229c516-1e5d-4c61-a9e9-dc9498599a50', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106465f50>]}
+[0m16:06:21.756392 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/manifest.json
+[0m16:06:21.757532 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/semantic_manifest.json
+[0m16:06:21.772913 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '5229c516-1e5d-4c61-a9e9-dc9498599a50', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1066a6c10>]}
+[0m16:06:21.773190 [info ] [MainThread]: Found 2 models, 2 sources, 464 macros
+[0m16:06:21.773349 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '5229c516-1e5d-4c61-a9e9-dc9498599a50', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106198190>]}
+[0m16:06:21.774099 [warn ] [MainThread]: Nothing to do. Try checking your model configs and model specification args
+[0m16:06:21.774946 [debug] [MainThread]: Command end result
+[0m16:06:21.784784 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/manifest.json
+[0m16:06:21.785509 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/semantic_manifest.json
+[0m16:06:21.786936 [debug] [MainThread]: Wrote artifact RunExecutionResult to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/run_results.json
+[0m16:06:21.788706 [debug] [MainThread]: Resource report: {"command_name": "test", "command_success": true, "command_wall_clock_time": 0.32577166, "process_in_blocks": "0", "process_kernel_time": 0.172968, "process_mem_max_rss": "129318912", "process_out_blocks": "0", "process_user_time": 0.857523}
+[0m16:06:21.788932 [debug] [MainThread]: Command `dbt test` succeeded at 16:06:21.788891 after 0.33 seconds
+[0m16:06:21.789099 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x105538490>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10550c050>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x101121e90>]}
+[0m16:06:21.789252 [debug] [MainThread]: Flushing usage events
+[0m16:06:22.160150 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:12:27.065942 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10529d190>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10529eb50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x105344c50>]}
+
+
+============================== 16:12:27.068970 | 6e6b7e5f-618d-4b1d-8c87-81e663ac6eea ==============================
+[0m16:12:27.068970 [info ] [MainThread]: Running with dbt=1.11.2
+[0m16:12:27.069325 [debug] [MainThread]: running dbt with arguments {'target_path': 'None', 'use_colors': 'True', 'printer_width': '80', 'indirect_selection': 'eager', 'log_format': 'default', 'fail_fast': 'False', 'partial_parse': 'True', 'quiet': 'False', 'log_cache_events': 'False', 'empty': 'False', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True', 'version_check': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'profiles_dir': '/Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt', 'no_print': 'None', 'use_experimental_parser': 'False', 'debug': 'False', 'log_path': '/Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/logs', 'introspect': 'True', 'write_json': 'True', 'invocation_command': 'dbt run'}
+[0m16:12:27.163632 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '6e6b7e5f-618d-4b1d-8c87-81e663ac6eea', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1058c5c10>]}
+[0m16:12:27.189316 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '6e6b7e5f-618d-4b1d-8c87-81e663ac6eea', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10269e190>]}
+[0m16:12:27.189850 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m16:12:27.244466 [debug] [MainThread]: checksum: 3d40d8bbe1bef07db1c24822f2dbfff8bc07f2a48ed4fe2658a40653aec0b54b, vars: {}, profile: , target: , version: 1.11.2
+[0m16:12:27.300284 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 2 files added, 3 files changed.
+[0m16:12:27.300634 [debug] [MainThread]: Partial parsing: added file: wearable_data_pipeline://models/marts/schema.yml
+[0m16:12:27.300787 [debug] [MainThread]: Partial parsing: added file: wearable_data_pipeline://models/marts/daily_user_summary.sql
+[0m16:12:27.301037 [debug] [MainThread]: Partial parsing: updated file: wearable_data_pipeline://models/staging/schema.yml
+[0m16:12:27.301178 [debug] [MainThread]: Partial parsing: updated file: wearable_data_pipeline://models/staging/stg_daily_activity.sql
+[0m16:12:27.301327 [debug] [MainThread]: Partial parsing: updated file: wearable_data_pipeline://models/staging/stg_sleep.sql
+[0m16:12:27.519161 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '6e6b7e5f-618d-4b1d-8c87-81e663ac6eea', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x105fe9050>]}
+[0m16:12:27.559480 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/manifest.json
+[0m16:12:27.561225 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/semantic_manifest.json
+[0m16:12:27.573458 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '6e6b7e5f-618d-4b1d-8c87-81e663ac6eea', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10640f690>]}
+[0m16:12:27.573721 [info ] [MainThread]: Found 3 models, 8 data tests, 2 sources, 464 macros
+[0m16:12:27.573877 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '6e6b7e5f-618d-4b1d-8c87-81e663ac6eea', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1062cd710>]}
+[0m16:12:27.574747 [info ] [MainThread]: 
+[0m16:12:27.574909 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m16:12:27.575036 [info ] [MainThread]: 
+[0m16:12:27.575248 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m16:12:27.577022 [debug] [ThreadPool]: Acquiring new postgres connection 'list_wearable'
+[0m16:12:27.606537 [debug] [ThreadPool]: Using postgres connection "list_wearable"
+[0m16:12:27.606741 [debug] [ThreadPool]: On list_wearable: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "connection_name": "list_wearable"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m16:12:27.606875 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m16:12:27.649145 [debug] [ThreadPool]: SQL status: SELECT 5 in 0.042 seconds
+[0m16:12:27.649870 [debug] [ThreadPool]: On list_wearable: Close
+[0m16:12:27.650546 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_wearable, now list_wearable_public)
+[0m16:12:27.653551 [debug] [ThreadPool]: Using postgres connection "list_wearable_public"
+[0m16:12:27.653750 [debug] [ThreadPool]: On list_wearable_public: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "connection_name": "list_wearable_public"} */
+select
+      'wearable' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public'
+    union all
+    select
+      'wearable' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public'
+    union all
+    select
+      'wearable' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'public'
+  
+[0m16:12:27.653901 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m16:12:27.665371 [debug] [ThreadPool]: SQL status: SELECT 2 in 0.011 seconds
+[0m16:12:27.666054 [debug] [ThreadPool]: On list_wearable_public: ROLLBACK
+[0m16:12:27.666480 [debug] [ThreadPool]: On list_wearable_public: Close
+[0m16:12:27.669117 [debug] [MainThread]: Using postgres connection "master"
+[0m16:12:27.669381 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "connection_name": "master"} */
+select distinct
+        dependent_namespace.nspname as dependent_schema,
+        dependent_class.relname as dependent_name,
+        referenced_namespace.nspname as referenced_schema,
+        referenced_class.relname as referenced_name
+
+    -- Query for views: views are entries in pg_class with an entry in pg_rewrite, but we avoid
+    -- a seq scan on pg_rewrite by leveraging the fact there is an "internal" row in pg_depend for
+    -- the view...
+    from pg_class as dependent_class
+    join pg_namespace as dependent_namespace on dependent_namespace.oid = dependent_class.relnamespace
+    join pg_depend as dependent_depend on dependent_depend.refobjid = dependent_class.oid
+        and dependent_depend.classid = 'pg_rewrite'::regclass
+        and dependent_depend.refclassid = 'pg_class'::regclass
+        and dependent_depend.deptype = 'i'
+
+    -- ... and via pg_depend (that has a row per column, hence the need for "distinct" above, and
+    -- making sure to exclude the internal row to avoid a view appearing to depend on itself)...
+    join pg_depend as joining_depend on joining_depend.objid = dependent_depend.objid
+        and joining_depend.classid = 'pg_rewrite'::regclass
+        and joining_depend.refclassid = 'pg_class'::regclass
+        and joining_depend.refobjid != dependent_depend.refobjid
+
+    -- ... we can find the tables they query from in pg_class, but excluding system tables. Note we
+    -- don't need need to exclude _dependent_ system tables, because they only query from other
+    -- system tables, and so are automatically excluded by excluding _referenced_ system tables
+    join pg_class as referenced_class on referenced_class.oid = joining_depend.refobjid
+    join pg_namespace as referenced_namespace on referenced_namespace.oid = referenced_class.relnamespace
+        and referenced_namespace.nspname != 'information_schema'
+        and referenced_namespace.nspname not like 'pg\_%'
+
+    order by
+        dependent_schema, dependent_name, referenced_schema, referenced_name;
+[0m16:12:27.669605 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m16:12:27.679237 [debug] [MainThread]: SQL status: SELECT 2 in 0.010 seconds
+[0m16:12:27.679995 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '6e6b7e5f-618d-4b1d-8c87-81e663ac6eea', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10638fb50>]}
+[0m16:12:27.680281 [debug] [MainThread]: On master: ROLLBACK
+[0m16:12:27.680742 [debug] [MainThread]: On master: COMMIT
+[0m16:12:27.680906 [debug] [MainThread]: Using postgres connection "master"
+[0m16:12:27.681044 [debug] [MainThread]: On master: COMMIT
+[0m16:12:27.681682 [debug] [MainThread]: SQL status: COMMIT in 0.000 seconds
+[0m16:12:27.681845 [debug] [MainThread]: On master: Close
+[0m16:12:27.683718 [debug] [Thread-1 (]: Began running node model.wearable_data_pipeline.stg_daily_activity
+[0m16:12:27.684085 [debug] [Thread-2 (]: Began running node model.wearable_data_pipeline.stg_sleep
+[0m16:12:27.684374 [info ] [Thread-1 (]: 1 of 3 START sql view model public.stg_daily_activity .......................... [RUN]
+[0m16:12:27.684638 [info ] [Thread-2 (]: 2 of 3 START sql view model public.stg_sleep ................................... [RUN]
+[0m16:12:27.684898 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_wearable_public, now model.wearable_data_pipeline.stg_daily_activity)
+[0m16:12:27.685155 [debug] [Thread-2 (]: Acquiring new postgres connection 'model.wearable_data_pipeline.stg_sleep'
+[0m16:12:27.685356 [debug] [Thread-1 (]: Began compiling node model.wearable_data_pipeline.stg_daily_activity
+[0m16:12:27.685522 [debug] [Thread-2 (]: Began compiling node model.wearable_data_pipeline.stg_sleep
+[0m16:12:27.689983 [debug] [Thread-1 (]: Writing injected SQL for node "model.wearable_data_pipeline.stg_daily_activity"
+[0m16:12:27.691374 [debug] [Thread-2 (]: Writing injected SQL for node "model.wearable_data_pipeline.stg_sleep"
+[0m16:12:27.692013 [debug] [Thread-2 (]: Began executing node model.wearable_data_pipeline.stg_sleep
+[0m16:12:27.698457 [debug] [Thread-1 (]: Began executing node model.wearable_data_pipeline.stg_daily_activity
+[0m16:12:27.708258 [debug] [Thread-2 (]: Writing runtime sql for node "model.wearable_data_pipeline.stg_sleep"
+[0m16:12:27.709842 [debug] [Thread-1 (]: Writing runtime sql for node "model.wearable_data_pipeline.stg_daily_activity"
+[0m16:12:27.710213 [debug] [Thread-2 (]: Using postgres connection "model.wearable_data_pipeline.stg_sleep"
+[0m16:12:27.710399 [debug] [Thread-2 (]: On model.wearable_data_pipeline.stg_sleep: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "model.wearable_data_pipeline.stg_sleep"} */
+
+  create view "wearable"."public"."stg_sleep__dbt_tmp"
+    
+    
+  as (
+    with source as (
+    select *
+    from "wearable"."raw"."sleep"
+),
+
+renamed as (
+    select
+        cast("Id" as bigint) as user_id,
+        to_timestamp("SleepDay", 'MM/DD/YYYY HH12:MI:SS AM')::date as sleep_date,
+        cast("TotalSleepRecords" as integer) as total_sleep_records,
+        cast("TotalMinutesAsleep" as integer) as total_minutes_asleep,
+        cast("TotalTimeInBed" as integer) as total_time_in_bed
+    from source
+)
+
+select *
+from renamed
+  );
+[0m16:12:27.710571 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m16:12:27.710812 [debug] [Thread-1 (]: Using postgres connection "model.wearable_data_pipeline.stg_daily_activity"
+[0m16:12:27.711022 [debug] [Thread-1 (]: On model.wearable_data_pipeline.stg_daily_activity: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "model.wearable_data_pipeline.stg_daily_activity"} */
+
+  create view "wearable"."public"."stg_daily_activity__dbt_tmp"
+    
+    
+  as (
+    with source as (
+    select *
+    from "wearable"."raw"."daily_activity"
+),
+
+renamed as (
+    select
+        cast("Id" as bigint) as user_id,
+        to_date("ActivityDate", 'MM/DD/YYYY') as activity_date,
+        cast("TotalSteps" as integer) as total_steps,
+        cast("TotalDistance" as numeric(10, 2)) as total_distance,
+        cast("VeryActiveMinutes" as integer) as very_active_minutes,
+        cast("FairlyActiveMinutes" as integer) as fairly_active_minutes,
+        cast("LightlyActiveMinutes" as integer) as lightly_active_minutes,
+        cast("SedentaryMinutes" as integer) as sedentary_minutes,
+        cast("Calories" as integer) as calories
+    from source
+)
+
+select *
+from renamed
+  );
+[0m16:12:27.711205 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m16:12:27.730495 [debug] [Thread-2 (]: SQL status: CREATE VIEW in 0.020 seconds
+[0m16:12:27.734261 [debug] [Thread-2 (]: Using postgres connection "model.wearable_data_pipeline.stg_sleep"
+[0m16:12:27.734499 [debug] [Thread-1 (]: SQL status: CREATE VIEW in 0.023 seconds
+[0m16:12:27.734731 [debug] [Thread-2 (]: On model.wearable_data_pipeline.stg_sleep: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "model.wearable_data_pipeline.stg_sleep"} */
+alter table "wearable"."public"."stg_sleep" rename to "stg_sleep__dbt_backup"
+[0m16:12:27.736394 [debug] [Thread-1 (]: Using postgres connection "model.wearable_data_pipeline.stg_daily_activity"
+[0m16:12:27.736644 [debug] [Thread-1 (]: On model.wearable_data_pipeline.stg_daily_activity: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "model.wearable_data_pipeline.stg_daily_activity"} */
+alter table "wearable"."public"."stg_daily_activity" rename to "stg_daily_activity__dbt_backup"
+[0m16:12:27.737037 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m16:12:27.738501 [debug] [Thread-2 (]: Using postgres connection "model.wearable_data_pipeline.stg_sleep"
+[0m16:12:27.738682 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m16:12:27.738859 [debug] [Thread-2 (]: On model.wearable_data_pipeline.stg_sleep: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "model.wearable_data_pipeline.stg_sleep"} */
+alter table "wearable"."public"."stg_sleep__dbt_tmp" rename to "stg_sleep"
+[0m16:12:27.740327 [debug] [Thread-1 (]: Using postgres connection "model.wearable_data_pipeline.stg_daily_activity"
+[0m16:12:27.740538 [debug] [Thread-1 (]: On model.wearable_data_pipeline.stg_daily_activity: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "model.wearable_data_pipeline.stg_daily_activity"} */
+alter table "wearable"."public"."stg_daily_activity__dbt_tmp" rename to "stg_daily_activity"
+[0m16:12:27.740867 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m16:12:27.747378 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.007 seconds
+[0m16:12:27.749011 [debug] [Thread-2 (]: On model.wearable_data_pipeline.stg_sleep: COMMIT
+[0m16:12:27.749649 [debug] [Thread-1 (]: On model.wearable_data_pipeline.stg_daily_activity: COMMIT
+[0m16:12:27.749819 [debug] [Thread-2 (]: Using postgres connection "model.wearable_data_pipeline.stg_sleep"
+[0m16:12:27.749975 [debug] [Thread-1 (]: Using postgres connection "model.wearable_data_pipeline.stg_daily_activity"
+[0m16:12:27.750116 [debug] [Thread-2 (]: On model.wearable_data_pipeline.stg_sleep: COMMIT
+[0m16:12:27.750254 [debug] [Thread-1 (]: On model.wearable_data_pipeline.stg_daily_activity: COMMIT
+[0m16:12:27.751229 [debug] [Thread-1 (]: SQL status: COMMIT in 0.001 seconds
+[0m16:12:27.751385 [debug] [Thread-2 (]: SQL status: COMMIT in 0.001 seconds
+[0m16:12:27.755126 [debug] [Thread-1 (]: Applying DROP to: "wearable"."public"."stg_daily_activity__dbt_backup"
+[0m16:12:27.756248 [debug] [Thread-2 (]: Applying DROP to: "wearable"."public"."stg_sleep__dbt_backup"
+[0m16:12:27.758477 [debug] [Thread-1 (]: Using postgres connection "model.wearable_data_pipeline.stg_daily_activity"
+[0m16:12:27.758784 [debug] [Thread-2 (]: Using postgres connection "model.wearable_data_pipeline.stg_sleep"
+[0m16:12:27.758962 [debug] [Thread-1 (]: On model.wearable_data_pipeline.stg_daily_activity: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "model.wearable_data_pipeline.stg_daily_activity"} */
+drop view if exists "wearable"."public"."stg_daily_activity__dbt_backup" cascade
+[0m16:12:27.759119 [debug] [Thread-2 (]: On model.wearable_data_pipeline.stg_sleep: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "model.wearable_data_pipeline.stg_sleep"} */
+drop view if exists "wearable"."public"."stg_sleep__dbt_backup" cascade
+[0m16:12:27.761986 [debug] [Thread-2 (]: SQL status: DROP VIEW in 0.003 seconds
+[0m16:12:27.763157 [debug] [Thread-2 (]: On model.wearable_data_pipeline.stg_sleep: Close
+[0m16:12:27.763349 [debug] [Thread-1 (]: SQL status: DROP VIEW in 0.004 seconds
+[0m16:12:27.764556 [debug] [Thread-1 (]: On model.wearable_data_pipeline.stg_daily_activity: Close
+[0m16:12:27.764964 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '6e6b7e5f-618d-4b1d-8c87-81e663ac6eea', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1065b8750>]}
+[0m16:12:27.765129 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '6e6b7e5f-618d-4b1d-8c87-81e663ac6eea', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106aacf90>]}
+[0m16:12:27.765445 [info ] [Thread-2 (]: 2 of 3 OK created sql view model public.stg_sleep .............................. [[32mCREATE VIEW[0m in 0.08s]
+[0m16:12:27.765736 [info ] [Thread-1 (]: 1 of 3 OK created sql view model public.stg_daily_activity ..................... [[32mCREATE VIEW[0m in 0.08s]
+[0m16:12:27.765993 [debug] [Thread-2 (]: Finished running node model.wearable_data_pipeline.stg_sleep
+[0m16:12:27.766211 [debug] [Thread-1 (]: Finished running node model.wearable_data_pipeline.stg_daily_activity
+[0m16:12:27.766606 [debug] [Thread-4 (]: Began running node model.wearable_data_pipeline.daily_user_summary
+[0m16:12:27.766835 [info ] [Thread-4 (]: 3 of 3 START sql view model public.daily_user_summary .......................... [RUN]
+[0m16:12:27.767168 [debug] [Thread-4 (]: Acquiring new postgres connection 'model.wearable_data_pipeline.daily_user_summary'
+[0m16:12:27.767356 [debug] [Thread-4 (]: Began compiling node model.wearable_data_pipeline.daily_user_summary
+[0m16:12:27.768972 [debug] [Thread-4 (]: Writing injected SQL for node "model.wearable_data_pipeline.daily_user_summary"
+[0m16:12:27.769402 [debug] [Thread-4 (]: Began executing node model.wearable_data_pipeline.daily_user_summary
+[0m16:12:27.770959 [debug] [Thread-4 (]: Writing runtime sql for node "model.wearable_data_pipeline.daily_user_summary"
+[0m16:12:27.771304 [debug] [Thread-4 (]: Using postgres connection "model.wearable_data_pipeline.daily_user_summary"
+[0m16:12:27.771488 [debug] [Thread-4 (]: On model.wearable_data_pipeline.daily_user_summary: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "model.wearable_data_pipeline.daily_user_summary"} */
+
+  create view "wearable"."public"."daily_user_summary__dbt_tmp"
+    
+    
+  as (
+    with activity as (
+    select *
+    from "wearable"."public"."stg_daily_activity"
+),
+
+sleep as (
+    select *
+    from "wearable"."public"."stg_sleep"
+),
+
+joined as (
+    select
+        activity.user_id,
+        activity.activity_date,
+        activity.total_steps,
+        activity.total_distance,
+        activity.very_active_minutes,
+        activity.fairly_active_minutes,
+        activity.lightly_active_minutes,
+        activity.sedentary_minutes,
+        activity.calories,
+        sleep.total_sleep_records,
+        sleep.total_minutes_asleep,
+        sleep.total_time_in_bed,
+        activity.user_id::text || '-' || activity.activity_date::text as user_day_id
+    from activity
+    left join sleep
+        on activity.user_id = sleep.user_id
+        and activity.activity_date = sleep.sleep_date
+)
+
+select *
+from joined
+  );
+[0m16:12:27.771673 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m16:12:27.781475 [debug] [Thread-4 (]: SQL status: CREATE VIEW in 0.010 seconds
+[0m16:12:27.783112 [debug] [Thread-4 (]: Using postgres connection "model.wearable_data_pipeline.daily_user_summary"
+[0m16:12:27.783312 [debug] [Thread-4 (]: On model.wearable_data_pipeline.daily_user_summary: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "model.wearable_data_pipeline.daily_user_summary"} */
+alter table "wearable"."public"."daily_user_summary__dbt_tmp" rename to "daily_user_summary"
+[0m16:12:27.783932 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.000 seconds
+[0m16:12:27.784575 [debug] [Thread-4 (]: On model.wearable_data_pipeline.daily_user_summary: COMMIT
+[0m16:12:27.784749 [debug] [Thread-4 (]: Using postgres connection "model.wearable_data_pipeline.daily_user_summary"
+[0m16:12:27.784899 [debug] [Thread-4 (]: On model.wearable_data_pipeline.daily_user_summary: COMMIT
+[0m16:12:27.785571 [debug] [Thread-4 (]: SQL status: COMMIT in 0.001 seconds
+[0m16:12:27.786717 [debug] [Thread-4 (]: Applying DROP to: "wearable"."public"."daily_user_summary__dbt_backup"
+[0m16:12:27.787045 [debug] [Thread-4 (]: Using postgres connection "model.wearable_data_pipeline.daily_user_summary"
+[0m16:12:27.787210 [debug] [Thread-4 (]: On model.wearable_data_pipeline.daily_user_summary: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "model.wearable_data_pipeline.daily_user_summary"} */
+drop view if exists "wearable"."public"."daily_user_summary__dbt_backup" cascade
+[0m16:12:27.787933 [debug] [Thread-4 (]: SQL status: DROP VIEW in 0.001 seconds
+[0m16:12:27.788509 [debug] [Thread-4 (]: On model.wearable_data_pipeline.daily_user_summary: Close
+[0m16:12:27.788778 [debug] [Thread-4 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '6e6b7e5f-618d-4b1d-8c87-81e663ac6eea', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106a9ddd0>]}
+[0m16:12:27.789076 [info ] [Thread-4 (]: 3 of 3 OK created sql view model public.daily_user_summary ..................... [[32mCREATE VIEW[0m in 0.02s]
+[0m16:12:27.789331 [debug] [Thread-4 (]: Finished running node model.wearable_data_pipeline.daily_user_summary
+[0m16:12:27.789919 [debug] [MainThread]: On master: COMMIT
+[0m16:12:27.790060 [debug] [MainThread]: Using postgres connection "master"
+[0m16:12:27.790182 [debug] [MainThread]: On master: COMMIT
+[0m16:12:27.790299 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m16:12:27.797396 [debug] [MainThread]: SQL status: COMMIT in 0.007 seconds
+[0m16:12:27.797589 [debug] [MainThread]: On master: Close
+[0m16:12:27.797783 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m16:12:27.797916 [debug] [MainThread]: Connection 'model.wearable_data_pipeline.stg_daily_activity' was properly closed.
+[0m16:12:27.798038 [debug] [MainThread]: Connection 'model.wearable_data_pipeline.stg_sleep' was properly closed.
+[0m16:12:27.798156 [debug] [MainThread]: Connection 'model.wearable_data_pipeline.daily_user_summary' was properly closed.
+[0m16:12:27.798331 [info ] [MainThread]: 
+[0m16:12:27.798491 [info ] [MainThread]: Finished running 3 view models in 0 hours 0 minutes and 0.22 seconds (0.22s).
+[0m16:12:27.798919 [debug] [MainThread]: Command end result
+[0m16:12:27.811930 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/manifest.json
+[0m16:12:27.812805 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/semantic_manifest.json
+[0m16:12:27.815530 [debug] [MainThread]: Wrote artifact RunExecutionResult to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/run_results.json
+[0m16:12:27.815680 [info ] [MainThread]: 
+[0m16:12:27.815859 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m16:12:27.815995 [info ] [MainThread]: 
+[0m16:12:27.816135 [info ] [MainThread]: Done. PASS=3 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=3
+[0m16:12:27.818495 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 0.7903795, "process_in_blocks": "0", "process_kernel_time": 0.228506, "process_mem_max_rss": "147783680", "process_out_blocks": "0", "process_user_time": 1.183349}
+[0m16:12:27.818735 [debug] [MainThread]: Command `dbt run` succeeded at 16:12:27.818690 after 0.79 seconds
+[0m16:12:27.818912 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x101061e90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x101199190>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10529c650>]}
+[0m16:12:27.819081 [debug] [MainThread]: Flushing usage events
+[0m16:12:28.232991 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:12:33.820043 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1077c9cd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107a85590>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107ab1110>]}
+
+
+============================== 16:12:33.822162 | d2992bc4-63fe-4204-ae89-40afed7da7ae ==============================
+[0m16:12:33.822162 [info ] [MainThread]: Running with dbt=1.11.2
+[0m16:12:33.822482 [debug] [MainThread]: running dbt with arguments {'empty': 'None', 'no_print': 'None', 'target_path': 'None', 'indirect_selection': 'eager', 'printer_width': '80', 'write_json': 'True', 'use_experimental_parser': 'False', 'use_colors': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'log_cache_events': 'False', 'quiet': 'False', 'static_parser': 'True', 'partial_parse': 'True', 'debug': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'log_path': '/Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/logs', 'invocation_command': 'dbt test', 'log_format': 'default', 'fail_fast': 'False', 'send_anonymous_usage_stats': 'True', 'introspect': 'True', 'profiles_dir': '/Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt'}
+[0m16:12:33.896798 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'd2992bc4-63fe-4204-ae89-40afed7da7ae', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1080ed150>]}
+[0m16:12:33.922333 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'd2992bc4-63fe-4204-ae89-40afed7da7ae', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104deee50>]}
+[0m16:12:33.922766 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m16:12:33.972642 [debug] [MainThread]: checksum: 3d40d8bbe1bef07db1c24822f2dbfff8bc07f2a48ed4fe2658a40653aec0b54b, vars: {}, profile: , target: , version: 1.11.2
+[0m16:12:34.026667 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m16:12:34.026909 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m16:12:34.027048 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m16:12:34.048259 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'd2992bc4-63fe-4204-ae89-40afed7da7ae', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1088ce510>]}
+[0m16:12:34.087073 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/manifest.json
+[0m16:12:34.088048 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/semantic_manifest.json
+[0m16:12:34.104147 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'd2992bc4-63fe-4204-ae89-40afed7da7ae', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108e3fc90>]}
+[0m16:12:34.104433 [info ] [MainThread]: Found 3 models, 8 data tests, 2 sources, 464 macros
+[0m16:12:34.104592 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'd2992bc4-63fe-4204-ae89-40afed7da7ae', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108b6b7d0>]}
+[0m16:12:34.105636 [info ] [MainThread]: 
+[0m16:12:34.105793 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m16:12:34.105918 [info ] [MainThread]: 
+[0m16:12:34.106150 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m16:12:34.107877 [debug] [ThreadPool]: Acquiring new postgres connection 'list_wearable_public'
+[0m16:12:34.165158 [debug] [ThreadPool]: Using postgres connection "list_wearable_public"
+[0m16:12:34.165386 [debug] [ThreadPool]: On list_wearable_public: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "connection_name": "list_wearable_public"} */
+select
+      'wearable' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public'
+    union all
+    select
+      'wearable' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public'
+    union all
+    select
+      'wearable' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'public'
+  
+[0m16:12:34.165531 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m16:12:34.190163 [debug] [ThreadPool]: SQL status: SELECT 3 in 0.025 seconds
+[0m16:12:34.190894 [debug] [ThreadPool]: On list_wearable_public: ROLLBACK
+[0m16:12:34.191368 [debug] [ThreadPool]: On list_wearable_public: Close
+[0m16:12:34.193926 [debug] [MainThread]: Using postgres connection "master"
+[0m16:12:34.194180 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "connection_name": "master"} */
+select distinct
+        dependent_namespace.nspname as dependent_schema,
+        dependent_class.relname as dependent_name,
+        referenced_namespace.nspname as referenced_schema,
+        referenced_class.relname as referenced_name
+
+    -- Query for views: views are entries in pg_class with an entry in pg_rewrite, but we avoid
+    -- a seq scan on pg_rewrite by leveraging the fact there is an "internal" row in pg_depend for
+    -- the view...
+    from pg_class as dependent_class
+    join pg_namespace as dependent_namespace on dependent_namespace.oid = dependent_class.relnamespace
+    join pg_depend as dependent_depend on dependent_depend.refobjid = dependent_class.oid
+        and dependent_depend.classid = 'pg_rewrite'::regclass
+        and dependent_depend.refclassid = 'pg_class'::regclass
+        and dependent_depend.deptype = 'i'
+
+    -- ... and via pg_depend (that has a row per column, hence the need for "distinct" above, and
+    -- making sure to exclude the internal row to avoid a view appearing to depend on itself)...
+    join pg_depend as joining_depend on joining_depend.objid = dependent_depend.objid
+        and joining_depend.classid = 'pg_rewrite'::regclass
+        and joining_depend.refclassid = 'pg_class'::regclass
+        and joining_depend.refobjid != dependent_depend.refobjid
+
+    -- ... we can find the tables they query from in pg_class, but excluding system tables. Note we
+    -- don't need need to exclude _dependent_ system tables, because they only query from other
+    -- system tables, and so are automatically excluded by excluding _referenced_ system tables
+    join pg_class as referenced_class on referenced_class.oid = joining_depend.refobjid
+    join pg_namespace as referenced_namespace on referenced_namespace.oid = referenced_class.relnamespace
+        and referenced_namespace.nspname != 'information_schema'
+        and referenced_namespace.nspname not like 'pg\_%'
+
+    order by
+        dependent_schema, dependent_name, referenced_schema, referenced_name;
+[0m16:12:34.194377 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m16:12:34.203917 [debug] [MainThread]: SQL status: SELECT 4 in 0.010 seconds
+[0m16:12:34.204826 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'd2992bc4-63fe-4204-ae89-40afed7da7ae', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108a22c10>]}
+[0m16:12:34.205059 [debug] [MainThread]: On master: ROLLBACK
+[0m16:12:34.205480 [debug] [MainThread]: On master: COMMIT
+[0m16:12:34.205668 [debug] [MainThread]: Using postgres connection "master"
+[0m16:12:34.205805 [debug] [MainThread]: On master: COMMIT
+[0m16:12:34.206352 [debug] [MainThread]: SQL status: COMMIT in 0.000 seconds
+[0m16:12:34.206512 [debug] [MainThread]: On master: Close
+[0m16:12:34.208091 [debug] [Thread-1 (]: Began running node test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8
+[0m16:12:34.208287 [debug] [Thread-2 (]: Began running node test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a
+[0m16:12:34.208477 [debug] [Thread-3 (]: Began running node test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959
+[0m16:12:34.208894 [debug] [Thread-4 (]: Began running node test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90
+[0m16:12:34.208735 [info ] [Thread-1 (]: 1 of 8 START test not_null_daily_user_summary_activity_date .................... [RUN]
+[0m16:12:34.209117 [info ] [Thread-2 (]: 2 of 8 START test not_null_daily_user_summary_user_day_id ...................... [RUN]
+[0m16:12:34.209287 [info ] [Thread-3 (]: 3 of 8 START test not_null_daily_user_summary_user_id .......................... [RUN]
+[0m16:12:34.209455 [info ] [Thread-4 (]: 4 of 8 START test not_null_stg_daily_activity_activity_date .................... [RUN]
+[0m16:12:34.209675 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_wearable_public, now test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8)
+[0m16:12:34.209906 [debug] [Thread-2 (]: Acquiring new postgres connection 'test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a'
+[0m16:12:34.210119 [debug] [Thread-3 (]: Acquiring new postgres connection 'test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959'
+[0m16:12:34.210323 [debug] [Thread-4 (]: Acquiring new postgres connection 'test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90'
+[0m16:12:34.210483 [debug] [Thread-1 (]: Began compiling node test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8
+[0m16:12:34.210632 [debug] [Thread-2 (]: Began compiling node test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a
+[0m16:12:34.210777 [debug] [Thread-3 (]: Began compiling node test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959
+[0m16:12:34.210919 [debug] [Thread-4 (]: Began compiling node test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90
+[0m16:12:34.219489 [debug] [Thread-1 (]: Writing injected SQL for node "test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8"
+[0m16:12:34.221460 [debug] [Thread-2 (]: Writing injected SQL for node "test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a"
+[0m16:12:34.223236 [debug] [Thread-3 (]: Writing injected SQL for node "test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959"
+[0m16:12:34.224966 [debug] [Thread-4 (]: Writing injected SQL for node "test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90"
+[0m16:12:34.225472 [debug] [Thread-2 (]: Began executing node test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a
+[0m16:12:34.231920 [debug] [Thread-3 (]: Began executing node test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959
+[0m16:12:34.232092 [debug] [Thread-1 (]: Began executing node test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8
+[0m16:12:34.233600 [debug] [Thread-2 (]: Writing runtime sql for node "test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a"
+[0m16:12:34.234743 [debug] [Thread-3 (]: Writing runtime sql for node "test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959"
+[0m16:12:34.235811 [debug] [Thread-1 (]: Writing runtime sql for node "test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8"
+[0m16:12:34.235968 [debug] [Thread-4 (]: Began executing node test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90
+[0m16:12:34.237236 [debug] [Thread-4 (]: Writing runtime sql for node "test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90"
+[0m16:12:34.237543 [debug] [Thread-1 (]: Using postgres connection "test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8"
+[0m16:12:34.237717 [debug] [Thread-3 (]: Using postgres connection "test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959"
+[0m16:12:34.237883 [debug] [Thread-2 (]: Using postgres connection "test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a"
+[0m16:12:34.238060 [debug] [Thread-1 (]: On test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select activity_date
+from "wearable"."public"."daily_user_summary"
+where activity_date is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:12:34.238260 [debug] [Thread-3 (]: On test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select user_id
+from "wearable"."public"."daily_user_summary"
+where user_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:12:34.238484 [debug] [Thread-4 (]: Using postgres connection "test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90"
+[0m16:12:34.238639 [debug] [Thread-2 (]: On test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select user_day_id
+from "wearable"."public"."daily_user_summary"
+where user_day_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:12:34.238807 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m16:12:34.238949 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m16:12:34.239112 [debug] [Thread-4 (]: On test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select activity_date
+from "wearable"."public"."stg_daily_activity"
+where activity_date is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:12:34.239264 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m16:12:34.239531 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m16:12:34.253767 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.015 seconds
+[0m16:12:34.254014 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.014 seconds
+[0m16:12:34.254187 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.015 seconds
+[0m16:12:34.254339 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.016 seconds
+[0m16:12:34.256340 [debug] [Thread-3 (]: On test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959: ROLLBACK
+[0m16:12:34.256985 [debug] [Thread-4 (]: On test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90: ROLLBACK
+[0m16:12:34.257586 [debug] [Thread-2 (]: On test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a: ROLLBACK
+[0m16:12:34.258138 [debug] [Thread-1 (]: On test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8: ROLLBACK
+[0m16:12:34.258713 [debug] [Thread-1 (]: On test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8: Close
+[0m16:12:34.258917 [debug] [Thread-2 (]: On test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a: Close
+[0m16:12:34.259057 [debug] [Thread-4 (]: On test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90: Close
+[0m16:12:34.259185 [debug] [Thread-3 (]: On test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959: Close
+[0m16:12:34.259463 [info ] [Thread-1 (]: 1 of 8 PASS not_null_daily_user_summary_activity_date .......................... [[32mPASS[0m in 0.05s]
+[0m16:12:34.259770 [info ] [Thread-2 (]: 2 of 8 PASS not_null_daily_user_summary_user_day_id ............................ [[32mPASS[0m in 0.05s]
+[0m16:12:34.260098 [info ] [Thread-4 (]: 4 of 8 PASS not_null_stg_daily_activity_activity_date .......................... [[32mPASS[0m in 0.05s]
+[0m16:12:34.260413 [info ] [Thread-3 (]: 3 of 8 PASS not_null_daily_user_summary_user_id ................................ [[32mPASS[0m in 0.05s]
+[0m16:12:34.260746 [debug] [Thread-1 (]: Finished running node test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8
+[0m16:12:34.260983 [debug] [Thread-2 (]: Finished running node test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a
+[0m16:12:34.261196 [debug] [Thread-4 (]: Finished running node test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90
+[0m16:12:34.261399 [debug] [Thread-3 (]: Finished running node test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959
+[0m16:12:34.261578 [debug] [Thread-1 (]: Began running node test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce
+[0m16:12:34.261743 [debug] [Thread-2 (]: Began running node test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741
+[0m16:12:34.261937 [debug] [Thread-4 (]: Began running node test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f
+[0m16:12:34.262136 [debug] [Thread-3 (]: Began running node test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9
+[0m16:12:34.262338 [info ] [Thread-1 (]: 5 of 8 START test not_null_stg_daily_activity_user_id .......................... [RUN]
+[0m16:12:34.262554 [info ] [Thread-2 (]: 6 of 8 START test not_null_stg_sleep_sleep_date ................................ [RUN]
+[0m16:12:34.262752 [info ] [Thread-4 (]: 7 of 8 START test not_null_stg_sleep_user_id ................................... [RUN]
+[0m16:12:34.262935 [info ] [Thread-3 (]: 8 of 8 START test unique_daily_user_summary_user_day_id ........................ [RUN]
+[0m16:12:34.263130 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8, now test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce)
+[0m16:12:34.263297 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a, now test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741)
+[0m16:12:34.263450 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90, now test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f)
+[0m16:12:34.263604 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959, now test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9)
+[0m16:12:34.263756 [debug] [Thread-1 (]: Began compiling node test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce
+[0m16:12:34.263896 [debug] [Thread-2 (]: Began compiling node test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741
+[0m16:12:34.264029 [debug] [Thread-4 (]: Began compiling node test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f
+[0m16:12:34.264166 [debug] [Thread-3 (]: Began compiling node test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9
+[0m16:12:34.266242 [debug] [Thread-1 (]: Writing injected SQL for node "test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce"
+[0m16:12:34.268901 [debug] [Thread-2 (]: Writing injected SQL for node "test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741"
+[0m16:12:34.270581 [debug] [Thread-4 (]: Writing injected SQL for node "test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f"
+[0m16:12:34.273305 [debug] [Thread-3 (]: Writing injected SQL for node "test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9"
+[0m16:12:34.273772 [debug] [Thread-2 (]: Began executing node test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741
+[0m16:12:34.273971 [debug] [Thread-3 (]: Began executing node test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9
+[0m16:12:34.275116 [debug] [Thread-2 (]: Writing runtime sql for node "test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741"
+[0m16:12:34.275265 [debug] [Thread-1 (]: Began executing node test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce
+[0m16:12:34.275396 [debug] [Thread-4 (]: Began executing node test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f
+[0m16:12:34.276437 [debug] [Thread-3 (]: Writing runtime sql for node "test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9"
+[0m16:12:34.277540 [debug] [Thread-1 (]: Writing runtime sql for node "test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce"
+[0m16:12:34.278659 [debug] [Thread-4 (]: Writing runtime sql for node "test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f"
+[0m16:12:34.278915 [debug] [Thread-2 (]: Using postgres connection "test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741"
+[0m16:12:34.279183 [debug] [Thread-2 (]: On test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select sleep_date
+from "wearable"."public"."stg_sleep"
+where sleep_date is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:12:34.279368 [debug] [Thread-3 (]: Using postgres connection "test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9"
+[0m16:12:34.279575 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m16:12:34.279732 [debug] [Thread-1 (]: Using postgres connection "test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce"
+[0m16:12:34.279880 [debug] [Thread-4 (]: Using postgres connection "test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f"
+[0m16:12:34.280041 [debug] [Thread-3 (]: On test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    user_day_id as unique_field,
+    count(*) as n_records
+
+from "wearable"."public"."daily_user_summary"
+where user_day_id is not null
+group by user_day_id
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:12:34.280283 [debug] [Thread-1 (]: On test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select user_id
+from "wearable"."public"."stg_daily_activity"
+where user_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:12:34.280458 [debug] [Thread-4 (]: On test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select user_id
+from "wearable"."public"."stg_sleep"
+where user_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:12:34.280621 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m16:12:34.280773 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m16:12:34.280922 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m16:12:34.291082 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.010 seconds
+[0m16:12:34.291308 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.011 seconds
+[0m16:12:34.291496 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.012 seconds
+[0m16:12:34.292272 [debug] [Thread-4 (]: On test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f: ROLLBACK
+[0m16:12:34.292932 [debug] [Thread-1 (]: On test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce: ROLLBACK
+[0m16:12:34.293489 [debug] [Thread-2 (]: On test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741: ROLLBACK
+[0m16:12:34.294094 [debug] [Thread-2 (]: On test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741: Close
+[0m16:12:34.294297 [debug] [Thread-4 (]: On test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f: Close
+[0m16:12:34.294445 [debug] [Thread-1 (]: On test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce: Close
+[0m16:12:34.294769 [info ] [Thread-2 (]: 6 of 8 PASS not_null_stg_sleep_sleep_date ...................................... [[32mPASS[0m in 0.03s]
+[0m16:12:34.295235 [info ] [Thread-4 (]: 7 of 8 PASS not_null_stg_sleep_user_id ......................................... [[32mPASS[0m in 0.03s]
+[0m16:12:34.295516 [info ] [Thread-1 (]: 5 of 8 PASS not_null_stg_daily_activity_user_id ................................ [[32mPASS[0m in 0.03s]
+[0m16:12:34.296074 [debug] [Thread-2 (]: Finished running node test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741
+[0m16:12:34.296265 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.016 seconds
+[0m16:12:34.296513 [debug] [Thread-4 (]: Finished running node test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f
+[0m16:12:34.296727 [debug] [Thread-1 (]: Finished running node test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce
+[0m16:12:34.297493 [debug] [Thread-3 (]: On test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9: ROLLBACK
+[0m16:12:34.298075 [debug] [Thread-3 (]: On test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9: Close
+[0m16:12:34.298360 [error] [Thread-3 (]: 8 of 8 FAIL 3 unique_daily_user_summary_user_day_id ............................ [[31mFAIL 3[0m in 0.03s]
+[0m16:12:34.298620 [debug] [Thread-3 (]: Finished running node test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9
+[0m16:12:34.299284 [debug] [MainThread]: On master: COMMIT
+[0m16:12:34.299439 [debug] [MainThread]: Using postgres connection "master"
+[0m16:12:34.299559 [debug] [MainThread]: On master: COMMIT
+[0m16:12:34.299671 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m16:12:34.306106 [debug] [MainThread]: SQL status: COMMIT in 0.006 seconds
+[0m16:12:34.306292 [debug] [MainThread]: On master: Close
+[0m16:12:34.306477 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m16:12:34.306599 [debug] [MainThread]: Connection 'test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce' was properly closed.
+[0m16:12:34.306727 [debug] [MainThread]: Connection 'test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741' was properly closed.
+[0m16:12:34.306838 [debug] [MainThread]: Connection 'test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9' was properly closed.
+[0m16:12:34.306953 [debug] [MainThread]: Connection 'test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f' was properly closed.
+[0m16:12:34.307109 [info ] [MainThread]: 
+[0m16:12:34.307250 [info ] [MainThread]: Finished running 8 data tests in 0 hours 0 minutes and 0.20 seconds (0.20s).
+[0m16:12:34.307931 [debug] [MainThread]: Command end result
+[0m16:12:34.319905 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/manifest.json
+[0m16:12:34.320683 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/semantic_manifest.json
+[0m16:12:34.323821 [debug] [MainThread]: Wrote artifact RunExecutionResult to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/run_results.json
+[0m16:12:34.323985 [info ] [MainThread]: 
+[0m16:12:34.324153 [info ] [MainThread]: [31mCompleted with 1 error, 0 partial successes, and 0 warnings:[0m
+[0m16:12:34.324289 [info ] [MainThread]: 
+[0m16:12:34.324453 [error] [MainThread]: [31mFailure in test unique_daily_user_summary_user_day_id (models/marts/schema.yml)[0m
+[0m16:12:34.324607 [error] [MainThread]:   Got 3 results, configured to fail if != 0
+[0m16:12:34.324722 [info ] [MainThread]: 
+[0m16:12:34.324864 [info ] [MainThread]:   compiled code at target/compiled/wearable_data_pipeline/models/marts/schema.yml/unique_daily_user_summary_user_day_id.sql
+[0m16:12:34.324990 [info ] [MainThread]: 
+[0m16:12:34.325130 [info ] [MainThread]: Done. PASS=7 WARN=0 ERROR=1 SKIP=0 NO-OP=0 TOTAL=8
+[0m16:12:34.327033 [debug] [MainThread]: Resource report: {"command_name": "test", "command_success": false, "command_wall_clock_time": 0.54140824, "process_in_blocks": "0", "process_kernel_time": 0.169812, "process_mem_max_rss": "144965632", "process_out_blocks": "0", "process_user_time": 1.04078}
+[0m16:12:34.327235 [debug] [MainThread]: Command `dbt test` failed at 16:12:34.327198 after 0.54 seconds
+[0m16:12:34.327405 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107a94750>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1079499d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x103685d10>]}
+[0m16:12:34.327570 [debug] [MainThread]: Flushing usage events
+[0m16:12:34.708772 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:13:49.831350 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10950c590>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1095a4650>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1095a4c50>]}
+
+
+============================== 16:13:49.834263 | 61e29d3a-3883-40c5-bf9a-7bb850cc0c3d ==============================
+[0m16:13:49.834263 [info ] [MainThread]: Running with dbt=1.11.2
+[0m16:13:49.834589 [debug] [MainThread]: running dbt with arguments {'quiet': 'False', 'indirect_selection': 'eager', 'version_check': 'True', 'log_format': 'default', 'profiles_dir': '/Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'partial_parse': 'True', 'printer_width': '80', 'write_json': 'True', 'debug': 'False', 'use_colors': 'True', 'log_cache_events': 'False', 'static_parser': 'True', 'warn_error': 'None', 'introspect': 'True', 'empty': 'None', 'no_print': 'None', 'log_path': '/Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/logs', 'fail_fast': 'False', 'use_experimental_parser': 'False', 'invocation_command': 'dbt test', 'target_path': 'None', 'send_anonymous_usage_stats': 'True', 'cache_selected_only': 'False'}
+[0m16:13:49.928340 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '61e29d3a-3883-40c5-bf9a-7bb850cc0c3d', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10950ec10>]}
+[0m16:13:49.954082 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '61e29d3a-3883-40c5-bf9a-7bb850cc0c3d', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1068f6fd0>]}
+[0m16:13:49.954559 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m16:13:50.009355 [debug] [MainThread]: checksum: 3d40d8bbe1bef07db1c24822f2dbfff8bc07f2a48ed4fe2658a40653aec0b54b, vars: {}, profile: , target: , version: 1.11.2
+[0m16:13:50.073057 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+[0m16:13:50.073433 [debug] [MainThread]: Partial parsing: updated file: wearable_data_pipeline://models/marts/daily_user_summary.sql
+[0m16:13:50.283114 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '61e29d3a-3883-40c5-bf9a-7bb850cc0c3d', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a66b1d0>]}
+[0m16:13:50.320635 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/manifest.json
+[0m16:13:50.322286 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/semantic_manifest.json
+[0m16:13:50.338301 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '61e29d3a-3883-40c5-bf9a-7bb850cc0c3d', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10abcfad0>]}
+[0m16:13:50.338589 [info ] [MainThread]: Found 3 models, 8 data tests, 2 sources, 464 macros
+[0m16:13:50.338754 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '61e29d3a-3883-40c5-bf9a-7bb850cc0c3d', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a8d6e50>]}
+[0m16:13:50.339758 [info ] [MainThread]: 
+[0m16:13:50.339925 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m16:13:50.340052 [info ] [MainThread]: 
+[0m16:13:50.340262 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m16:13:50.342032 [debug] [ThreadPool]: Acquiring new postgres connection 'list_wearable_public'
+[0m16:13:50.371442 [debug] [ThreadPool]: Using postgres connection "list_wearable_public"
+[0m16:13:50.371679 [debug] [ThreadPool]: On list_wearable_public: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "connection_name": "list_wearable_public"} */
+select
+      'wearable' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public'
+    union all
+    select
+      'wearable' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public'
+    union all
+    select
+      'wearable' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'public'
+  
+[0m16:13:50.371844 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m16:13:50.419335 [debug] [ThreadPool]: SQL status: SELECT 3 in 0.047 seconds
+[0m16:13:50.420133 [debug] [ThreadPool]: On list_wearable_public: ROLLBACK
+[0m16:13:50.420581 [debug] [ThreadPool]: On list_wearable_public: Close
+[0m16:13:50.423157 [debug] [MainThread]: Using postgres connection "master"
+[0m16:13:50.423413 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "connection_name": "master"} */
+select distinct
+        dependent_namespace.nspname as dependent_schema,
+        dependent_class.relname as dependent_name,
+        referenced_namespace.nspname as referenced_schema,
+        referenced_class.relname as referenced_name
+
+    -- Query for views: views are entries in pg_class with an entry in pg_rewrite, but we avoid
+    -- a seq scan on pg_rewrite by leveraging the fact there is an "internal" row in pg_depend for
+    -- the view...
+    from pg_class as dependent_class
+    join pg_namespace as dependent_namespace on dependent_namespace.oid = dependent_class.relnamespace
+    join pg_depend as dependent_depend on dependent_depend.refobjid = dependent_class.oid
+        and dependent_depend.classid = 'pg_rewrite'::regclass
+        and dependent_depend.refclassid = 'pg_class'::regclass
+        and dependent_depend.deptype = 'i'
+
+    -- ... and via pg_depend (that has a row per column, hence the need for "distinct" above, and
+    -- making sure to exclude the internal row to avoid a view appearing to depend on itself)...
+    join pg_depend as joining_depend on joining_depend.objid = dependent_depend.objid
+        and joining_depend.classid = 'pg_rewrite'::regclass
+        and joining_depend.refclassid = 'pg_class'::regclass
+        and joining_depend.refobjid != dependent_depend.refobjid
+
+    -- ... we can find the tables they query from in pg_class, but excluding system tables. Note we
+    -- don't need need to exclude _dependent_ system tables, because they only query from other
+    -- system tables, and so are automatically excluded by excluding _referenced_ system tables
+    join pg_class as referenced_class on referenced_class.oid = joining_depend.refobjid
+    join pg_namespace as referenced_namespace on referenced_namespace.oid = referenced_class.relnamespace
+        and referenced_namespace.nspname != 'information_schema'
+        and referenced_namespace.nspname not like 'pg\_%'
+
+    order by
+        dependent_schema, dependent_name, referenced_schema, referenced_name;
+[0m16:13:50.423610 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m16:13:50.433868 [debug] [MainThread]: SQL status: SELECT 4 in 0.010 seconds
+[0m16:13:50.434860 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '61e29d3a-3883-40c5-bf9a-7bb850cc0c3d', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10a787350>]}
+[0m16:13:50.435124 [debug] [MainThread]: On master: ROLLBACK
+[0m16:13:50.435541 [debug] [MainThread]: On master: COMMIT
+[0m16:13:50.435694 [debug] [MainThread]: Using postgres connection "master"
+[0m16:13:50.435829 [debug] [MainThread]: On master: COMMIT
+[0m16:13:50.436465 [debug] [MainThread]: SQL status: COMMIT in 0.000 seconds
+[0m16:13:50.436663 [debug] [MainThread]: On master: Close
+[0m16:13:50.438689 [debug] [Thread-1 (]: Began running node test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8
+[0m16:13:50.438921 [debug] [Thread-2 (]: Began running node test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a
+[0m16:13:50.439119 [debug] [Thread-3 (]: Began running node test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959
+[0m16:13:50.439929 [debug] [Thread-4 (]: Began running node test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90
+[0m16:13:50.439769 [info ] [Thread-1 (]: 1 of 8 START test not_null_daily_user_summary_activity_date .................... [RUN]
+[0m16:13:50.440191 [info ] [Thread-2 (]: 2 of 8 START test not_null_daily_user_summary_user_day_id ...................... [RUN]
+[0m16:13:50.440422 [info ] [Thread-3 (]: 3 of 8 START test not_null_daily_user_summary_user_id .......................... [RUN]
+[0m16:13:50.440652 [info ] [Thread-4 (]: 4 of 8 START test not_null_stg_daily_activity_activity_date .................... [RUN]
+[0m16:13:50.440901 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_wearable_public, now test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8)
+[0m16:13:50.441169 [debug] [Thread-2 (]: Acquiring new postgres connection 'test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a'
+[0m16:13:50.441436 [debug] [Thread-3 (]: Acquiring new postgres connection 'test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959'
+[0m16:13:50.441676 [debug] [Thread-4 (]: Acquiring new postgres connection 'test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90'
+[0m16:13:50.441853 [debug] [Thread-1 (]: Began compiling node test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8
+[0m16:13:50.442025 [debug] [Thread-2 (]: Began compiling node test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a
+[0m16:13:50.442197 [debug] [Thread-3 (]: Began compiling node test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959
+[0m16:13:50.442361 [debug] [Thread-4 (]: Began compiling node test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90
+[0m16:13:50.450712 [debug] [Thread-1 (]: Writing injected SQL for node "test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8"
+[0m16:13:50.452663 [debug] [Thread-2 (]: Writing injected SQL for node "test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a"
+[0m16:13:50.454528 [debug] [Thread-3 (]: Writing injected SQL for node "test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959"
+[0m16:13:50.456250 [debug] [Thread-4 (]: Writing injected SQL for node "test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90"
+[0m16:13:50.456738 [debug] [Thread-2 (]: Began executing node test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a
+[0m16:13:50.456904 [debug] [Thread-1 (]: Began executing node test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8
+[0m16:13:50.457047 [debug] [Thread-3 (]: Began executing node test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959
+[0m16:13:50.457195 [debug] [Thread-4 (]: Began executing node test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90
+[0m16:13:50.464929 [debug] [Thread-2 (]: Writing runtime sql for node "test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a"
+[0m16:13:50.466070 [debug] [Thread-1 (]: Writing runtime sql for node "test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8"
+[0m16:13:50.467141 [debug] [Thread-3 (]: Writing runtime sql for node "test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959"
+[0m16:13:50.468175 [debug] [Thread-4 (]: Writing runtime sql for node "test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90"
+[0m16:13:50.468691 [debug] [Thread-2 (]: Using postgres connection "test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a"
+[0m16:13:50.468916 [debug] [Thread-3 (]: Using postgres connection "test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959"
+[0m16:13:50.469101 [debug] [Thread-2 (]: On test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select user_day_id
+from "wearable"."public"."daily_user_summary"
+where user_day_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:13:50.469276 [debug] [Thread-1 (]: Using postgres connection "test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8"
+[0m16:13:50.469461 [debug] [Thread-3 (]: On test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select user_id
+from "wearable"."public"."daily_user_summary"
+where user_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:13:50.469661 [debug] [Thread-4 (]: Using postgres connection "test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90"
+[0m16:13:50.469814 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m16:13:50.469975 [debug] [Thread-1 (]: On test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select activity_date
+from "wearable"."public"."daily_user_summary"
+where activity_date is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:13:50.470129 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m16:13:50.470276 [debug] [Thread-4 (]: On test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select activity_date
+from "wearable"."public"."stg_daily_activity"
+where activity_date is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:13:50.470510 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m16:13:50.470724 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m16:13:50.485696 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.015 seconds
+[0m16:13:50.485990 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.016 seconds
+[0m16:13:50.488081 [debug] [Thread-4 (]: On test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90: ROLLBACK
+[0m16:13:50.488302 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.018 seconds
+[0m16:13:50.488503 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.018 seconds
+[0m16:13:50.489150 [debug] [Thread-3 (]: On test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959: ROLLBACK
+[0m16:13:50.489943 [debug] [Thread-2 (]: On test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a: ROLLBACK
+[0m16:13:50.490620 [debug] [Thread-1 (]: On test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8: ROLLBACK
+[0m16:13:50.490805 [debug] [Thread-4 (]: On test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90: Close
+[0m16:13:50.491237 [info ] [Thread-4 (]: 4 of 8 PASS not_null_stg_daily_activity_activity_date .......................... [[32mPASS[0m in 0.05s]
+[0m16:13:50.491459 [debug] [Thread-3 (]: On test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959: Close
+[0m16:13:50.491631 [debug] [Thread-2 (]: On test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a: Close
+[0m16:13:50.491885 [debug] [Thread-4 (]: Finished running node test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90
+[0m16:13:50.492053 [debug] [Thread-1 (]: On test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8: Close
+[0m16:13:50.492344 [info ] [Thread-3 (]: 3 of 8 PASS not_null_daily_user_summary_user_id ................................ [[32mPASS[0m in 0.05s]
+[0m16:13:50.492622 [info ] [Thread-2 (]: 2 of 8 PASS not_null_daily_user_summary_user_day_id ............................ [[32mPASS[0m in 0.05s]
+[0m16:13:50.492817 [debug] [Thread-4 (]: Began running node test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce
+[0m16:13:50.493130 [debug] [Thread-3 (]: Finished running node test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959
+[0m16:13:50.493345 [info ] [Thread-1 (]: 1 of 8 PASS not_null_daily_user_summary_activity_date .......................... [[32mPASS[0m in 0.05s]
+[0m16:13:50.493586 [debug] [Thread-2 (]: Finished running node test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a
+[0m16:13:50.493752 [info ] [Thread-4 (]: 5 of 8 START test not_null_stg_daily_activity_user_id .......................... [RUN]
+[0m16:13:50.493970 [debug] [Thread-3 (]: Began running node test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741
+[0m16:13:50.494257 [debug] [Thread-1 (]: Finished running node test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8
+[0m16:13:50.494468 [debug] [Thread-2 (]: Began running node test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f
+[0m16:13:50.494674 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90, now test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce)
+[0m16:13:50.494856 [info ] [Thread-3 (]: 6 of 8 START test not_null_stg_sleep_sleep_date ................................ [RUN]
+[0m16:13:50.495054 [debug] [Thread-1 (]: Began running node test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9
+[0m16:13:50.495229 [info ] [Thread-2 (]: 7 of 8 START test not_null_stg_sleep_user_id ................................... [RUN]
+[0m16:13:50.495393 [debug] [Thread-4 (]: Began compiling node test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce
+[0m16:13:50.495557 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959, now test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741)
+[0m16:13:50.495715 [info ] [Thread-1 (]: 8 of 8 START test unique_daily_user_summary_user_day_id ........................ [RUN]
+[0m16:13:50.495889 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a, now test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f)
+[0m16:13:50.498826 [debug] [Thread-4 (]: Writing injected SQL for node "test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce"
+[0m16:13:50.499014 [debug] [Thread-3 (]: Began compiling node test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741
+[0m16:13:50.499186 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8, now test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9)
+[0m16:13:50.499341 [debug] [Thread-2 (]: Began compiling node test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f
+[0m16:13:50.501201 [debug] [Thread-3 (]: Writing injected SQL for node "test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741"
+[0m16:13:50.501397 [debug] [Thread-1 (]: Began compiling node test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9
+[0m16:13:50.503243 [debug] [Thread-2 (]: Writing injected SQL for node "test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f"
+[0m16:13:50.506010 [debug] [Thread-1 (]: Writing injected SQL for node "test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9"
+[0m16:13:50.506175 [debug] [Thread-4 (]: Began executing node test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce
+[0m16:13:50.506391 [debug] [Thread-3 (]: Began executing node test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741
+[0m16:13:50.507544 [debug] [Thread-4 (]: Writing runtime sql for node "test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce"
+[0m16:13:50.507694 [debug] [Thread-2 (]: Began executing node test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f
+[0m16:13:50.508778 [debug] [Thread-3 (]: Writing runtime sql for node "test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741"
+[0m16:13:50.508998 [debug] [Thread-1 (]: Began executing node test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9
+[0m16:13:50.510072 [debug] [Thread-2 (]: Writing runtime sql for node "test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f"
+[0m16:13:50.510316 [debug] [Thread-4 (]: Using postgres connection "test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce"
+[0m16:13:50.511414 [debug] [Thread-1 (]: Writing runtime sql for node "test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9"
+[0m16:13:50.511648 [debug] [Thread-4 (]: On test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select user_id
+from "wearable"."public"."stg_daily_activity"
+where user_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:13:50.511840 [debug] [Thread-3 (]: Using postgres connection "test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741"
+[0m16:13:50.512036 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m16:13:50.512189 [debug] [Thread-2 (]: Using postgres connection "test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f"
+[0m16:13:50.512377 [debug] [Thread-3 (]: On test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select sleep_date
+from "wearable"."public"."stg_sleep"
+where sleep_date is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:13:50.512547 [debug] [Thread-1 (]: Using postgres connection "test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9"
+[0m16:13:50.512772 [debug] [Thread-2 (]: On test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select user_id
+from "wearable"."public"."stg_sleep"
+where user_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:13:50.512932 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m16:13:50.513112 [debug] [Thread-1 (]: On test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    user_day_id as unique_field,
+    count(*) as n_records
+
+from "wearable"."public"."daily_user_summary"
+where user_day_id is not null
+group by user_day_id
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:13:50.513275 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m16:13:50.513496 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m16:13:50.522409 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.010 seconds
+[0m16:13:50.522670 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.010 seconds
+[0m16:13:50.522848 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.010 seconds
+[0m16:13:50.523611 [debug] [Thread-4 (]: On test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce: ROLLBACK
+[0m16:13:50.524196 [debug] [Thread-3 (]: On test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741: ROLLBACK
+[0m16:13:50.524735 [debug] [Thread-2 (]: On test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f: ROLLBACK
+[0m16:13:50.525190 [debug] [Thread-3 (]: On test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741: Close
+[0m16:13:50.525382 [debug] [Thread-4 (]: On test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce: Close
+[0m16:13:50.525570 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.012 seconds
+[0m16:13:50.525714 [debug] [Thread-2 (]: On test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f: Close
+[0m16:13:50.526010 [info ] [Thread-3 (]: 6 of 8 PASS not_null_stg_sleep_sleep_date ...................................... [[32mPASS[0m in 0.03s]
+[0m16:13:50.526294 [info ] [Thread-4 (]: 5 of 8 PASS not_null_stg_daily_activity_user_id ................................ [[32mPASS[0m in 0.03s]
+[0m16:13:50.526976 [debug] [Thread-1 (]: On test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9: ROLLBACK
+[0m16:13:50.527348 [info ] [Thread-2 (]: 7 of 8 PASS not_null_stg_sleep_user_id ......................................... [[32mPASS[0m in 0.03s]
+[0m16:13:50.527648 [debug] [Thread-3 (]: Finished running node test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741
+[0m16:13:50.527875 [debug] [Thread-4 (]: Finished running node test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce
+[0m16:13:50.528141 [debug] [Thread-2 (]: Finished running node test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f
+[0m16:13:50.528438 [debug] [Thread-1 (]: On test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9: Close
+[0m16:13:50.528765 [error] [Thread-1 (]: 8 of 8 FAIL 3 unique_daily_user_summary_user_day_id ............................ [[31mFAIL 3[0m in 0.03s]
+[0m16:13:50.529022 [debug] [Thread-1 (]: Finished running node test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9
+[0m16:13:50.529683 [debug] [MainThread]: On master: COMMIT
+[0m16:13:50.529846 [debug] [MainThread]: Using postgres connection "master"
+[0m16:13:50.529973 [debug] [MainThread]: On master: COMMIT
+[0m16:13:50.530085 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m16:13:50.536423 [debug] [MainThread]: SQL status: COMMIT in 0.006 seconds
+[0m16:13:50.536616 [debug] [MainThread]: On master: Close
+[0m16:13:50.536799 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m16:13:50.536920 [debug] [MainThread]: Connection 'test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9' was properly closed.
+[0m16:13:50.537030 [debug] [MainThread]: Connection 'test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f' was properly closed.
+[0m16:13:50.537137 [debug] [MainThread]: Connection 'test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741' was properly closed.
+[0m16:13:50.537244 [debug] [MainThread]: Connection 'test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce' was properly closed.
+[0m16:13:50.537386 [info ] [MainThread]: 
+[0m16:13:50.537527 [info ] [MainThread]: Finished running 8 data tests in 0 hours 0 minutes and 0.20 seconds (0.20s).
+[0m16:13:50.538228 [debug] [MainThread]: Command end result
+[0m16:13:50.550127 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/manifest.json
+[0m16:13:50.550913 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/semantic_manifest.json
+[0m16:13:50.553896 [debug] [MainThread]: Wrote artifact RunExecutionResult to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/run_results.json
+[0m16:13:50.554046 [info ] [MainThread]: 
+[0m16:13:50.554202 [info ] [MainThread]: [31mCompleted with 1 error, 0 partial successes, and 0 warnings:[0m
+[0m16:13:50.554345 [info ] [MainThread]: 
+[0m16:13:50.554512 [error] [MainThread]: [31mFailure in test unique_daily_user_summary_user_day_id (models/marts/schema.yml)[0m
+[0m16:13:50.554661 [error] [MainThread]:   Got 3 results, configured to fail if != 0
+[0m16:13:50.554780 [info ] [MainThread]: 
+[0m16:13:50.554934 [info ] [MainThread]:   compiled code at target/compiled/wearable_data_pipeline/models/marts/schema.yml/unique_daily_user_summary_user_day_id.sql
+[0m16:13:50.555062 [info ] [MainThread]: 
+[0m16:13:50.555193 [info ] [MainThread]: Done. PASS=7 WARN=0 ERROR=1 SKIP=0 NO-OP=0 TOTAL=8
+[0m16:13:50.557552 [debug] [MainThread]: Resource report: {"command_name": "test", "command_success": false, "command_wall_clock_time": 0.7630042, "process_in_blocks": "0", "process_kernel_time": 0.233251, "process_mem_max_rss": "149323776", "process_out_blocks": "0", "process_user_time": 1.191332}
+[0m16:13:50.557784 [debug] [MainThread]: Command `dbt test` failed at 16:13:50.557741 after 0.76 seconds
+[0m16:13:50.557964 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1095a4a10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1053e5250>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1053e51d0>]}
+[0m16:13:50.558135 [debug] [MainThread]: Flushing usage events
+[0m16:13:51.007896 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:18:11.731652 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106ce47d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106d70a10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106d71010>]}
+
+
+============================== 16:18:11.734584 | 55c2920a-ca2c-4ea9-8251-ecf6ed5f0248 ==============================
+[0m16:18:11.734584 [info ] [MainThread]: Running with dbt=1.11.2
+[0m16:18:11.734899 [debug] [MainThread]: running dbt with arguments {'log_format': 'default', 'send_anonymous_usage_stats': 'True', 'version_check': 'True', 'invocation_command': 'dbt run -s daily_user_summary', 'no_print': 'None', 'cache_selected_only': 'False', 'debug': 'False', 'use_experimental_parser': 'False', 'target_path': 'None', 'use_colors': 'True', 'empty': 'False', 'introspect': 'True', 'log_cache_events': 'False', 'printer_width': '80', 'static_parser': 'True', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'fail_fast': 'False', 'indirect_selection': 'eager', 'log_path': '/Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/logs', 'profiles_dir': '/Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt', 'partial_parse': 'True', 'write_json': 'True', 'warn_error': 'None'}
+[0m16:18:11.829135 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '55c2920a-ca2c-4ea9-8251-ecf6ed5f0248', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10738c990>]}
+[0m16:18:11.854627 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '55c2920a-ca2c-4ea9-8251-ecf6ed5f0248', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1040b6e10>]}
+[0m16:18:11.855142 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m16:18:11.909589 [debug] [MainThread]: checksum: 3d40d8bbe1bef07db1c24822f2dbfff8bc07f2a48ed4fe2658a40653aec0b54b, vars: {}, profile: , target: , version: 1.11.2
+[0m16:18:11.973078 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+[0m16:18:11.973459 [debug] [MainThread]: Partial parsing: updated file: wearable_data_pipeline://models/marts/daily_user_summary.sql
+[0m16:18:12.183971 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '55c2920a-ca2c-4ea9-8251-ecf6ed5f0248', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10427fbd0>]}
+[0m16:18:12.225372 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/manifest.json
+[0m16:18:12.226623 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/semantic_manifest.json
+[0m16:18:12.239413 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '55c2920a-ca2c-4ea9-8251-ecf6ed5f0248', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108089d10>]}
+[0m16:18:12.239709 [info ] [MainThread]: Found 3 models, 8 data tests, 2 sources, 464 macros
+[0m16:18:12.239875 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '55c2920a-ca2c-4ea9-8251-ecf6ed5f0248', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1073ad8d0>]}
+[0m16:18:12.240666 [info ] [MainThread]: 
+[0m16:18:12.240887 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m16:18:12.241012 [info ] [MainThread]: 
+[0m16:18:12.241236 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m16:18:12.241680 [debug] [ThreadPool]: Acquiring new postgres connection 'list_wearable'
+[0m16:18:12.272118 [debug] [ThreadPool]: Using postgres connection "list_wearable"
+[0m16:18:12.272343 [debug] [ThreadPool]: On list_wearable: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "connection_name": "list_wearable"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m16:18:12.272474 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m16:18:12.333899 [debug] [ThreadPool]: SQL status: SELECT 5 in 0.061 seconds
+[0m16:18:12.334721 [debug] [ThreadPool]: On list_wearable: Close
+[0m16:18:12.337136 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_wearable, now list_wearable_public)
+[0m16:18:12.340188 [debug] [ThreadPool]: Using postgres connection "list_wearable_public"
+[0m16:18:12.340383 [debug] [ThreadPool]: On list_wearable_public: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "connection_name": "list_wearable_public"} */
+select
+      'wearable' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public'
+    union all
+    select
+      'wearable' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public'
+    union all
+    select
+      'wearable' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'public'
+  
+[0m16:18:12.340541 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m16:18:12.349538 [debug] [ThreadPool]: SQL status: SELECT 3 in 0.009 seconds
+[0m16:18:12.350387 [debug] [ThreadPool]: On list_wearable_public: ROLLBACK
+[0m16:18:12.350838 [debug] [ThreadPool]: On list_wearable_public: Close
+[0m16:18:12.353526 [debug] [MainThread]: Using postgres connection "master"
+[0m16:18:12.353787 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "connection_name": "master"} */
+select distinct
+        dependent_namespace.nspname as dependent_schema,
+        dependent_class.relname as dependent_name,
+        referenced_namespace.nspname as referenced_schema,
+        referenced_class.relname as referenced_name
+
+    -- Query for views: views are entries in pg_class with an entry in pg_rewrite, but we avoid
+    -- a seq scan on pg_rewrite by leveraging the fact there is an "internal" row in pg_depend for
+    -- the view...
+    from pg_class as dependent_class
+    join pg_namespace as dependent_namespace on dependent_namespace.oid = dependent_class.relnamespace
+    join pg_depend as dependent_depend on dependent_depend.refobjid = dependent_class.oid
+        and dependent_depend.classid = 'pg_rewrite'::regclass
+        and dependent_depend.refclassid = 'pg_class'::regclass
+        and dependent_depend.deptype = 'i'
+
+    -- ... and via pg_depend (that has a row per column, hence the need for "distinct" above, and
+    -- making sure to exclude the internal row to avoid a view appearing to depend on itself)...
+    join pg_depend as joining_depend on joining_depend.objid = dependent_depend.objid
+        and joining_depend.classid = 'pg_rewrite'::regclass
+        and joining_depend.refclassid = 'pg_class'::regclass
+        and joining_depend.refobjid != dependent_depend.refobjid
+
+    -- ... we can find the tables they query from in pg_class, but excluding system tables. Note we
+    -- don't need need to exclude _dependent_ system tables, because they only query from other
+    -- system tables, and so are automatically excluded by excluding _referenced_ system tables
+    join pg_class as referenced_class on referenced_class.oid = joining_depend.refobjid
+    join pg_namespace as referenced_namespace on referenced_namespace.oid = referenced_class.relnamespace
+        and referenced_namespace.nspname != 'information_schema'
+        and referenced_namespace.nspname not like 'pg\_%'
+
+    order by
+        dependent_schema, dependent_name, referenced_schema, referenced_name;
+[0m16:18:12.353993 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m16:18:12.363895 [debug] [MainThread]: SQL status: SELECT 4 in 0.010 seconds
+[0m16:18:12.364925 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '55c2920a-ca2c-4ea9-8251-ecf6ed5f0248', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107e79e90>]}
+[0m16:18:12.365189 [debug] [MainThread]: On master: ROLLBACK
+[0m16:18:12.365645 [debug] [MainThread]: On master: COMMIT
+[0m16:18:12.365805 [debug] [MainThread]: Using postgres connection "master"
+[0m16:18:12.365942 [debug] [MainThread]: On master: COMMIT
+[0m16:18:12.366542 [debug] [MainThread]: SQL status: COMMIT in 0.000 seconds
+[0m16:18:12.366694 [debug] [MainThread]: On master: Close
+[0m16:18:12.368662 [debug] [Thread-1 (]: Began running node model.wearable_data_pipeline.daily_user_summary
+[0m16:18:12.368958 [info ] [Thread-1 (]: 1 of 1 START sql view model public.daily_user_summary .......................... [RUN]
+[0m16:18:12.369204 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_wearable_public, now model.wearable_data_pipeline.daily_user_summary)
+[0m16:18:12.369387 [debug] [Thread-1 (]: Began compiling node model.wearable_data_pipeline.daily_user_summary
+[0m16:18:12.373549 [debug] [Thread-1 (]: Writing injected SQL for node "model.wearable_data_pipeline.daily_user_summary"
+[0m16:18:12.373970 [debug] [Thread-1 (]: Began executing node model.wearable_data_pipeline.daily_user_summary
+[0m16:18:12.389726 [debug] [Thread-1 (]: Writing runtime sql for node "model.wearable_data_pipeline.daily_user_summary"
+[0m16:18:12.390159 [debug] [Thread-1 (]: Using postgres connection "model.wearable_data_pipeline.daily_user_summary"
+[0m16:18:12.390402 [debug] [Thread-1 (]: On model.wearable_data_pipeline.daily_user_summary: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "model.wearable_data_pipeline.daily_user_summary"} */
+
+  create view "wearable"."public"."daily_user_summary__dbt_tmp"
+    
+    
+  as (
+    with activity as (
+    select
+        user_id,
+        activity_date,
+        sum(total_steps) as total_steps,
+        sum(total_distance) as total_distance,
+        sum(very_active_minutes) as very_active_minutes,
+        sum(fairly_active_minutes) as fairly_active_minutes,
+        sum(lightly_active_minutes) as lightly_active_minutes,
+        sum(sedentary_minutes) as sedentary_minutes,
+        sum(calories) as calories
+    from "wearable"."public"."stg_daily_activity"
+    group by 1, 2
+),
+
+sleep as (
+    select
+        user_id,
+        sleep_date,
+        sum(total_sleep_records) as total_sleep_records,
+        sum(total_minutes_asleep) as total_minutes_asleep,
+        sum(total_time_in_bed) as total_time_in_bed
+    from "wearable"."public"."stg_sleep"
+    group by 1, 2
+),
+
+joined as (
+    select
+        activity.user_id,
+        activity.activity_date,
+        activity.total_steps,
+        activity.total_distance,
+        activity.very_active_minutes,
+        activity.fairly_active_minutes,
+        activity.lightly_active_minutes,
+        activity.sedentary_minutes,
+        activity.calories,
+        sleep.total_sleep_records,
+        sleep.total_minutes_asleep,
+        sleep.total_time_in_bed,
+        activity.user_id::text || '-' || activity.activity_date::text as user_day_id
+    from activity
+    left join sleep
+        on activity.user_id = sleep.user_id
+        and activity.activity_date = sleep.sleep_date
+),
+
+final as (
+    select
+        user_id,
+        activity_date,
+        max(total_steps) as total_steps,
+        max(total_distance) as total_distance,
+        max(very_active_minutes) as very_active_minutes,
+        max(fairly_active_minutes) as fairly_active_minutes,
+        max(lightly_active_minutes) as lightly_active_minutes,
+        max(sedentary_minutes) as sedentary_minutes,
+        max(calories) as calories,
+        max(total_sleep_records) as total_sleep_records,
+        max(total_minutes_asleep) as total_minutes_asleep,
+        max(total_time_in_bed) as total_time_in_bed,
+        max(user_day_id) as user_day_id
+    from joined
+    group by 1, 2
+)
+
+select *
+from final
+  );
+[0m16:18:12.390630 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m16:18:12.410929 [debug] [Thread-1 (]: SQL status: CREATE VIEW in 0.020 seconds
+[0m16:18:12.415580 [debug] [Thread-1 (]: Using postgres connection "model.wearable_data_pipeline.daily_user_summary"
+[0m16:18:12.415806 [debug] [Thread-1 (]: On model.wearable_data_pipeline.daily_user_summary: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "model.wearable_data_pipeline.daily_user_summary"} */
+alter table "wearable"."public"."daily_user_summary" rename to "daily_user_summary__dbt_backup"
+[0m16:18:12.416697 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.001 seconds
+[0m16:18:12.418281 [debug] [Thread-1 (]: Using postgres connection "model.wearable_data_pipeline.daily_user_summary"
+[0m16:18:12.418473 [debug] [Thread-1 (]: On model.wearable_data_pipeline.daily_user_summary: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "model.wearable_data_pipeline.daily_user_summary"} */
+alter table "wearable"."public"."daily_user_summary__dbt_tmp" rename to "daily_user_summary"
+[0m16:18:12.419234 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.001 seconds
+[0m16:18:12.427618 [debug] [Thread-1 (]: On model.wearable_data_pipeline.daily_user_summary: COMMIT
+[0m16:18:12.427849 [debug] [Thread-1 (]: Using postgres connection "model.wearable_data_pipeline.daily_user_summary"
+[0m16:18:12.428027 [debug] [Thread-1 (]: On model.wearable_data_pipeline.daily_user_summary: COMMIT
+[0m16:18:12.429479 [debug] [Thread-1 (]: SQL status: COMMIT in 0.001 seconds
+[0m16:18:12.432545 [debug] [Thread-1 (]: Applying DROP to: "wearable"."public"."daily_user_summary__dbt_backup"
+[0m16:18:12.434946 [debug] [Thread-1 (]: Using postgres connection "model.wearable_data_pipeline.daily_user_summary"
+[0m16:18:12.435141 [debug] [Thread-1 (]: On model.wearable_data_pipeline.daily_user_summary: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "model.wearable_data_pipeline.daily_user_summary"} */
+drop view if exists "wearable"."public"."daily_user_summary__dbt_backup" cascade
+[0m16:18:12.436592 [debug] [Thread-1 (]: SQL status: DROP VIEW in 0.001 seconds
+[0m16:18:12.437823 [debug] [Thread-1 (]: On model.wearable_data_pipeline.daily_user_summary: Close
+[0m16:18:12.438884 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '55c2920a-ca2c-4ea9-8251-ecf6ed5f0248', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1083f4550>]}
+[0m16:18:12.439245 [info ] [Thread-1 (]: 1 of 1 OK created sql view model public.daily_user_summary ..................... [[32mCREATE VIEW[0m in 0.07s]
+[0m16:18:12.439521 [debug] [Thread-1 (]: Finished running node model.wearable_data_pipeline.daily_user_summary
+[0m16:18:12.440149 [debug] [MainThread]: On master: COMMIT
+[0m16:18:12.440302 [debug] [MainThread]: Using postgres connection "master"
+[0m16:18:12.440429 [debug] [MainThread]: On master: COMMIT
+[0m16:18:12.440547 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m16:18:12.449532 [debug] [MainThread]: SQL status: COMMIT in 0.009 seconds
+[0m16:18:12.449773 [debug] [MainThread]: On master: Close
+[0m16:18:12.449989 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m16:18:12.450129 [debug] [MainThread]: Connection 'model.wearable_data_pipeline.daily_user_summary' was properly closed.
+[0m16:18:12.450289 [info ] [MainThread]: 
+[0m16:18:12.450450 [info ] [MainThread]: Finished running 1 view model in 0 hours 0 minutes and 0.21 seconds (0.21s).
+[0m16:18:12.450789 [debug] [MainThread]: Command end result
+[0m16:18:12.463490 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/manifest.json
+[0m16:18:12.464355 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/semantic_manifest.json
+[0m16:18:12.467283 [debug] [MainThread]: Wrote artifact RunExecutionResult to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/run_results.json
+[0m16:18:12.467436 [info ] [MainThread]: 
+[0m16:18:12.467609 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m16:18:12.467732 [info ] [MainThread]: 
+[0m16:18:12.467867 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=1
+[0m16:18:12.470214 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 0.77622765, "process_in_blocks": "0", "process_kernel_time": 0.247595, "process_mem_max_rss": "147931136", "process_out_blocks": "0", "process_user_time": 1.15216}
+[0m16:18:12.470460 [debug] [MainThread]: Command `dbt run` succeeded at 16:18:12.470414 after 0.78 seconds
+[0m16:18:12.470640 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106d71150>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106d711d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106b85510>]}
+[0m16:18:12.470821 [debug] [MainThread]: Flushing usage events
+[0m16:18:13.376382 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:18:21.672219 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108aecbd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108b78e10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108b79410>]}
+
+
+============================== 16:18:21.674972 | 1358c5ec-d416-4621-9a0a-9a3c61187a64 ==============================
+[0m16:18:21.674972 [info ] [MainThread]: Running with dbt=1.11.2
+[0m16:18:21.675292 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'quiet': 'False', 'send_anonymous_usage_stats': 'True', 'partial_parse': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'debug': 'False', 'warn_error': 'None', 'log_path': '/Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/logs', 'use_colors': 'True', 'log_cache_events': 'False', 'profiles_dir': '/Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt', 'write_json': 'True', 'indirect_selection': 'eager', 'empty': 'None', 'cache_selected_only': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'introspect': 'True', 'target_path': 'None', 'static_parser': 'True', 'fail_fast': 'False', 'version_check': 'True', 'invocation_command': 'dbt test -s daily_user_summary', 'log_format': 'default'}
+[0m16:18:21.753377 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '1358c5ec-d416-4621-9a0a-9a3c61187a64', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108b4e890>]}
+[0m16:18:21.778373 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '1358c5ec-d416-4621-9a0a-9a3c61187a64', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104cf2810>]}
+[0m16:18:21.779199 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m16:18:21.836874 [debug] [MainThread]: checksum: 3d40d8bbe1bef07db1c24822f2dbfff8bc07f2a48ed4fe2658a40653aec0b54b, vars: {}, profile: , target: , version: 1.11.2
+[0m16:18:21.897748 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m16:18:21.897990 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m16:18:21.898116 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m16:18:21.918834 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '1358c5ec-d416-4621-9a0a-9a3c61187a64', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1099a4190>]}
+[0m16:18:21.957725 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/manifest.json
+[0m16:18:21.958725 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/semantic_manifest.json
+[0m16:18:21.975002 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '1358c5ec-d416-4621-9a0a-9a3c61187a64', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x109f391d0>]}
+[0m16:18:21.975285 [info ] [MainThread]: Found 3 models, 8 data tests, 2 sources, 464 macros
+[0m16:18:21.975446 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '1358c5ec-d416-4621-9a0a-9a3c61187a64', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108895b90>]}
+[0m16:18:21.976266 [info ] [MainThread]: 
+[0m16:18:21.976420 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m16:18:21.976542 [info ] [MainThread]: 
+[0m16:18:21.976779 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m16:18:21.978508 [debug] [ThreadPool]: Acquiring new postgres connection 'list_wearable_public'
+[0m16:18:22.036167 [debug] [ThreadPool]: Using postgres connection "list_wearable_public"
+[0m16:18:22.036391 [debug] [ThreadPool]: On list_wearable_public: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "connection_name": "list_wearable_public"} */
+select
+      'wearable' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public'
+    union all
+    select
+      'wearable' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public'
+    union all
+    select
+      'wearable' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'public'
+  
+[0m16:18:22.036539 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m16:18:22.061700 [debug] [ThreadPool]: SQL status: SELECT 3 in 0.025 seconds
+[0m16:18:22.062443 [debug] [ThreadPool]: On list_wearable_public: ROLLBACK
+[0m16:18:22.063058 [debug] [ThreadPool]: On list_wearable_public: Close
+[0m16:18:22.065567 [debug] [MainThread]: Using postgres connection "master"
+[0m16:18:22.065824 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "connection_name": "master"} */
+select distinct
+        dependent_namespace.nspname as dependent_schema,
+        dependent_class.relname as dependent_name,
+        referenced_namespace.nspname as referenced_schema,
+        referenced_class.relname as referenced_name
+
+    -- Query for views: views are entries in pg_class with an entry in pg_rewrite, but we avoid
+    -- a seq scan on pg_rewrite by leveraging the fact there is an "internal" row in pg_depend for
+    -- the view...
+    from pg_class as dependent_class
+    join pg_namespace as dependent_namespace on dependent_namespace.oid = dependent_class.relnamespace
+    join pg_depend as dependent_depend on dependent_depend.refobjid = dependent_class.oid
+        and dependent_depend.classid = 'pg_rewrite'::regclass
+        and dependent_depend.refclassid = 'pg_class'::regclass
+        and dependent_depend.deptype = 'i'
+
+    -- ... and via pg_depend (that has a row per column, hence the need for "distinct" above, and
+    -- making sure to exclude the internal row to avoid a view appearing to depend on itself)...
+    join pg_depend as joining_depend on joining_depend.objid = dependent_depend.objid
+        and joining_depend.classid = 'pg_rewrite'::regclass
+        and joining_depend.refclassid = 'pg_class'::regclass
+        and joining_depend.refobjid != dependent_depend.refobjid
+
+    -- ... we can find the tables they query from in pg_class, but excluding system tables. Note we
+    -- don't need need to exclude _dependent_ system tables, because they only query from other
+    -- system tables, and so are automatically excluded by excluding _referenced_ system tables
+    join pg_class as referenced_class on referenced_class.oid = joining_depend.refobjid
+    join pg_namespace as referenced_namespace on referenced_namespace.oid = referenced_class.relnamespace
+        and referenced_namespace.nspname != 'information_schema'
+        and referenced_namespace.nspname not like 'pg\_%'
+
+    order by
+        dependent_schema, dependent_name, referenced_schema, referenced_name;
+[0m16:18:22.066039 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m16:18:22.076417 [debug] [MainThread]: SQL status: SELECT 4 in 0.010 seconds
+[0m16:18:22.077301 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '1358c5ec-d416-4621-9a0a-9a3c61187a64', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107037b50>]}
+[0m16:18:22.077529 [debug] [MainThread]: On master: ROLLBACK
+[0m16:18:22.077962 [debug] [MainThread]: On master: COMMIT
+[0m16:18:22.078109 [debug] [MainThread]: Using postgres connection "master"
+[0m16:18:22.078235 [debug] [MainThread]: On master: COMMIT
+[0m16:18:22.078919 [debug] [MainThread]: SQL status: COMMIT in 0.001 seconds
+[0m16:18:22.079058 [debug] [MainThread]: On master: Close
+[0m16:18:22.080876 [debug] [Thread-1 (]: Began running node test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8
+[0m16:18:22.081092 [debug] [Thread-2 (]: Began running node test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a
+[0m16:18:22.081279 [debug] [Thread-3 (]: Began running node test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959
+[0m16:18:22.081475 [debug] [Thread-4 (]: Began running node test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9
+[0m16:18:22.081660 [info ] [Thread-1 (]: 1 of 4 START test not_null_daily_user_summary_activity_date .................... [RUN]
+[0m16:18:22.081874 [info ] [Thread-2 (]: 2 of 4 START test not_null_daily_user_summary_user_day_id ...................... [RUN]
+[0m16:18:22.082109 [info ] [Thread-3 (]: 3 of 4 START test not_null_daily_user_summary_user_id .......................... [RUN]
+[0m16:18:22.082457 [info ] [Thread-4 (]: 4 of 4 START test unique_daily_user_summary_user_day_id ........................ [RUN]
+[0m16:18:22.082716 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_wearable_public, now test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8)
+[0m16:18:22.082980 [debug] [Thread-2 (]: Acquiring new postgres connection 'test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a'
+[0m16:18:22.083242 [debug] [Thread-3 (]: Acquiring new postgres connection 'test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959'
+[0m16:18:22.083479 [debug] [Thread-4 (]: Acquiring new postgres connection 'test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9'
+[0m16:18:22.083672 [debug] [Thread-1 (]: Began compiling node test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8
+[0m16:18:22.083846 [debug] [Thread-2 (]: Began compiling node test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a
+[0m16:18:22.084009 [debug] [Thread-3 (]: Began compiling node test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959
+[0m16:18:22.084171 [debug] [Thread-4 (]: Began compiling node test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9
+[0m16:18:22.093154 [debug] [Thread-1 (]: Writing injected SQL for node "test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8"
+[0m16:18:22.095132 [debug] [Thread-2 (]: Writing injected SQL for node "test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a"
+[0m16:18:22.096996 [debug] [Thread-3 (]: Writing injected SQL for node "test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959"
+[0m16:18:22.099707 [debug] [Thread-4 (]: Writing injected SQL for node "test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9"
+[0m16:18:22.100212 [debug] [Thread-1 (]: Began executing node test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8
+[0m16:18:22.100390 [debug] [Thread-3 (]: Began executing node test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959
+[0m16:18:22.100544 [debug] [Thread-2 (]: Began executing node test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a
+[0m16:18:22.100712 [debug] [Thread-4 (]: Began executing node test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9
+[0m16:18:22.108522 [debug] [Thread-1 (]: Writing runtime sql for node "test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8"
+[0m16:18:22.109648 [debug] [Thread-3 (]: Writing runtime sql for node "test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959"
+[0m16:18:22.110688 [debug] [Thread-2 (]: Writing runtime sql for node "test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a"
+[0m16:18:22.111722 [debug] [Thread-4 (]: Writing runtime sql for node "test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9"
+[0m16:18:22.112213 [debug] [Thread-1 (]: Using postgres connection "test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8"
+[0m16:18:22.112400 [debug] [Thread-2 (]: Using postgres connection "test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a"
+[0m16:18:22.112585 [debug] [Thread-3 (]: Using postgres connection "test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959"
+[0m16:18:22.112751 [debug] [Thread-4 (]: Using postgres connection "test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9"
+[0m16:18:22.112955 [debug] [Thread-1 (]: On test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select activity_date
+from "wearable"."public"."daily_user_summary"
+where activity_date is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:18:22.113145 [debug] [Thread-2 (]: On test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select user_day_id
+from "wearable"."public"."daily_user_summary"
+where user_day_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:18:22.113314 [debug] [Thread-3 (]: On test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select user_id
+from "wearable"."public"."daily_user_summary"
+where user_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:18:22.113484 [debug] [Thread-4 (]: On test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    user_day_id as unique_field,
+    count(*) as n_records
+
+from "wearable"."public"."daily_user_summary"
+where user_day_id is not null
+group by user_day_id
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:18:22.113639 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m16:18:22.113773 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m16:18:22.113909 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m16:18:22.114036 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m16:18:22.129199 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.015 seconds
+[0m16:18:22.131526 [debug] [Thread-3 (]: On test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959: ROLLBACK
+[0m16:18:22.131762 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.018 seconds
+[0m16:18:22.131965 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.018 seconds
+[0m16:18:22.132126 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.018 seconds
+[0m16:18:22.132830 [debug] [Thread-1 (]: On test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8: ROLLBACK
+[0m16:18:22.133005 [debug] [Thread-3 (]: On test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959: Close
+[0m16:18:22.133642 [debug] [Thread-2 (]: On test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a: ROLLBACK
+[0m16:18:22.134230 [debug] [Thread-4 (]: On test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9: ROLLBACK
+[0m16:18:22.134599 [info ] [Thread-3 (]: 3 of 4 PASS not_null_daily_user_summary_user_id ................................ [[32mPASS[0m in 0.05s]
+[0m16:18:22.134834 [debug] [Thread-1 (]: On test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8: Close
+[0m16:18:22.135188 [debug] [Thread-3 (]: Finished running node test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959
+[0m16:18:22.135358 [debug] [Thread-2 (]: On test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a: Close
+[0m16:18:22.135609 [info ] [Thread-1 (]: 1 of 4 PASS not_null_daily_user_summary_activity_date .......................... [[32mPASS[0m in 0.05s]
+[0m16:18:22.135774 [debug] [Thread-4 (]: On test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9: Close
+[0m16:18:22.136103 [info ] [Thread-2 (]: 2 of 4 PASS not_null_daily_user_summary_user_day_id ............................ [[32mPASS[0m in 0.05s]
+[0m16:18:22.136365 [debug] [Thread-1 (]: Finished running node test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8
+[0m16:18:22.136704 [info ] [Thread-4 (]: 4 of 4 PASS unique_daily_user_summary_user_day_id .............................. [[32mPASS[0m in 0.05s]
+[0m16:18:22.137062 [debug] [Thread-2 (]: Finished running node test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a
+[0m16:18:22.137352 [debug] [Thread-4 (]: Finished running node test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9
+[0m16:18:22.138043 [debug] [MainThread]: On master: COMMIT
+[0m16:18:22.138213 [debug] [MainThread]: Using postgres connection "master"
+[0m16:18:22.138341 [debug] [MainThread]: On master: COMMIT
+[0m16:18:22.138456 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m16:18:22.145648 [debug] [MainThread]: SQL status: COMMIT in 0.007 seconds
+[0m16:18:22.145835 [debug] [MainThread]: On master: Close
+[0m16:18:22.146017 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m16:18:22.146135 [debug] [MainThread]: Connection 'test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8' was properly closed.
+[0m16:18:22.146247 [debug] [MainThread]: Connection 'test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a' was properly closed.
+[0m16:18:22.146356 [debug] [MainThread]: Connection 'test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959' was properly closed.
+[0m16:18:22.146471 [debug] [MainThread]: Connection 'test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9' was properly closed.
+[0m16:18:22.146628 [info ] [MainThread]: 
+[0m16:18:22.146777 [info ] [MainThread]: Finished running 4 data tests in 0 hours 0 minutes and 0.17 seconds (0.17s).
+[0m16:18:22.147238 [debug] [MainThread]: Command end result
+[0m16:18:22.159519 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/manifest.json
+[0m16:18:22.160331 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/semantic_manifest.json
+[0m16:18:22.163448 [debug] [MainThread]: Wrote artifact RunExecutionResult to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/run_results.json
+[0m16:18:22.163603 [info ] [MainThread]: 
+[0m16:18:22.163770 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m16:18:22.163898 [info ] [MainThread]: 
+[0m16:18:22.164036 [info ] [MainThread]: Done. PASS=4 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=4
+[0m16:18:22.165911 [debug] [MainThread]: Resource report: {"command_name": "test", "command_success": true, "command_wall_clock_time": 0.52905375, "process_in_blocks": "0", "process_kernel_time": 0.201188, "process_mem_max_rss": "144556032", "process_out_blocks": "0", "process_user_time": 1.004032}
+[0m16:18:22.166106 [debug] [MainThread]: Command `dbt test` succeeded at 16:18:22.166071 after 0.53 seconds
+[0m16:18:22.166271 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x102a09e90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x102be92d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x102be9390>]}
+[0m16:18:22.166440 [debug] [MainThread]: Flushing usage events
+[0m16:18:22.545559 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:18:33.346534 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107ad4a90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107b6c710>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107b6cd10>]}
+
+
+============================== 16:18:33.348631 | c3f6ff4b-f03b-4d3a-8d66-c581969dadc4 ==============================
+[0m16:18:33.348631 [info ] [MainThread]: Running with dbt=1.11.2
+[0m16:18:33.348949 [debug] [MainThread]: running dbt with arguments {'empty': 'None', 'warn_error': 'None', 'static_parser': 'True', 'indirect_selection': 'eager', 'log_format': 'default', 'partial_parse': 'True', 'introspect': 'True', 'log_path': '/Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/logs', 'cache_selected_only': 'False', 'use_experimental_parser': 'False', 'fail_fast': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'version_check': 'True', 'printer_width': '80', 'write_json': 'True', 'invocation_command': 'dbt test', 'use_colors': 'True', 'no_print': 'None', 'send_anonymous_usage_stats': 'True', 'profiles_dir': '/Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt', 'quiet': 'False', 'log_cache_events': 'False', 'debug': 'False', 'target_path': 'None'}
+[0m16:18:33.423319 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'c3f6ff4b-f03b-4d3a-8d66-c581969dadc4', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107b8de10>]}
+[0m16:18:33.448446 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'c3f6ff4b-f03b-4d3a-8d66-c581969dadc4', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104ec8290>]}
+[0m16:18:33.448856 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m16:18:33.498366 [debug] [MainThread]: checksum: 3d40d8bbe1bef07db1c24822f2dbfff8bc07f2a48ed4fe2658a40653aec0b54b, vars: {}, profile: , target: , version: 1.11.2
+[0m16:18:33.552449 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m16:18:33.552670 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m16:18:33.552801 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m16:18:33.573861 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'c3f6ff4b-f03b-4d3a-8d66-c581969dadc4', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1081845d0>]}
+[0m16:18:33.612441 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/manifest.json
+[0m16:18:33.613428 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/semantic_manifest.json
+[0m16:18:33.623808 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'c3f6ff4b-f03b-4d3a-8d66-c581969dadc4', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108da9250>]}
+[0m16:18:33.624079 [info ] [MainThread]: Found 3 models, 8 data tests, 2 sources, 464 macros
+[0m16:18:33.624238 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'c3f6ff4b-f03b-4d3a-8d66-c581969dadc4', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108baa210>]}
+[0m16:18:33.625260 [info ] [MainThread]: 
+[0m16:18:33.625415 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m16:18:33.625536 [info ] [MainThread]: 
+[0m16:18:33.625777 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m16:18:33.627520 [debug] [ThreadPool]: Acquiring new postgres connection 'list_wearable_public'
+[0m16:18:33.683131 [debug] [ThreadPool]: Using postgres connection "list_wearable_public"
+[0m16:18:33.683359 [debug] [ThreadPool]: On list_wearable_public: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "connection_name": "list_wearable_public"} */
+select
+      'wearable' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public'
+    union all
+    select
+      'wearable' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public'
+    union all
+    select
+      'wearable' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'public'
+  
+[0m16:18:33.683501 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m16:18:33.708877 [debug] [ThreadPool]: SQL status: SELECT 3 in 0.025 seconds
+[0m16:18:33.709603 [debug] [ThreadPool]: On list_wearable_public: ROLLBACK
+[0m16:18:33.710125 [debug] [ThreadPool]: On list_wearable_public: Close
+[0m16:18:33.712589 [debug] [MainThread]: Using postgres connection "master"
+[0m16:18:33.712843 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "connection_name": "master"} */
+select distinct
+        dependent_namespace.nspname as dependent_schema,
+        dependent_class.relname as dependent_name,
+        referenced_namespace.nspname as referenced_schema,
+        referenced_class.relname as referenced_name
+
+    -- Query for views: views are entries in pg_class with an entry in pg_rewrite, but we avoid
+    -- a seq scan on pg_rewrite by leveraging the fact there is an "internal" row in pg_depend for
+    -- the view...
+    from pg_class as dependent_class
+    join pg_namespace as dependent_namespace on dependent_namespace.oid = dependent_class.relnamespace
+    join pg_depend as dependent_depend on dependent_depend.refobjid = dependent_class.oid
+        and dependent_depend.classid = 'pg_rewrite'::regclass
+        and dependent_depend.refclassid = 'pg_class'::regclass
+        and dependent_depend.deptype = 'i'
+
+    -- ... and via pg_depend (that has a row per column, hence the need for "distinct" above, and
+    -- making sure to exclude the internal row to avoid a view appearing to depend on itself)...
+    join pg_depend as joining_depend on joining_depend.objid = dependent_depend.objid
+        and joining_depend.classid = 'pg_rewrite'::regclass
+        and joining_depend.refclassid = 'pg_class'::regclass
+        and joining_depend.refobjid != dependent_depend.refobjid
+
+    -- ... we can find the tables they query from in pg_class, but excluding system tables. Note we
+    -- don't need need to exclude _dependent_ system tables, because they only query from other
+    -- system tables, and so are automatically excluded by excluding _referenced_ system tables
+    join pg_class as referenced_class on referenced_class.oid = joining_depend.refobjid
+    join pg_namespace as referenced_namespace on referenced_namespace.oid = referenced_class.relnamespace
+        and referenced_namespace.nspname != 'information_schema'
+        and referenced_namespace.nspname not like 'pg\_%'
+
+    order by
+        dependent_schema, dependent_name, referenced_schema, referenced_name;
+[0m16:18:33.713033 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m16:18:33.721307 [debug] [MainThread]: SQL status: SELECT 4 in 0.008 seconds
+[0m16:18:33.722179 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'c3f6ff4b-f03b-4d3a-8d66-c581969dadc4', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107acb110>]}
+[0m16:18:33.722413 [debug] [MainThread]: On master: ROLLBACK
+[0m16:18:33.722803 [debug] [MainThread]: On master: COMMIT
+[0m16:18:33.722939 [debug] [MainThread]: Using postgres connection "master"
+[0m16:18:33.723054 [debug] [MainThread]: On master: COMMIT
+[0m16:18:33.723622 [debug] [MainThread]: SQL status: COMMIT in 0.000 seconds
+[0m16:18:33.723748 [debug] [MainThread]: On master: Close
+[0m16:18:33.724888 [debug] [Thread-1 (]: Began running node test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8
+[0m16:18:33.725098 [debug] [Thread-2 (]: Began running node test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a
+[0m16:18:33.725267 [info ] [Thread-1 (]: 1 of 8 START test not_null_daily_user_summary_activity_date .................... [RUN]
+[0m16:18:33.725561 [debug] [Thread-3 (]: Began running node test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959
+[0m16:18:33.725763 [debug] [Thread-4 (]: Began running node test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90
+[0m16:18:33.725929 [info ] [Thread-2 (]: 2 of 8 START test not_null_daily_user_summary_user_day_id ...................... [RUN]
+[0m16:18:33.726158 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_wearable_public, now test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8)
+[0m16:18:33.726331 [info ] [Thread-3 (]: 3 of 8 START test not_null_daily_user_summary_user_id .......................... [RUN]
+[0m16:18:33.726504 [info ] [Thread-4 (]: 4 of 8 START test not_null_stg_daily_activity_activity_date .................... [RUN]
+[0m16:18:33.726713 [debug] [Thread-2 (]: Acquiring new postgres connection 'test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a'
+[0m16:18:33.726867 [debug] [Thread-1 (]: Began compiling node test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8
+[0m16:18:33.727061 [debug] [Thread-3 (]: Acquiring new postgres connection 'test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959'
+[0m16:18:33.727246 [debug] [Thread-4 (]: Acquiring new postgres connection 'test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90'
+[0m16:18:33.727387 [debug] [Thread-2 (]: Began compiling node test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a
+[0m16:18:33.736423 [debug] [Thread-1 (]: Writing injected SQL for node "test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8"
+[0m16:18:33.736661 [debug] [Thread-3 (]: Began compiling node test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959
+[0m16:18:33.736844 [debug] [Thread-4 (]: Began compiling node test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90
+[0m16:18:33.738805 [debug] [Thread-2 (]: Writing injected SQL for node "test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a"
+[0m16:18:33.740746 [debug] [Thread-3 (]: Writing injected SQL for node "test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959"
+[0m16:18:33.742580 [debug] [Thread-4 (]: Writing injected SQL for node "test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90"
+[0m16:18:33.742866 [debug] [Thread-1 (]: Began executing node test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8
+[0m16:18:33.743136 [debug] [Thread-2 (]: Began executing node test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a
+[0m16:18:33.743298 [debug] [Thread-3 (]: Began executing node test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959
+[0m16:18:33.751106 [debug] [Thread-1 (]: Writing runtime sql for node "test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8"
+[0m16:18:33.751295 [debug] [Thread-4 (]: Began executing node test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90
+[0m16:18:33.752418 [debug] [Thread-2 (]: Writing runtime sql for node "test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a"
+[0m16:18:33.753460 [debug] [Thread-3 (]: Writing runtime sql for node "test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959"
+[0m16:18:33.754619 [debug] [Thread-4 (]: Writing runtime sql for node "test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90"
+[0m16:18:33.754930 [debug] [Thread-1 (]: Using postgres connection "test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8"
+[0m16:18:33.755177 [debug] [Thread-2 (]: Using postgres connection "test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a"
+[0m16:18:33.755392 [debug] [Thread-1 (]: On test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select activity_date
+from "wearable"."public"."daily_user_summary"
+where activity_date is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:18:33.755578 [debug] [Thread-3 (]: Using postgres connection "test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959"
+[0m16:18:33.755766 [debug] [Thread-2 (]: On test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select user_day_id
+from "wearable"."public"."daily_user_summary"
+where user_day_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:18:33.755933 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m16:18:33.756130 [debug] [Thread-4 (]: Using postgres connection "test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90"
+[0m16:18:33.756297 [debug] [Thread-3 (]: On test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select user_id
+from "wearable"."public"."daily_user_summary"
+where user_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:18:33.756458 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m16:18:33.756677 [debug] [Thread-4 (]: On test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select activity_date
+from "wearable"."public"."stg_daily_activity"
+where activity_date is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:18:33.756840 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m16:18:33.757044 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m16:18:33.770147 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.013 seconds
+[0m16:18:33.772391 [debug] [Thread-4 (]: On test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90: ROLLBACK
+[0m16:18:33.772608 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.017 seconds
+[0m16:18:33.772801 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.016 seconds
+[0m16:18:33.772961 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.016 seconds
+[0m16:18:33.773694 [debug] [Thread-1 (]: On test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8: ROLLBACK
+[0m16:18:33.773879 [debug] [Thread-4 (]: On test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90: Close
+[0m16:18:33.774508 [debug] [Thread-2 (]: On test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a: ROLLBACK
+[0m16:18:33.775114 [debug] [Thread-3 (]: On test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959: ROLLBACK
+[0m16:18:33.775482 [info ] [Thread-4 (]: 4 of 8 PASS not_null_stg_daily_activity_activity_date .......................... [[32mPASS[0m in 0.05s]
+[0m16:18:33.775658 [debug] [Thread-1 (]: On test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8: Close
+[0m16:18:33.775976 [debug] [Thread-4 (]: Finished running node test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90
+[0m16:18:33.776134 [debug] [Thread-2 (]: On test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a: Close
+[0m16:18:33.776299 [debug] [Thread-3 (]: On test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959: Close
+[0m16:18:33.776528 [debug] [Thread-4 (]: Began running node test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce
+[0m16:18:33.776787 [info ] [Thread-1 (]: 1 of 8 PASS not_null_daily_user_summary_activity_date .......................... [[32mPASS[0m in 0.05s]
+[0m16:18:33.777102 [info ] [Thread-2 (]: 2 of 8 PASS not_null_daily_user_summary_user_day_id ............................ [[32mPASS[0m in 0.05s]
+[0m16:18:33.777355 [info ] [Thread-4 (]: 5 of 8 START test not_null_stg_daily_activity_user_id .......................... [RUN]
+[0m16:18:33.777861 [debug] [Thread-1 (]: Finished running node test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8
+[0m16:18:33.777570 [info ] [Thread-3 (]: 3 of 8 PASS not_null_daily_user_summary_user_id ................................ [[32mPASS[0m in 0.05s]
+[0m16:18:33.778122 [debug] [Thread-2 (]: Finished running node test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a
+[0m16:18:33.778309 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.wearable_data_pipeline.not_null_stg_daily_activity_activity_date.40aabd8e90, now test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce)
+[0m16:18:33.778493 [debug] [Thread-1 (]: Began running node test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741
+[0m16:18:33.778729 [debug] [Thread-3 (]: Finished running node test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959
+[0m16:18:33.778909 [debug] [Thread-2 (]: Began running node test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f
+[0m16:18:33.779062 [debug] [Thread-4 (]: Began compiling node test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce
+[0m16:18:33.779226 [info ] [Thread-1 (]: 6 of 8 START test not_null_stg_sleep_sleep_date ................................ [RUN]
+[0m16:18:33.779412 [debug] [Thread-3 (]: Began running node test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9
+[0m16:18:33.779600 [info ] [Thread-2 (]: 7 of 8 START test not_null_stg_sleep_user_id ................................... [RUN]
+[0m16:18:33.781773 [debug] [Thread-4 (]: Writing injected SQL for node "test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce"
+[0m16:18:33.781983 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.wearable_data_pipeline.not_null_daily_user_summary_activity_date.1f16aa21e8, now test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741)
+[0m16:18:33.782165 [info ] [Thread-3 (]: 8 of 8 START test unique_daily_user_summary_user_day_id ........................ [RUN]
+[0m16:18:33.782344 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.wearable_data_pipeline.not_null_daily_user_summary_user_day_id.2f0d623b8a, now test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f)
+[0m16:18:33.782549 [debug] [Thread-1 (]: Began compiling node test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741
+[0m16:18:33.782721 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.wearable_data_pipeline.not_null_daily_user_summary_user_id.ca28979959, now test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9)
+[0m16:18:33.782922 [debug] [Thread-2 (]: Began compiling node test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f
+[0m16:18:33.785593 [debug] [Thread-1 (]: Writing injected SQL for node "test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741"
+[0m16:18:33.785745 [debug] [Thread-4 (]: Began executing node test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce
+[0m16:18:33.785895 [debug] [Thread-3 (]: Began compiling node test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9
+[0m16:18:33.787555 [debug] [Thread-2 (]: Writing injected SQL for node "test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f"
+[0m16:18:33.788694 [debug] [Thread-4 (]: Writing runtime sql for node "test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce"
+[0m16:18:33.791377 [debug] [Thread-3 (]: Writing injected SQL for node "test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9"
+[0m16:18:33.791638 [debug] [Thread-1 (]: Began executing node test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741
+[0m16:18:33.792798 [debug] [Thread-1 (]: Writing runtime sql for node "test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741"
+[0m16:18:33.792982 [debug] [Thread-2 (]: Began executing node test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f
+[0m16:18:33.793166 [debug] [Thread-4 (]: Using postgres connection "test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce"
+[0m16:18:33.794228 [debug] [Thread-2 (]: Writing runtime sql for node "test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f"
+[0m16:18:33.794459 [debug] [Thread-4 (]: On test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select user_id
+from "wearable"."public"."stg_daily_activity"
+where user_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:18:33.794616 [debug] [Thread-3 (]: Began executing node test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9
+[0m16:18:33.794832 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m16:18:33.795014 [debug] [Thread-1 (]: Using postgres connection "test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741"
+[0m16:18:33.796097 [debug] [Thread-3 (]: Writing runtime sql for node "test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9"
+[0m16:18:33.796330 [debug] [Thread-2 (]: Using postgres connection "test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f"
+[0m16:18:33.796507 [debug] [Thread-1 (]: On test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select sleep_date
+from "wearable"."public"."stg_sleep"
+where sleep_date is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:18:33.796737 [debug] [Thread-2 (]: On test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select user_id
+from "wearable"."public"."stg_sleep"
+where user_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:18:33.796931 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m16:18:33.797092 [debug] [Thread-3 (]: Using postgres connection "test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9"
+[0m16:18:33.797239 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m16:18:33.797471 [debug] [Thread-3 (]: On test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9: /* {"app": "dbt", "dbt_version": "1.11.2", "profile_name": "wearable_data_pipeline", "target_name": "dev", "node_id": "test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    user_day_id as unique_field,
+    count(*) as n_records
+
+from "wearable"."public"."daily_user_summary"
+where user_day_id is not null
+group by user_day_id
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m16:18:33.797706 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m16:18:33.806627 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.012 seconds
+[0m16:18:33.806852 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.010 seconds
+[0m16:18:33.807036 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.010 seconds
+[0m16:18:33.807783 [debug] [Thread-4 (]: On test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce: ROLLBACK
+[0m16:18:33.808379 [debug] [Thread-2 (]: On test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f: ROLLBACK
+[0m16:18:33.808926 [debug] [Thread-1 (]: On test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741: ROLLBACK
+[0m16:18:33.809108 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.011 seconds
+[0m16:18:33.809340 [debug] [Thread-4 (]: On test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce: Close
+[0m16:18:33.809514 [debug] [Thread-2 (]: On test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f: Close
+[0m16:18:33.809658 [debug] [Thread-1 (]: On test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741: Close
+[0m16:18:33.810264 [debug] [Thread-3 (]: On test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9: ROLLBACK
+[0m16:18:33.810580 [info ] [Thread-4 (]: 5 of 8 PASS not_null_stg_daily_activity_user_id ................................ [[32mPASS[0m in 0.03s]
+[0m16:18:33.810893 [info ] [Thread-2 (]: 7 of 8 PASS not_null_stg_sleep_user_id ......................................... [[32mPASS[0m in 0.03s]
+[0m16:18:33.811222 [info ] [Thread-1 (]: 6 of 8 PASS not_null_stg_sleep_sleep_date ...................................... [[32mPASS[0m in 0.03s]
+[0m16:18:33.811892 [debug] [Thread-4 (]: Finished running node test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce
+[0m16:18:33.812082 [debug] [Thread-3 (]: On test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9: Close
+[0m16:18:33.812323 [debug] [Thread-2 (]: Finished running node test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f
+[0m16:18:33.812533 [debug] [Thread-1 (]: Finished running node test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741
+[0m16:18:33.812895 [info ] [Thread-3 (]: 8 of 8 PASS unique_daily_user_summary_user_day_id .............................. [[32mPASS[0m in 0.03s]
+[0m16:18:33.813231 [debug] [Thread-3 (]: Finished running node test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9
+[0m16:18:33.813900 [debug] [MainThread]: On master: COMMIT
+[0m16:18:33.814058 [debug] [MainThread]: Using postgres connection "master"
+[0m16:18:33.814172 [debug] [MainThread]: On master: COMMIT
+[0m16:18:33.814278 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m16:18:33.820677 [debug] [MainThread]: SQL status: COMMIT in 0.006 seconds
+[0m16:18:33.820857 [debug] [MainThread]: On master: Close
+[0m16:18:33.821025 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m16:18:33.821183 [debug] [MainThread]: Connection 'test.wearable_data_pipeline.not_null_stg_sleep_sleep_date.dd5a9d8741' was properly closed.
+[0m16:18:33.821310 [debug] [MainThread]: Connection 'test.wearable_data_pipeline.not_null_stg_sleep_user_id.83f049d06f' was properly closed.
+[0m16:18:33.821416 [debug] [MainThread]: Connection 'test.wearable_data_pipeline.unique_daily_user_summary_user_day_id.48efe7a2b9' was properly closed.
+[0m16:18:33.821520 [debug] [MainThread]: Connection 'test.wearable_data_pipeline.not_null_stg_daily_activity_user_id.d1684de8ce' was properly closed.
+[0m16:18:33.821661 [info ] [MainThread]: 
+[0m16:18:33.821798 [info ] [MainThread]: Finished running 8 data tests in 0 hours 0 minutes and 0.20 seconds (0.20s).
+[0m16:18:33.822401 [debug] [MainThread]: Command end result
+[0m16:18:33.834121 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/manifest.json
+[0m16:18:33.835060 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/semantic_manifest.json
+[0m16:18:33.838258 [debug] [MainThread]: Wrote artifact RunExecutionResult to /Users/markchoe/Desktop/wearable-data-pipeline/wearable-data-pipeline/dbt/target/run_results.json
+[0m16:18:33.838411 [info ] [MainThread]: 
+[0m16:18:33.838576 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m16:18:33.838710 [info ] [MainThread]: 
+[0m16:18:33.838848 [info ] [MainThread]: Done. PASS=8 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=8
+[0m16:18:33.840489 [debug] [MainThread]: Resource report: {"command_name": "test", "command_success": true, "command_wall_clock_time": 0.525208, "process_in_blocks": "0", "process_kernel_time": 0.180488, "process_mem_max_rss": "144015360", "process_out_blocks": "0", "process_user_time": 1.034892}
+[0m16:18:33.840700 [debug] [MainThread]: Command `dbt test` succeeded at 16:18:33.840664 after 0.53 seconds
+[0m16:18:33.840875 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107b6c8d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107b6cc10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x103875e90>]}
+[0m16:18:33.841043 [debug] [MainThread]: Flushing usage events
+[0m16:18:34.217920 [debug] [MainThread]: An error was encountered while trying to flush usage events
