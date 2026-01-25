@@ -1,0 +1,5 @@
+# Python dependencies for ingestion scripts and dbt.
+pandas
+psycopg2-binary
+SQLAlchemy
+dbt-postgres

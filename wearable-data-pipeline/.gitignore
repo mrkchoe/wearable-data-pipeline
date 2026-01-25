@@ -1,0 +1,12 @@
+# Ignore local data drops and build artifacts.
+data/
+*.csv
+.env
+.venv/
+__pycache__/
+*.pyc
+
+# dbt outputs and packages.
+dbt/target/
+dbt/logs/
+dbt/dbt_packages/

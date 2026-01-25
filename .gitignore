@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+HEAD
 # Ignore local data drops and build artifacts.
 data/
 *.csv
@@ -17,4 +17,9 @@ data/raw/
 target/
 dbt_packages/
 .env
+<<<<<<< HEAD
 0170565 (Add gitignore)
+=======
+.DS_Store
+.github/
+7577100 (Flatten repo structure and add pipeline code)
