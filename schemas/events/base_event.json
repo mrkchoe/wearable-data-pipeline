@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/schemas/events/base_event.json",
+  "title": "Base wearable event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "event_id",
+    "event_name",
+    "client_ts",
+    "server_ts",
+    "source",
+    "environment",
+    "payload"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "description": "Semantic version of the contract."
+    },
+    "event_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "event_name": {
+      "type": "string"
+    },
+    "user_id": {
+      "type": "string"
+    },
+    "anonymous_id": {
+      "type": "string"
+    },
+    "device_id": {
+      "type": ["string", "null"]
+    },
+    "session_id": {
+      "type": "string"
+    },
+    "client_ts": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "server_ts": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source": {
+      "type": "string",
+      "enum": ["web", "mobile", "api", "sdk"]
+    },
+    "environment": {
+      "type": "string",
+      "enum": ["local", "dev", "staging", "prod"]
+    },
+    "app_version": {
+      "type": "string"
+    },
+    "page": {
+      "type": "string"
+    },
+    "referrer": {
+      "type": ["string", "null"]
+    },
+    "payload": {
+      "type": "object"
+    }
+  },
+  "anyOf": [
+    { "required": ["user_id"] },
+    { "required": ["anonymous_id"] }
+  ]
+}
