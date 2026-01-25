@@ -17,5 +17,3 @@ frontend/dist/
 # OS/editor.
 .DS_Store
 
-# Ignore CI config in this repo per request.
-.github/

@@ -1,0 +1,37 @@
+name: pipeline
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  dbt-compile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      # CI is compile-only by design:
+      # - deterministic, fast checks without a live warehouse
+      # - avoids flaky DB/container startup
+      # - full dbt run/test are reserved for local/dev
+      - name: Configure dbt profile for CI
+        run: |
+          mkdir -p ~/.dbt
+          cp dbt/profiles.yml.ci ~/.dbt/profiles.yml
+
+      - name: dbt deps
+        working-directory: dbt
+        run: dbt deps
+
+      - name: dbt compile
+        working-directory: dbt
+        run: dbt compile

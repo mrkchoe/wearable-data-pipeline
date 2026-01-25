@@ -1,0 +1,13 @@
+# CI-only dbt profile: compile-only, no live DB required.
+wearable_data_pipeline:
+  target: ci
+  outputs:
+    ci:
+      type: postgres
+      host: 127.0.0.1
+      user: ci
+      password: ci
+      port: 5432
+      dbname: ci
+      schema: public
+      threads: 2
