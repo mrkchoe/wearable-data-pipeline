@@ -1,0 +1,17 @@
+# Local Postgres service for development and testing.
+version: "3.9"
+services:
+  postgres:
+    image: postgres:16
+    container_name: wearable_postgres
+    environment:
+      POSTGRES_USER: wearable
+      POSTGRES_PASSWORD: wearable
+      POSTGRES_DB: wearable
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

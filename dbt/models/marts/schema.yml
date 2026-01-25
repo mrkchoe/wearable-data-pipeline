@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: daily_user_summary
+    description: "Daily user-level summary combining activity and sleep metrics."
+    columns:
+      - name: user_day_id
+        description: "Unique key per user per day."
+        tests:
+          - not_null
+          - unique
+      - name: user_id
+        description: "User identifier from the device data."
+        tests:
+          - not_null
+      - name: activity_date
+        description: "Calendar date for the daily summary."
+        tests:
+          - not_null
+      - name: total_steps
+        description: "Total steps recorded for the day."
+      - name: total_minutes_asleep
+        description: "Minutes asleep during the night."

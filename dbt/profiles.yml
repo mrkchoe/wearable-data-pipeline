@@ -1,0 +1,13 @@
+# Template dbt profile (copy to ~/.dbt/profiles.yml).
+wearable_data_pipeline:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: localhost
+      user: wearable
+      password: wearable
+      port: 5432
+      dbname: wearable
+      schema: public
+      threads: 4
