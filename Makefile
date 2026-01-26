@@ -1,6 +1,6 @@
 # Common local commands for the wearable data pipeline.
 
-.PHONY: help up down logs venv install dbt-deps dbt-run dbt-test ingest-api generate-events run test
+.PHONY: help up down logs venv install dbt-deps dbt-run dbt-test
 
 help:
 	@echo "Targets:"
@@ -12,10 +12,6 @@ help:
 	@echo "  dbt-deps  Install dbt packages"
 	@echo "  dbt-run   Run dbt models"
 	@echo "  dbt-test  Run dbt tests"
-	@echo "  ingest-api Run FastAPI ingestion service"
-	@echo "  generate-events Post demo events to ingestion"
-	@echo "  run       Orchestrate seed + dbt run + dbt test"
-	@echo "  test      Orchestrate dbt run + dbt test (no seed)"
 
 up:
 	docker compose up -d
@@ -40,15 +36,3 @@ dbt-run:
 
 dbt-test:
 	cd dbt && dbt test
-
-ingest-api:
-	uvicorn services.ingestion.main:app --host 0.0.0.0 --port 8000
-
-generate-events:
-	python scripts/generate_events.py
-
-run:
-	python orchestration/flow.py
-
-test:
-	python orchestration/flow.py --skip-seed

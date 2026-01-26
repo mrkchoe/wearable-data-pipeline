@@ -3,8 +3,4 @@ pandas
 psycopg2-binary
 SQLAlchemy
 dbt-postgres
-fastapi
-uvicorn
-jsonschema
-prefect
-requests
+streamlit

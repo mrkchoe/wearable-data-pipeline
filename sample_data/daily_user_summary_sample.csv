@@ -1,0 +1,4 @@
+user_id,activity_date,total_steps,total_distance,very_active_minutes,fairly_active_minutes,lightly_active_minutes,sedentary_minutes,calories,total_sleep_records,total_minutes_asleep,total_time_in_bed,user_day_id
+1001,2026-01-20,8450,6.2,32,18,210,610,2350,1,420,465,1001-2026-01-20
+1001,2026-01-21,10210,7.5,44,22,190,590,2485,1,405,455,1001-2026-01-21
+1002,2026-01-20,5600,4.1,12,10,180,720,1980,1,380,430,1002-2026-01-20

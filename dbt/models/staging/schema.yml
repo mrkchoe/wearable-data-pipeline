@@ -33,23 +33,3 @@ models:
         description: "Minutes asleep during the night."
       - name: total_time_in_bed
         description: "Total minutes spent in bed."
-  - name: stg_events
-    description: "Staged wearable analytics events from the ingestion API."
-    columns:
-      - name: event_id
-        description: "Unique event identifier."
-        tests:
-          - not_null
-          - unique
-      - name: event_name
-        description: "Event name."
-        tests:
-          - not_null
-      - name: client_ts
-        description: "Client-side timestamp."
-        tests:
-          - not_null
-      - name: server_ts
-        description: "Server-side ingestion timestamp."
-        tests:
-          - not_null

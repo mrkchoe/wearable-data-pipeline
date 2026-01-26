@@ -9,5 +9,3 @@ sources:
         description: "Raw daily activity CSV data."
       - name: sleep
         description: "Raw sleep CSV data."
-      - name: raw_events
-        description: "Raw wearable analytics events from ingestion API."

@@ -1,5 +1,6 @@
 data/
 *.csv
+!sample_data/daily_user_summary_sample.csv
 .env
 .venv/
 __pycache__/
@@ -10,10 +11,12 @@ dbt/target/
 dbt/logs/
 dbt/dbt_packages/
 
-# Node/Frontend artifacts.
-frontend/node_modules/
-frontend/dist/
-
 # OS/editor.
 .DS_Store
+
+# Local dbt user config.
+dbt/.user.yml
+
+# Nested repo placeholder (to avoid confusion).
+wearable-data-pipeline/
 
