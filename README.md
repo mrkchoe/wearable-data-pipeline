@@ -2,6 +2,9 @@
 
 Small, local-first data engineering MVP for wearable CSV data.
 
+## Project question
+Are users maintaining consistent daily activity over time, or is engagement degrading?
+
 ## What this repo is
 - Ingests external CSV drops into Postgres using Python.
 - Transforms and tests data with dbt.
@@ -26,10 +29,10 @@ Small, local-first data engineering MVP for wearable CSV data.
    - Adjust credentials if needed.
 
 ## Local dashboard
-- Sample data lives at `sample_data/daily_user_summary_sample.csv`.
+- The dashboard reads from Postgres tables created by dbt models.
 - Run the Streamlit app from the repo root:
   `streamlit run dashboards/app.py`
-- Use the sidebar to point to a different local CSV if needed.
+- Set `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, `DB_PASSWORD` if not using defaults.
 
 ## Makefile helpers
 - `make help` lists available commands.
@@ -48,7 +51,15 @@ Small, local-first data engineering MVP for wearable CSV data.
 ## dbt model layers (MVP)
 - `stg_daily_activity` standardizes raw activity columns and types.
 - `stg_sleep` standardizes raw sleep columns and types.
-- `daily_user_summary` provides a daily user grain by joining activity + sleep.
+- `user_daily_activity` provides one row per user per day.
+- `user_baseline_activity` computes per-user baseline steps over first 14 active days.
+- `user_activity_deviation` compares each day to the per-user baseline.
+
+## Metric definitions
+- `baseline_steps`: median steps over a user's first 14 active days.
+- `steps_pct_of_baseline`: steps divided by baseline_steps.
+- `steps_delta_from_baseline`: steps minus baseline_steps.
+- `is_baseline_window`: whether a day is within the baseline window.
 
 ## Run dbt (local)
 1) From the repo root:
@@ -57,3 +68,10 @@ Small, local-first data engineering MVP for wearable CSV data.
    `dbt run`
 3) Run tests:
    `dbt test`
+
+## End-to-end run (local)
+1) Start Postgres: `docker compose up -d`
+2) Ingest CSVs: `python ingestion/ingest.py`
+3) Build models: `cd dbt && dbt run`
+4) Test models: `cd dbt && dbt test`
+5) Launch dashboard: `streamlit run dashboards/app.py`

@@ -21,3 +21,91 @@ models:
         description: "Total steps recorded for the day."
       - name: total_minutes_asleep
         description: "Minutes asleep during the night."
+
+  - name: user_daily_activity
+    description: "One row per user and day with activity metrics."
+    columns:
+      - name: user_id
+        description: "User identifier from the device data."
+        tests:
+          - not_null
+      - name: activity_date
+        description: "Calendar date for the activity summary."
+        tests:
+          - not_null
+      - name: user_day_id
+        description: "Unique key per user per day."
+        tests:
+          - not_null
+          - unique
+      - name: total_steps
+        description: "Total steps recorded for the day."
+        tests:
+          - accepted_range:
+              arguments:
+                min_value: 0
+                max_value: 100000
+      - name: calories
+        description: "Estimated calories burned for the day."
+
+  - name: user_baseline_activity
+    description: "Per-user baseline steps computed from first 14 active days."
+    columns:
+      - name: user_id
+        description: "User identifier from the device data."
+        tests:
+          - not_null
+      - name: baseline_start_date
+        description: "First date in the baseline window."
+        tests:
+          - not_null
+      - name: baseline_end_date
+        description: "Last date in the baseline window."
+        tests:
+          - not_null
+      - name: baseline_steps
+        description: "Median steps over the baseline window."
+        tests:
+          - not_null
+          - accepted_range:
+              arguments:
+                min_value: 1
+      - name: baseline_active_days
+        description: "Number of active days used in the baseline window."
+
+  - name: user_activity_deviation
+    description: "Daily activity with deviation from per-user baseline."
+    columns:
+      - name: user_id
+        description: "User identifier from the device data."
+        tests:
+          - not_null
+      - name: activity_date
+        description: "Calendar date for the activity summary."
+        tests:
+          - not_null
+      - name: user_day_id
+        description: "Unique key per user per day."
+        tests:
+          - not_null
+          - unique
+      - name: total_steps
+        description: "Total steps recorded for the day."
+        tests:
+          - accepted_range:
+              arguments:
+                min_value: 0
+                max_value: 100000
+      - name: baseline_steps
+        description: "Median steps over the baseline window."
+        tests:
+          - not_null
+          - accepted_range:
+              arguments:
+                min_value: 1
+      - name: steps_pct_of_baseline
+        description: "Steps divided by baseline steps."
+        tests:
+          - not_null:
+              arguments:
+                where: "total_steps is not null and baseline_steps is not null and baseline_steps > 0"

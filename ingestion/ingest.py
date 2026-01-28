@@ -47,6 +47,10 @@ def _ingest_csv(path: Path, schema: str, if_exists: str) -> None:
 
     with engine.begin() as connection:
         connection.execute(text(f"CREATE SCHEMA IF NOT EXISTS {schema}"))
+        if if_exists == "replace":
+            connection.execute(
+                text(f"DROP TABLE IF EXISTS {schema}.{table_name} CASCADE")
+            )
 
     dataframe.to_sql(
         name=table_name,
