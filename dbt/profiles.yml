@@ -1,13 +1,14 @@
 # Template dbt profile (copy to ~/.dbt/profiles.yml).
+# Uses DB_* env vars so the same profile works locally and with cloud Postgres (set DATABASE_URL or DB_HOST, DB_USER, etc.).
 wearable_data_pipeline:
   target: dev
   outputs:
     dev:
       type: postgres
-      host: localhost
-      user: wearable
-      password: wearable
-      port: 5432
-      dbname: wearable
+      host: "{{ env_var('DB_HOST', 'localhost') }}"
+      user: "{{ env_var('DB_USER', 'wearable') }}"
+      password: "{{ env_var('DB_PASSWORD', 'wearable') }}"
+      port: "{{ env_var('DB_PORT', '5432') | int }}"
+      dbname: "{{ env_var('DB_NAME', 'wearable') }}"
       schema: public
       threads: 4

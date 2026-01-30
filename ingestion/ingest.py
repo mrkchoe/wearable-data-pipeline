@@ -1,14 +1,29 @@
-"""Load wearable CSVs into Postgres raw schema."""
+"""Load wearable CSVs into Postgres raw schema. Supports idempotent ingest via manifest."""
 
 from __future__ import annotations
 
 import argparse
 import os
 import re
+import sys
 from pathlib import Path
 
+# Allow running as script: python ingestion/ingest.py
+_REPO_ROOT = Path(__file__).resolve().parent.parent
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+
 import pandas as pd
-from sqlalchemy import create_engine, text
+from sqlalchemy import text
+from sqlalchemy.exc import OperationalError
+
+from ingestion import db
+from ingestion.manifest import (
+    ensure_manifest_table,
+    file_checksum,
+    get_manifest_row,
+    upsert_manifest,
+)
 
 
 def _sanitize_identifier(value: str) -> str:
@@ -29,18 +44,33 @@ def _table_name_from_path(path: Path) -> str:
 
 
 def _build_engine() -> tuple:
-    host = os.getenv("DB_HOST", "localhost")
-    port = os.getenv("DB_PORT", "5432")
-    dbname = os.getenv("DB_NAME", "wearable")
-    user = os.getenv("DB_USER", "wearable")
-    password = os.getenv("DB_PASSWORD", "wearable")
-    url = f"postgresql+psycopg2://{user}:{password}@{host}:{port}/{dbname}"
-    return create_engine(url), dbname, host, port
+    engine = db.get_engine()
+    dbname, host, port = db.get_connection_info()
+    return engine, dbname, host, port
 
 
-def _ingest_csv(path: Path, schema: str, if_exists: str) -> None:
-    engine, dbname, host, port = _build_engine()
+def _ingest_csv(
+    path: Path,
+    schema: str,
+    if_exists: str,
+    use_manifest: bool,
+    engine=None,
+) -> bool:
+    """Load one CSV into raw schema. Returns True if loaded, False if skipped (manifest idempotent)."""
+    if engine is None:
+        engine, dbname, host, port = _build_engine()
+    else:
+        dbname, host, port = os.getenv("DB_NAME", "wearable"), os.getenv("DB_HOST", "localhost"), os.getenv("DB_PORT", "5432")
     table_name = _table_name_from_path(path)
+    source_filename = path.name
+
+    if use_manifest:
+        ensure_manifest_table(engine)
+        checksum = file_checksum(path)
+        existing = get_manifest_row(engine, source_filename)
+        if existing and existing["checksum"] == checksum:
+            print(f"Skipping '{source_filename}' (unchanged checksum {checksum[:16]}...)")
+            return False
 
     print(f"Loading '{path.name}' into {schema}.{table_name} ({host}:{port}/{dbname})")
     dataframe = pd.read_csv(path)
@@ -59,7 +89,14 @@ def _ingest_csv(path: Path, schema: str, if_exists: str) -> None:
         if_exists=if_exists,
         index=False,
     )
-    print(f"Loaded {len(dataframe)} rows into {schema}.{table_name}")
+    row_count = len(dataframe)
+    print(f"Loaded {row_count} rows into {schema}.{table_name}")
+
+    if use_manifest:
+        checksum = file_checksum(path)
+        upsert_manifest(engine, source_filename, checksum, row_count, "success")
+
+    return True
 
 
 def main() -> None:
@@ -72,6 +109,11 @@ def main() -> None:
         choices=["replace", "append", "fail"],
         help="Behavior when a table already exists.",
     )
+    parser.add_argument(
+        "--use-manifest",
+        action="store_true",
+        help="Use raw_ingest_manifest for idempotency; skip files with same checksum.",
+    )
     args = parser.parse_args()
 
     data_dir = Path(args.data_dir)
@@ -83,8 +125,20 @@ def main() -> None:
     if not csv_files:
         raise FileNotFoundError(f"No CSV files found in {data_dir}")
 
+    engine, dbname, host, port = _build_engine()
+    try:
+        with engine.connect() as conn:
+            conn.execute(text("SELECT 1"))
+    except OperationalError:
+        print(
+            f"Error: Cannot connect to Postgres at {host}:{port}/{dbname}. "
+            "Is it running? Try: docker compose up -d",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+
     for csv_path in csv_files:
-        _ingest_csv(csv_path, schema, args.if_exists)
+        _ingest_csv(csv_path, schema, args.if_exists, args.use_manifest, engine=engine)
 
 
 if __name__ == "__main__":

@@ -1,4 +1,6 @@
 data/
+data_lake/*
+!data_lake/.gitkeep
 *.csv
 !sample_data/daily_user_summary_sample.csv
 !sample_data/daily_activity.csv

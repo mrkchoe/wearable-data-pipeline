@@ -1,6 +1,6 @@
 # Common local commands for the wearable data pipeline.
 
-.PHONY: help up down logs venv install dbt-deps dbt-run dbt-test
+.PHONY: help up down logs venv install dbt-deps dbt-run dbt-test test run-prod
 
 help:
 	@echo "Targets:"
@@ -12,6 +12,8 @@ help:
 	@echo "  dbt-deps  Install dbt packages"
 	@echo "  dbt-run   Run dbt models"
 	@echo "  dbt-test  Run dbt tests"
+	@echo "  test      Run pytest (unit + integration; needs Postgres for integration)"
+	@echo "  run-prod  Run pipeline end-to-end with manifest + run tracking (data_lake)"
 
 up:
 	docker compose up -d
@@ -36,3 +38,9 @@ dbt-run:
 
 dbt-test:
 	cd dbt && dbt test
+
+test:
+	pytest tests/ -v
+
+run-prod:
+	PIPELINE_DATA_DIR=data_lake PIPELINE_USE_MANIFEST=1 python -m ingestion.runner

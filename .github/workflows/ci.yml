@@ -43,7 +43,16 @@ jobs:
           DB_NAME: wearable
           DB_USER: wearable
           DB_PASSWORD: wearable
-        run: python ingestion/ingest.py --data-dir sample_data
+        run: python -m ingestion.ingest --data-dir sample_data
+
+      - name: Run tests
+        env:
+          DB_HOST: localhost
+          DB_PORT: 5432
+          DB_NAME: wearable
+          DB_USER: wearable
+          DB_PASSWORD: wearable
+        run: pytest tests/ -v
 
       - name: Configure dbt profile
         run: |

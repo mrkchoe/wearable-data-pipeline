@@ -1,0 +1,18 @@
+# Exclude local data and dev artifacts from image
+.venv
+venv
+__pycache__
+*.pyc
+.pytest_cache
+.env
+data/
+data_lake/*
+!data_lake/.gitkeep
+dbt/target
+dbt/logs
+dbt/dbt_packages
+.git
+.github
+*.md
+.idea
+.vscode

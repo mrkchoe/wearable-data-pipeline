@@ -4,3 +4,4 @@ psycopg2-binary
 SQLAlchemy
 dbt-postgres
 streamlit
+pytest
