@@ -36,6 +36,15 @@ jobs:
       - name: Ingestion smoke check
         run: python -m py_compile ingestion/ingest.py
 
+      - name: Ingest sample data into Postgres
+        env:
+          DB_HOST: localhost
+          DB_PORT: 5432
+          DB_NAME: wearable
+          DB_USER: wearable
+          DB_PASSWORD: wearable
+        run: python ingestion/ingest.py --data-dir sample_data
+
       - name: Configure dbt profile
         run: |
           mkdir -p ~/.dbt
