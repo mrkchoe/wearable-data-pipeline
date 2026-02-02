@@ -12,7 +12,7 @@ from sqlalchemy.engine import Engine
 def get_connection_url() -> str:
     """Build Postgres URL from DATABASE_URL or DB_HOST/DB_PORT/DB_NAME/DB_USER/DB_PASSWORD."""
     url = os.getenv("DATABASE_URL")
-    if url:
+    if url and url.strip():
         # Ensure scheme is postgresql for SQLAlchemy (postgres:// -> postgresql://)
         parsed = urlparse(url)
         if parsed.scheme == "postgres":
@@ -22,11 +22,12 @@ def get_connection_url() -> str:
         if "postgresql://" in url and "+" not in url.split("://")[0]:
             url = url.replace("postgresql://", "postgresql+psycopg2://", 1)
         return url
-    host = os.getenv("DB_HOST", "localhost")
-    port = os.getenv("DB_PORT", "5432")
-    dbname = os.getenv("DB_NAME", "wearable")
-    user = os.getenv("DB_USER", "wearable")
-    password = os.getenv("DB_PASSWORD", "wearable")
+    # Handle empty strings as missing (use defaults)
+    host = os.getenv("DB_HOST") or "localhost"
+    port = os.getenv("DB_PORT") or "5432"
+    dbname = os.getenv("DB_NAME") or "wearable"
+    user = os.getenv("DB_USER") or "wearable"
+    password = os.getenv("DB_PASSWORD") or "wearable"
     return f"postgresql+psycopg2://{user}:{password}@{host}:{port}/{dbname}"
 
 
@@ -38,11 +39,11 @@ def get_engine() -> Engine:
 def get_connection_info() -> tuple[str, str, str]:
     """Return (dbname, host, port) for display; best-effort from URL or env."""
     url = os.getenv("DATABASE_URL")
-    if url:
+    if url and url.strip():
         parsed = urlparse(url)
         return (parsed.path.lstrip("/") or "wearable", parsed.hostname or "localhost", str(parsed.port or 5432))
     return (
-        os.getenv("DB_NAME", "wearable"),
-        os.getenv("DB_HOST", "localhost"),
-        os.getenv("DB_PORT", "5432"),
+        os.getenv("DB_NAME") or "wearable",
+        os.getenv("DB_HOST") or "localhost",
+        os.getenv("DB_PORT") or "5432",
     )
