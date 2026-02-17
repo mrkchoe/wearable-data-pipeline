@@ -8,6 +8,8 @@ Are users maintaining consistent daily activity over time, or is engagement degr
 - Builds dbt models for per-user baselines and deviations
 - Serves a Streamlit dashboard with cohort trends
 
+<img width="1169" height="613" alt="Screenshot 2026-02-17 at 3 35 33 PM" src="https://github.com/user-attachments/assets/7de6548a-c97c-422c-ae3c-0c7ddfbe6b64" />
+
 ## Quick start
 1) Start Postgres:
    `docker compose up -d`
