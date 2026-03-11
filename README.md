@@ -1,43 +1,125 @@
-# wearable-data-pipeline
+# Wearable Data Pipeline
 
-Local-first data pipeline for wearable CSVs that answers:
-Are users maintaining consistent daily activity over time, or is engagement degrading?
+End-to-end local-first data pipeline for ingesting wearable device CSV data, transforming it with dbt, and analyzing user engagement trends through a lightweight dashboard.
+
+The project answers a simple behavioral analytics question:
+
+**Are users maintaining consistent daily activity over time, or is engagement degrading?**
+
+---
+
+## Architecture
+
+CSV drops → Python ingestion → Postgres warehouse → dbt models/tests → Streamlit dashboard
+
+This repository demonstrates a realistic analytics workflow:
+
+- Batch ingestion of raw wearable device data
+- Relational storage in Postgres
+- Data transformation and testing with dbt
+- Analytical metrics for user engagement trends
+- Lightweight visualization through Streamlit
+
+---
 
 ## What it does
-- Ingests wearable CSVs into Postgres
-- Builds dbt models for per-user baselines and deviations
-- Serves a Streamlit dashboard with cohort trends
 
-<img width="1169" height="613" alt="Screenshot 2026-02-17 at 3 35 33 PM" src="https://github.com/user-attachments/assets/7de6548a-c97c-422c-ae3c-0c7ddfbe6b64" />
+- Ingests wearable CSVs into **Postgres raw tables**
+- Builds **dbt models** for per-user baselines and deviations
+- Serves a **Streamlit dashboard** for cohort-level engagement trends
+
+<img width="1169" height="613" alt="Screenshot 2026-02-17 at 3 35 33 PM" src="https://github.com/user-attachments/assets/7de6548a-c97c-422c-ae3c-0c7ddfbe6b64" />
+
+---
 
 ## Quick start
-1) Start Postgres:
-   `docker compose up -d`
-2) Install dependencies:
-   `python -m venv .venv && source .venv/bin/activate`
-   `pip install -r requirements.txt`
-3) Configure dbt profile:
-   - Copy `dbt/profiles.yml` to `~/.dbt/profiles.yml`
-4) Ingest data:
-   `python ingestion/ingest.py`
-5) Build + test models:
-   `cd dbt && dbt run && dbt test`
-6) Run dashboard:
-   `streamlit run dashboards/app.py`
+
+Start the database:
+docker compose up -d
+
+Install dependencies:
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+
+Configure dbt profile:
+cp dbt/profiles.yml ~/.dbt/profiles.yml
+
+Ingest raw data:
+python ingestion/ingest.py
+
+Build and test transformation models:
+cd dbt
+dbt run
+dbt test
+
+Run the dashboard:
+streamlit run dashboards/app.py
+
+
+---
 
 ## Data expectations
-- CSVs in `data/` with names containing `daily` + `activity` load to `raw.daily_activity`
-- CSVs with `sleep` in the name load to `raw.sleep`
-- Required activity columns: `Id`, `ActivityDate`, `TotalSteps`, `Calories`
-- Sleep data is optional; if present it should include `Id`, `SleepDay`, `TotalMinutesAsleep`
 
-## Metrics
-- `baseline_steps`: median steps over a user's first 14 active days
-- `steps_pct_of_baseline`: steps divided by baseline_steps
-- `steps_delta_from_baseline`: steps minus baseline_steps
-- `is_baseline_window`: whether a day is within the baseline window
+CSV files should be placed in the `data/` directory.
 
-## Models
-- `user_daily_activity`
-- `user_baseline_activity`
-- `user_activity_deviation`
+Activity files:
+- filename contains `daily` and `activity`
+- loaded into `raw.daily_activity`
+- required columns:
+  - `Id`
+  - `ActivityDate`
+  - `TotalSteps`
+  - `Calories`
+
+Sleep files (optional):
+- filename contains `sleep`
+- loaded into `raw.sleep`
+- expected columns:
+  - `Id`
+  - `SleepDay`
+  - `TotalMinutesAsleep`
+
+---
+
+## Key Metrics
+
+The pipeline calculates user-level engagement metrics:
+
+- **baseline_steps**  
+  Median daily steps across a user's first 14 active days.
+
+- **steps_pct_of_baseline**  
+  Daily steps divided by the baseline level.
+
+- **steps_delta_from_baseline**  
+  Absolute deviation from the baseline activity level.
+
+- **is_baseline_window**  
+  Flag indicating whether a record falls within the baseline period.
+
+---
+
+## dbt Models
+
+The transformation layer produces analytics-ready tables:
+
+- `user_daily_activity`  
+  Cleaned daily activity data.
+
+- `user_baseline_activity`  
+  Baseline step calculations for each user.
+
+- `user_activity_deviation`  
+  Daily activity relative to baseline behavior.
+
+---
+
+## Concepts Demonstrated
+
+- Batch ingestion pipelines in Python
+- Relational data modeling in Postgres
+- Analytics engineering using dbt
+- Data quality testing with dbt tests
+- Local containerized infrastructure with Docker
+- Lightweight analytics dashboards with Streamlit
