@@ -10,6 +10,7 @@ from sqlalchemy.engine import Engine
 
 OPS_SCHEMA = "ops"
 MANIFEST_TABLE = "raw_ingest_manifest"
+S3_MANIFEST_TABLE = "s3_upload_manifest"
 
 DDL_RAW_INGEST_MANIFEST = f"""
 CREATE SCHEMA IF NOT EXISTS {OPS_SCHEMA};
@@ -22,6 +23,79 @@ CREATE TABLE IF NOT EXISTS {OPS_SCHEMA}.{MANIFEST_TABLE} (
     PRIMARY KEY (source_filename)
 );
 """
+
+DDL_S3_UPLOAD_MANIFEST = f"""
+CREATE SCHEMA IF NOT EXISTS {OPS_SCHEMA};
+CREATE TABLE IF NOT EXISTS {OPS_SCHEMA}.{S3_MANIFEST_TABLE} (
+    s3_key         TEXT NOT NULL,
+    source_filename TEXT NOT NULL,
+    checksum       TEXT NOT NULL,
+    etag           TEXT,
+    uploaded_at    TIMESTAMPTZ NOT NULL DEFAULT now(),
+    byte_size      BIGINT,
+    PRIMARY KEY (s3_key)
+);
+"""
+
+
+def ensure_s3_manifest_table(engine: Engine) -> None:
+    with engine.begin() as conn:
+        conn.execute(text(DDL_S3_UPLOAD_MANIFEST))
+
+
+def get_s3_manifest_row(engine: Engine, s3_key: str) -> dict | None:
+    with engine.connect() as conn:
+        row = conn.execute(
+            text(
+                f"SELECT s3_key, source_filename, checksum, etag, uploaded_at, byte_size "
+                f"FROM {OPS_SCHEMA}.{S3_MANIFEST_TABLE} WHERE s3_key = :k"
+            ),
+            {"k": s3_key},
+        ).fetchone()
+    if row is None:
+        return None
+    return {
+        "s3_key": row[0],
+        "source_filename": row[1],
+        "checksum": row[2],
+        "etag": row[3],
+        "uploaded_at": row[4],
+        "byte_size": row[5],
+    }
+
+
+def upsert_s3_manifest(
+    engine: Engine,
+    s3_key: str,
+    source_filename: str,
+    checksum: str,
+    etag: str | None,
+    byte_size: int,
+) -> None:
+    with engine.begin() as conn:
+        conn.execute(
+            text(
+                f"""
+                INSERT INTO {OPS_SCHEMA}.{S3_MANIFEST_TABLE}
+                    (s3_key, source_filename, checksum, etag, byte_size)
+                VALUES (:s3_key, :source_filename, :checksum, :etag, :byte_size)
+                ON CONFLICT (s3_key)
+                DO UPDATE SET
+                    source_filename = EXCLUDED.source_filename,
+                    checksum = EXCLUDED.checksum,
+                    etag = EXCLUDED.etag,
+                    byte_size = EXCLUDED.byte_size,
+                    uploaded_at = now();
+                """
+            ),
+            {
+                "s3_key": s3_key,
+                "source_filename": source_filename,
+                "checksum": checksum,
+                "etag": etag,
+                "byte_size": byte_size,
+            },
+        )
 
 
 def ensure_manifest_table(engine: Engine) -> None:

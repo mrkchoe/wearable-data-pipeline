@@ -3,5 +3,7 @@ pandas
 psycopg2-binary
 SQLAlchemy
 dbt-postgres
+boto3
+python-dotenv
 streamlit
 pytest

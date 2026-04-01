@@ -49,19 +49,37 @@ class LocalStorage(Storage):
 
 
 class S3Storage(Storage):
-    """Stub for S3. Set STORAGE_BACKEND=s3, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, S3_BUCKET, (optional) S3_PREFIX)."""
+    """List/read CSV keys from an S3-compatible bucket (AWS S3 or MinIO via S3_ENDPOINT_URL)."""
 
     def __init__(self) -> None:
-        raise NotImplementedError(
-            "S3 storage not implemented. Install boto3 and set AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, S3_BUCKET. "
-            "Use STORAGE_BACKEND=local for local data."
-        )
+        from ingestion.s3io import bucket_name, get_s3_client, s3_prefix
+
+        self._client = get_s3_client()
+        self._bucket = bucket_name()
+        self._prefix = (s3_prefix().strip("/") + "/") if s3_prefix() else ""
 
     def list_csv_keys(self) -> List[str]:
-        raise NotImplementedError("S3 not implemented")
+        from ingestion.s3io import iter_objects_under
+
+        keys: List[str] = []
+        for obj in iter_objects_under(self._client, self._bucket, self._prefix):
+            key = obj["Key"]
+            if key.lower().endswith(".csv"):
+                keys.append(key.rsplit("/", 1)[-1])
+        return sorted(set(keys))
 
     def get_content(self, key: str) -> bytes:
-        raise NotImplementedError("S3 not implemented")
+        from ingestion.s3io import download_object_bytes
+
+        # If key is bare filename, find first matching object under prefix (best-effort).
+        candidates = [k for k in self._list_full_keys() if k.lower().endswith(".csv") and k.rsplit("/", 1)[-1] == key]
+        s3_key = candidates[0] if candidates else f"{self._prefix}{key}"
+        return download_object_bytes(self._client, self._bucket, s3_key)
+
+    def _list_full_keys(self) -> List[str]:
+        from ingestion.s3io import iter_objects_under
+
+        return [o["Key"] for o in iter_objects_under(self._client, self._bucket, self._prefix)]
 
 
 class GCSStorage(Storage):

@@ -34,7 +34,9 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Ingestion smoke check
-        run: python -m py_compile ingestion/ingest.py
+        run: |
+          python -m py_compile ingestion/ingest.py ingestion/config.py ingestion/csv_partition.py
+          python -m py_compile ingestion/detect.py ingestion/s3io.py ingestion/upload_to_s3.py ingestion/load_s3_to_staging.py
 
       - name: Ingest sample data into Postgres
         env:

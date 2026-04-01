@@ -109,3 +109,41 @@ models:
           - not_null:
               arguments:
                 where: "total_steps is not null and baseline_steps is not null and baseline_steps > 0"
+
+  - name: mart_daily_health_metrics
+    description: "Daily steps and sleep efficiency metrics."
+    columns:
+      - name: user_day_id
+        description: "Unique user-day key."
+        tests:
+          - not_null
+          - unique
+      - name: user_id
+        tests:
+          - not_null
+      - name: activity_date
+        tests:
+          - not_null
+      - name: sleep_efficiency_ratio
+        description: "Minutes asleep divided by time in bed (0–1 when populated)."
+        tests:
+          - accepted_range:
+              arguments:
+                min_value: 0
+                max_value: 1
+
+  - name: mart_data_volume_anomaly
+    description: "Row-count anomaly flags vs trailing 7-day average of stg_daily_activity."
+    columns:
+      - name: metric_date
+        tests:
+          - not_null
+          - unique
+      - name: row_count
+        tests:
+          - not_null
+      - name: row_count_anomaly_flag
+        description: "True when row_count deviates more than 30% from trailing average."
+        tests:
+          - accepted_values:
+              values: [true, false]

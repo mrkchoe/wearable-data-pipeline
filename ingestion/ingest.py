@@ -102,7 +102,11 @@ def _ingest_csv(
 def main() -> None:
     parser = argparse.ArgumentParser(description="Ingest wearable CSVs into Postgres.")
     parser.add_argument("--data-dir", default="data", help="Directory with CSV drops.")
-    parser.add_argument("--schema", default="raw", help="Target Postgres schema.")
+    parser.add_argument(
+        "--schema",
+        default=os.getenv("POSTGRES_STAGING_SCHEMA", "staging"),
+        help="Target Postgres schema (warehouse staging layer).",
+    )
     parser.add_argument(
         "--if-exists",
         default="replace",

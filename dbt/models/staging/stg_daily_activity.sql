@@ -1,6 +1,6 @@
 with source as (
     select *
-    from {{ source('raw', 'daily_activity') }}
+    from {{ source('staging', 'daily_activity') }}
 ),
 
 renamed as (
