@@ -1,9 +1,12 @@
 # Python dependencies for ingestion scripts and dbt.
-pandas
-psycopg2-binary
-SQLAlchemy
-dbt-postgres
-boto3
-python-dotenv
-streamlit
-pytest
+# Versions pinned to a mutually-compatible set so pip's resolver doesn't
+# backtrack endlessly when a new upstream release lands on PyPI.
+pandas==2.2.3
+psycopg2-binary==2.9.10
+SQLAlchemy==2.0.36
+dbt-core==1.9.3
+dbt-postgres==1.9.0
+boto3==1.35.71
+python-dotenv==1.0.1
+streamlit==1.41.1
+pytest==8.3.4
