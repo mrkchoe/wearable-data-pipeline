@@ -42,9 +42,8 @@ models:
         description: "Total steps recorded for the day."
         tests:
           - accepted_range:
-              arguments:
-                min_value: 0
-                max_value: 100000
+              min_value: 0
+              max_value: 100000
       - name: calories
         description: "Estimated calories burned for the day."
 
@@ -68,8 +67,7 @@ models:
         tests:
           - not_null
           - accepted_range:
-              arguments:
-                min_value: 1
+              min_value: 1
       - name: baseline_active_days
         description: "Number of active days used in the baseline window."
 
@@ -93,22 +91,19 @@ models:
         description: "Total steps recorded for the day."
         tests:
           - accepted_range:
-              arguments:
-                min_value: 0
-                max_value: 100000
+              min_value: 0
+              max_value: 100000
       - name: baseline_steps
         description: "Median steps over the baseline window."
         tests:
           - not_null
           - accepted_range:
-              arguments:
-                min_value: 1
+              min_value: 1
       - name: steps_pct_of_baseline
         description: "Steps divided by baseline steps."
         tests:
           - not_null:
-              arguments:
-                where: "total_steps is not null and baseline_steps is not null and baseline_steps > 0"
+              where: "total_steps is not null and baseline_steps is not null and baseline_steps > 0"
 
   - name: mart_daily_health_metrics
     description: "Daily steps and sleep efficiency metrics."
@@ -128,9 +123,8 @@ models:
         description: "Minutes asleep divided by time in bed (0–1 when populated)."
         tests:
           - accepted_range:
-              arguments:
-                min_value: 0
-                max_value: 1
+              min_value: 0
+              max_value: 1
 
   - name: mart_data_volume_anomaly
     description: "Row-count anomaly flags vs trailing 7-day average of stg_daily_activity."
