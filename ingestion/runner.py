@@ -17,6 +17,7 @@ if str(_REPO_ROOT) not in sys.path:
 from sqlalchemy.exc import OperationalError
 
 from ingestion import db
+from ingestion.config import data_drop_dir
 from ingestion.run_tracker import (
     end_run,
     ensure_pipeline_runs_table,
@@ -64,7 +65,7 @@ def _run_dbt() -> subprocess.CompletedProcess:
 
 
 def main() -> int:
-    data_dir = os.getenv("PIPELINE_DATA_DIR", "data_lake")
+    data_dir = str(data_drop_dir())
     use_manifest = os.getenv("PIPELINE_USE_MANIFEST", "0").lower() in ("1", "true", "yes")
     engine = get_engine()
     dbname, host, port = db.get_connection_info()

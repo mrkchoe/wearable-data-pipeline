@@ -3,6 +3,8 @@ from __future__ import annotations
 import os
 
 import altair as alt
+
+import ingestion.config  # noqa: F401 — load repo-root .env for DB_* vars
 import pandas as pd
 import streamlit as st
 from sqlalchemy import create_engine, text
