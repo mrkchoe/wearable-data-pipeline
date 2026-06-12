@@ -21,7 +21,7 @@ help:
 	@echo "  upload      Upload DATA_DROP_DIR CSVs to S3/MinIO (partitioned)"
 	@echo "  load        Reload staging schema in Postgres from S3"
 	@echo "  smoke       upload + load + dbt run/test (host must reach MinIO + Postgres)"
-	@echo "  run-prod    Local ingest + dbt via ingestion.runner (no S3; use after up)"
+	@echo "  run-prod    Local ingest + dbt run/test via ingestion.runner (no S3; use after up)"
 	@echo "  dbt-deps    dbt deps"
 	@echo "  dbt-run / dbt-test"
 	@echo "  test        pytest"

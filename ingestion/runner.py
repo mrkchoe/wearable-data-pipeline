@@ -54,9 +54,9 @@ def _run_ingest(data_dir: str, use_manifest: bool) -> subprocess.CompletedProces
     return subprocess.run(cmd, cwd=_REPO_ROOT, capture_output=True, text=True)
 
 
-def _run_dbt() -> subprocess.CompletedProcess:
+def _run_dbt(command: str) -> subprocess.CompletedProcess:
     return subprocess.run(
-        ["dbt", "run"],
+        ["dbt", command],
         cwd=_REPO_ROOT / "dbt",
         capture_output=True,
         text=True,
@@ -100,19 +100,19 @@ def main() -> int:
         return 1
     _log_json(run_id, "ingest", "success", duration_ms)
 
-    # Step: dbt run
-    t0 = time.perf_counter()
-    _log_json(run_id, "dbt_run", "started")
-    result = _run_dbt()
-    duration_ms = int((time.perf_counter() - t0) * 1000)
-    if result.returncode != 0:
-        failed_step = "dbt_run"
-        error_summary = result.stderr or result.stdout or f"exit code {result.returncode}"
-        _log_json(run_id, "dbt_run", "failure", duration_ms)
-        end_run(engine, run_id, "failure", error_summary)
-        _print_error_report(run_id, failed_step, error_summary)
-        return 1
-    _log_json(run_id, "dbt_run", "success", duration_ms)
+    for step, dbt_command in (("dbt_run", "run"), ("dbt_test", "test")):
+        t0 = time.perf_counter()
+        _log_json(run_id, step, "started")
+        result = _run_dbt(dbt_command)
+        duration_ms = int((time.perf_counter() - t0) * 1000)
+        if result.returncode != 0:
+            failed_step = step
+            error_summary = result.stderr or result.stdout or f"exit code {result.returncode}"
+            _log_json(run_id, step, "failure", duration_ms)
+            end_run(engine, run_id, "failure", error_summary)
+            _print_error_report(run_id, failed_step, error_summary)
+            return 1
+        _log_json(run_id, step, "success", duration_ms)
 
     end_run(engine, run_id, "success", None)
     _log_json(run_id, "pipeline", "success")
