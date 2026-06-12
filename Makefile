@@ -81,4 +81,4 @@ airflow-build:
 	$(COMPOSE) build airflow-webserver
 
 run-prod:
-	PIPELINE_DATA_DIR=sample_data PIPELINE_USE_MANIFEST=1 python -m ingestion.runner
+	PIPELINE_USE_MANIFEST=1 python -m ingestion.runner

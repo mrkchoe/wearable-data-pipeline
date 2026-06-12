@@ -1,28 +1,18 @@
 from __future__ import annotations
 
-import os
-
 import altair as alt
 
 import ingestion.config  # noqa: F401 — load repo-root .env for DB_* vars
 import pandas as pd
 import streamlit as st
-from sqlalchemy import create_engine, text
+from sqlalchemy import text
+
+from ingestion.db import get_engine
 
 
 st.set_page_config(page_title="Wearable Baseline Trends", layout="wide")
 st.title("Baseline Engagement Trend")
 st.caption("Cohort-level activity vs per-user baselines.")
-
-
-def build_engine():
-    host = os.getenv("DB_HOST", "localhost")
-    port = os.getenv("DB_PORT", "5432")
-    dbname = os.getenv("DB_NAME", "wearable")
-    user = os.getenv("DB_USER", "wearable")
-    password = os.getenv("DB_PASSWORD", "wearable")
-    url = f"postgresql+psycopg2://{user}:{password}@{host}:{port}/{dbname}"
-    return create_engine(url)
 
 
 def load_date_bounds(engine) -> tuple[pd.Timestamp | None, pd.Timestamp | None]:
@@ -69,7 +59,7 @@ def load_deviation_data(engine, start_date, end_date, min_baseline_days: int) ->
     )
 
 
-engine = build_engine()
+engine = get_engine()
 
 try:
     min_date, max_date = load_date_bounds(engine)
