@@ -17,7 +17,7 @@ if str(_REPO_ROOT) not in sys.path:
 from sqlalchemy.exc import OperationalError
 
 from ingestion import db
-from ingestion.config import data_drop_dir
+from ingestion.config import data_drop_dir, use_manifest
 from ingestion.run_tracker import (
     end_run,
     ensure_pipeline_runs_table,
@@ -66,7 +66,7 @@ def _run_dbt(command: str) -> subprocess.CompletedProcess:
 
 def main() -> int:
     data_dir = str(data_drop_dir())
-    use_manifest = os.getenv("PIPELINE_USE_MANIFEST", "0").lower() in ("1", "true", "yes")
+    manifest = use_manifest()
     engine = get_engine()
     dbname, host, port = db.get_connection_info()
 
@@ -89,7 +89,7 @@ def main() -> int:
     # Step: ingest
     t0 = time.perf_counter()
     _log_json(run_id, "ingest", "started")
-    result = _run_ingest(data_dir, use_manifest)
+    result = _run_ingest(data_dir, manifest)
     duration_ms = int((time.perf_counter() - t0) * 1000)
     if result.returncode != 0:
         failed_step = "ingest"

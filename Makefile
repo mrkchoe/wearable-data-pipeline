@@ -4,7 +4,7 @@
 COMPOSE := docker compose -f docker/docker-compose.yml
 
 .PHONY: help up up-all down logs logs-airflow ps minio-ui venv install \
-	dbt-deps dbt-run dbt-test test detect upload load smoke airflow-build run-prod
+	dbt-deps dbt-run dbt-test test detect upload load smoke airflow-build run-prod dashboard
 
 help:
 	@echo "Targets:"
@@ -22,6 +22,7 @@ help:
 	@echo "  load        Reload staging schema in Postgres from S3"
 	@echo "  smoke       upload + load + dbt run/test (host must reach MinIO + Postgres)"
 	@echo "  run-prod    Local ingest + dbt run/test via ingestion.runner (no S3; use after up)"
+	@echo "  dashboard   Streamlit baseline trends UI (requires dbt run first)"
 	@echo "  dbt-deps    dbt deps"
 	@echo "  dbt-run / dbt-test"
 	@echo "  test        pytest"
@@ -81,4 +82,7 @@ airflow-build:
 	$(COMPOSE) build airflow-webserver
 
 run-prod:
-	PIPELINE_USE_MANIFEST=1 python -m ingestion.runner
+	python -m ingestion.runner
+
+dashboard:
+	streamlit run dashboards/app.py

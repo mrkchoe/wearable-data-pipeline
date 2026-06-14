@@ -46,3 +46,7 @@ def data_drop_dir() -> Path:
     if not path.is_absolute():
         path = _REPO_ROOT / path
     return path
+
+
+def use_manifest() -> bool:
+    return (os.getenv("PIPELINE_USE_MANIFEST") or "1").lower() in ("1", "true", "yes")
