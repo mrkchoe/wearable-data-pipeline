@@ -1,151 +1,129 @@
 # Wearable data pipeline
 
-Production-style local reference stack: **CSV drops → S3-compatible lake (MinIO) → Postgres staging → dbt → quality checks & marts**. Apache Airflow orchestrates the happy path; everything except real AWS S3 is runnable on a laptop (MinIO substitutes for S3).
+A local, production-style reference pipeline for wearable health CSVs (daily activity and sleep). It ingests files from a drop folder, lands them in an S3-compatible lake, loads Postgres staging tables, and builds tested dbt marts for analytics.
+
+The stack mirrors a small lakehouse pattern: **CSV → lake (MinIO) → warehouse (Postgres) → dbt transforms → quality checks**. Apache Airflow can orchestrate the full path; you can also run each step from the host with Make or Python CLIs. MinIO stands in for AWS S3 so everything runs on a laptop.
+
+**What you get out of it**
+
+- Staging tables for raw activity and sleep data
+- dbt marts for per-user daily activity, baselines, deviations, and combined health metrics
+- Data quality tests (`not_null`, `unique`, range checks)
+- Optional Streamlit dashboard for baseline trend exploration
+
+Sample data is included in `sample_data/`.
 
 ---
 
-## Architecture
+## How it works
 
 ```mermaid
 flowchart LR
-  subgraph sources [Sources]
-    CSV[Local CSV drops]
-  end
-
-  subgraph ingest [Ingestion]
-    DET[Detect new/changed files]
-    UP[S3 upload partitioned by date]
-    LD[Load staging tables]
-  end
-
-  subgraph lake [Lake]
-    S3[(S3 / MinIO)]
-  end
-
-  subgraph wh [Warehouse]
-    PG[(Postgres staging + public marts)]
-  end
-
-  subgraph transform [Transform]
-    DBT[dbt staging + marts + tests]
-  end
-
-  subgraph orch [Orchestration]
-    AFairflow[Airflow DAG]
-  end
-
-  CSV --> DET
-  DET --> AFairflow
-  AFairflow --> UP
-  UP --> S3
-  AFairflow --> LD
-  S3 --> LD
-  LD --> PG
-  AFairflow --> DBT
-  PG --> DBT
+  CSV[CSV drops] --> DET[Detect changes]
+  DET --> UP[Upload to lake]
+  UP --> S3[(MinIO / S3)]
+  S3 --> LD[Load staging]
+  LD --> PG[(Postgres)]
+  PG --> DBT[dbt marts + tests]
 ```
 
-**Data flow (logical):**
+1. **Drop** — Place CSVs in `DATA_DROP_DIR` (default `sample_data/`). Activity files need `daily` and `activity` in the name; sleep files need `sleep`.
+2. **Upload** — Partitioned objects land in the lake (`activity/` and `sleep/` by date). Checksums skip unchanged files.
+3. **Load** — Staging tables `staging.daily_activity` and `staging.sleep` are reloaded from the lake.
+4. **Transform** — dbt builds `stg_*` views and mart tables in `public`, then runs tests.
 
-1. **Drop files** — Classified CSVs under `DATA_DROP_DIR` (default `./sample_data`). Activity filenames must contain both `daily` and `activity`; sleep files must contain `sleep`.
-2. **Detect** — Compares local SHA-256 checksums to `ops.s3_upload_manifest` and (optionally) object metadata on the lake to avoid redundant uploads.
-3. **Upload** — Writes objects to `s3://$S3_BUCKET/$S3_PREFIX/{activity|sleep}/date=YYYY-MM-DD/<file>.csv` with `sha256` in S3 object metadata. Postgres records uploads in `ops.s3_upload_manifest`.
-4. **Load** — Lists hive-style prefixes, downloads all activity/sleep CSVs, truncates/reloads `staging.daily_activity` and `staging.sleep`.
-5. **Transform** — dbt reads the `staging` source, builds views in the staging layer (`stg_*`), materializes marts as tables in `public`, and runs tests (`not_null`, `unique`, `accepted_range` / `accepted_values`).
-6. **Volume anomaly mart** — `mart_data_volume_anomaly` flags calendar days where `stg_daily_activity` row counts deviate more than **30%** from a trailing **7-day** average (no flag when no history).
+With Airflow (`make up-all`), the `wearable_pipeline` DAG runs detect → upload → load → dbt run → dbt test.
 
 ---
 
-## Repository layout
+## Project structure
 
 | Path | Purpose |
 |------|---------|
-| `dags/` | Airflow DAGs (`wearable_pipeline_dag.py`) |
-| `ingestion/` | Python ingest utilities, S3 I/O, manifests, CLI modules |
-| `dbt/` | Models, tests, macros, profile template |
-| `docker/` | `docker-compose.yml` (Postgres, MinIO, Airflow) + `airflow/Dockerfile` |
-| `infra/` | `.env.example` template (copy to repo root `.env`) |
-| `sample_data/` | Example activity + sleep CSVs |
-| `Makefile` | Common commands |
+| `ingestion/` | Python CLIs — detect, upload, load, direct ingest |
+| `dbt/` | SQL models, tests, and macros |
+| `dags/` | Airflow DAG definition |
+| `docker/` | Compose stack (Postgres, MinIO, Airflow) |
+| `sample_data/` | Example CSVs |
+| `dashboards/` | Streamlit app |
+| `infra/.env.example` | Environment template — copy to `.env` at repo root |
+| `Makefile` | Common local commands |
+
+---
+
+## Quick start
+
+**Prerequisites:** Docker (Compose v2), Python 3.11+
+
+```bash
+cp infra/.env.example .env
+pip install -r requirements.txt
+make up      # Postgres + MinIO
+make smoke   # upload → load → dbt run → dbt test
+```
+
+**Default services**
+
+| Service | Connection |
+|---------|------------|
+| Postgres | `localhost:5432`, db `wearable`, user/pass `wearable` |
+| MinIO API | `http://localhost:9000` |
+| MinIO console | `http://localhost:9001` (`minioadmin` / `minioadmin`) |
+
+---
+
+## Running the pipeline
+
+### End-to-end (recommended)
+
+```bash
+make smoke
+```
+
+Runs upload, staging load, `dbt run`, and `dbt test` against the running Docker services.
+
+### With Airflow
+
+```bash
+make up-all          # or: docker compose up -d
+```
+
+Open `http://localhost:8080` (admin / admin), enable **`wearable_pipeline`**, and trigger a run.
+
+### Without S3 (quick local path)
+
+Useful for tests or when you only need Postgres + dbt:
+
+```bash
+make up
+python -m ingestion.ingest --data-dir sample_data --use-manifest
+cd dbt && dbt run && dbt test
+```
+
+Or use the pipeline runner (ingest + dbt with JSON step logs): `make run-prod`
+
+### Dashboard
+
+After marts are built:
+
+```bash
+make dashboard
+```
 
 ---
 
 ## Configuration
 
-Copy **`infra/.env.example`** to **`.env`** at the repo root and adjust values. Core variables:
+Copy `infra/.env.example` to `.env`. The essentials:
 
-| Variable | Purpose |
-|----------|---------|
-| `DATABASE_URL` or `DB_*` | Warehouse Postgres connection |
-| `DATA_DROP_DIR` | Directory scanned for CSV drops |
-| `S3_ENDPOINT_URL` | Omitted for AWS; `http://localhost:9000` for MinIO from the host; `http://minio:9000` inside Docker |
-| `S3_BUCKET`, `S3_PREFIX` | Lake bucket and key prefix (default `wearable-lake`, `raw`) |
-| `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` | MinIO defaults `minioadmin` / `minioadmin` locally |
-| `LOG_LEVEL` | Python log level for CLI modules |
-| `AIRFLOW_UID` | Linux user id for Airflow containers (default `50000`) |
-| `AIRFLOW__CORE__FERNET_KEY` | Override the dev default in `docker/docker-compose.yml` for non-dev use |
+| Variable | Default | Purpose |
+|----------|---------|---------|
+| `DATA_DROP_DIR` | `./sample_data` | Folder scanned for CSV drops |
+| `S3_ENDPOINT_URL` | `http://localhost:9000` | MinIO from the host (`http://minio:9000` inside Docker) |
+| `DB_HOST` / `DB_*` | `localhost:5432` | Warehouse Postgres |
+| `DATABASE_URL` | — | Alternative to `DB_*` (also used by dbt) |
 
-Logging uses a consistent format across ingestion CLIs: `timestamp | LEVEL | logger | message`.
-
-**Idempotency**
-
-- **Postgres file manifest** (`ops.raw_ingest_manifest`): skips unchanged local→Postgres loads when using `ingestion.ingest --use-manifest`.
-- **S3 upload manifest** (`ops.s3_upload_manifest` + object metadata `sha256`): skips unchanged uploads when checksums match.
-
----
-
-## Quick start (Docker stack + Airflow)
-
-Prerequisites: Docker with Compose v2 (`include` support), and **make** (optional).
-
-```bash
-# From repo root — starts warehouse Postgres, MinIO, Airflow metadata DB, web UI, scheduler
-docker compose up -d
-```
-
-- **Postgres (warehouse):** `localhost:5432` / user `wearable` / password `wearable` / DB `wearable`
-- **MinIO API:** `http://localhost:9000`
-- **MinIO console:** `http://localhost:9001` (`minioadmin` / `minioadmin`)
-- **Airflow UI:** `http://localhost:8080` (default admin user is created in `airflow-init`: username **`admin`**, password **`admin`**)
-
-Open the UI → enable/unpause **`wearable_pipeline`** → trigger a run. The DAG runs:
-
-`detect_new_files` → `upload_to_s3` → `load_staging_postgres` → `dbt_run` → `dbt_test`.
-
----
-
-## Quick start (host Python, no Airflow)
-
-```bash
-python -m venv .venv
-# activate venv per your OS
-pip install -r requirements.txt
-cp infra/.env.example .env   # edit S3_ENDPOINT_URL for MinIO if needed
-
-# Terminal 1 — minimal services without Airflow (see Makefile)
-docker compose up -d postgres minio minio-init
-
-# Terminal 2 — warehouse must be empty or compatible; load lake then staging then dbt
-python -m ingestion.upload_to_s3
-python -m ingestion.load_s3_to_staging
-
-mkdir -p ~/.dbt && cp dbt/profiles.yml ~/.dbt/profiles.yml
-cd dbt && dbt run && dbt test
-```
-
-**Direct local load (bypass S3)** — useful for unit/integration tests:
-
-```bash
-python -m ingestion.ingest --data-dir sample_data --use-manifest
-cd dbt && dbt run && dbt test
-```
-
-**Legacy runner** (ingest + dbt with JSON step logs):
-
-```bash
-make run-prod
-# or:  PIPELINE_DATA_DIR=sample_data PIPELINE_USE_MANIFEST=1 python -m ingestion.runner
-```
+See [docs/optional.md](docs/optional.md) for the full variable list, S3 key layout, idempotency manifests, and troubleshooting.
 
 ---
 
@@ -153,53 +131,20 @@ make run-prod
 
 | Target | Description |
 |--------|-------------|
-| `make up` | Postgres + MinIO (+ bucket init job) |
+| `make up` | Postgres + MinIO |
 | `make up-all` | Full stack including Airflow |
-| `make down` | Stop compose project |
-| `make upload` / `make load` | Run lake upload / staging reload on the host |
-| `make smoke` | `upload` + `load` + `dbt run` + `dbt test` (requires host access to Postgres + MinIO) |
+| `make down` | Stop containers |
+| `make upload` / `make load` | Lake upload or staging reload only |
+| `make smoke` | Full pipeline on the host |
+| `make run-prod` | Ingest + dbt via `ingestion.runner` |
 | `make test` | `pytest` |
+| `make dashboard` | Streamlit UI |
+| `make help` | All targets |
 
 ---
 
-## dbt layers
+## More
 
-- **Sources:** `staging.daily_activity`, `staging.sleep`
-- **Staging models:** `stg_daily_activity`, `stg_sleep` (typed, cleaned columns)
-- **Marts:** existing user activity / baseline / deviation tables; **`mart_daily_health_metrics`** (steps, distances, calories, **`sleep_efficiency_ratio`**); **`mart_data_volume_anomaly`** (row count vs trailing average)
-
-Tests live in `dbt/models/**/schema.yml` and custom macros (e.g. `accepted_range`).
-
----
-
-## Dashboard (optional)
-
-After `dbt run`:
-
-```bash
-streamlit run dashboards/app.py
-```
-
----
-
-## S3 layout
-
-Objects are partitioned by calendar date inferred from each file’s rows (minimum activity/sleep date in the CSV):
-
-- `s3://<bucket>/<prefix>/activity/date=YYYY-MM-DD/<filename>.csv`
-- `s3://<bucket>/<prefix>/sleep/date=YYYY-MM-DD/<filename>.csv`
-
----
-
-## Troubleshooting
-
-- **`docker compose` include errors** — Upgrade Compose, or run `docker compose -f docker/docker-compose.yml up -d` explicitly.
-- **Airflow DAG import errors** — Ensure `PYTHONPATH` includes the repo root (set in `docker/docker-compose.yml`).
-- **MinIO connection from the host** — Use `S3_ENDPOINT_URL=http://127.0.0.1:9000` in `.env`; from containers use `http://minio:9000`.
-- **Empty staging / dbt source not found** — Run upload and load (or `ingestion.ingest`) before `dbt run`.
-
----
-
-## CI
-
-GitHub Actions runs ingestion against Postgres, **pytest**, and **dbt run/test** on push/PR using `sample_data` and the default `staging` schema.
+- **[Optional & advanced](docs/optional.md)** — dbt layer details, S3 layout, CI, troubleshooting
+- **[Deploy & cloud](docs/deploy.md)** — cloud Postgres, scheduled runs, containers
+- **[Design decisions](docs/design-decisions.md)** — architecture rationale
