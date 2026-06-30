@@ -3,7 +3,7 @@
 
 COMPOSE := docker compose -f docker/docker-compose.yml
 
-.PHONY: help up up-all down logs logs-airflow ps minio-ui venv install \
+.PHONY: help up up-all down logs logs-airflow ps minio-ui venv env setup install \
 	dbt-deps dbt-run dbt-test test detect upload load smoke airflow-build run-prod dashboard
 
 help:
@@ -16,6 +16,7 @@ help:
 	@echo "  logs-airflow Tail Airflow web + scheduler"
 	@echo "  minio-ui    Print MinIO console URL (http://localhost:9001)"
 	@echo "  venv        Create local Python venv"
+	@echo "  setup       Copy .env if missing and install Python deps"
 	@echo "  install     pip install -r requirements.txt"
 	@echo "  detect      Detect new/changed CSVs vs manifests (needs Postgres for S3 checks)"
 	@echo "  upload      Upload DATA_DROP_DIR CSVs to S3/MinIO (partitioned)"
@@ -52,7 +53,13 @@ minio-ui:
 venv:
 	python -m venv .venv
 
+env:
+	test -f .env || cp infra/.env.example .env
+
+setup: env install
+
 install:
+	python -m pip install --upgrade pip
 	pip install -r requirements.txt
 
 detect:
